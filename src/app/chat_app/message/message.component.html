@@ -34,9 +34,9 @@ style="position: relative; height: 400px">
 <div class="text-muted d-flex justify-content-start align-items-center pe-3 pt-2 mt-2">
  <img src="https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png"
   alt="avatar 3" style="width: 40px; height: 100%;">
- <input [(ngModel)]="inputSendMessage" type="text" class="form-control"
+ <input [(ngModel)]="inputSendMessage" type="text" class="form-control w-20%  "
   placeholder="Type message">
-<input type="file" (change)="onFileSelected($event)" class="mx-1">
+<input type="file" (change)="onFileSelected($event)" class="mx-1 form-control">
 <!-- <button type="button" class="btn mx-1">
 <i class="bi bi-paperclip"></i></button> -->
 <button type="button" class="btn btn-primary" (click)="sendMessageWebSocket(
@@ -46,7 +46,7 @@ style="position: relative; height: 400px">
 },
   idChatroom!)">
 <i class="bi bi-send"></i></button>
-<!-- 
+<!--
 <button type="button" class="btn btn-primary" (click)="sendImageWebSocket(selectedFile!,idChatroom!)">
 </button> -->
 

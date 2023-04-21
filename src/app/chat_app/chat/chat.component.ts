@@ -22,17 +22,23 @@ openDialog(){
   const dialogRef= this.dialog.open(AddChatroomComponent);
 dialogRef.afterClosed().subscribe((result)=>{
  if(result!=null){
-  this.addChatroom({
-    'name':result,
-    'ownerId':1
-  })
+  console.log(result.file);
+  this.addChatroom(
+    {
+    'name':result.name,
+    'owner':{
+      'id':1
+    }
+  },
+  result.file
+  )
  }
 })
 }
 
 
-  ngOnInit(): void {
-  this.getChatrooms();}
+ngOnInit(): void {
+this.getChatrooms();}
 getChatrooms(){
 this.apiService.getChatrooms().subscribe({
   next:(chatrooms:any)=>{
@@ -41,8 +47,8 @@ this.apiService.getChatrooms().subscribe({
 })
 }
 
-addChatroom(chatroom:any){
-  this.apiService.addChatroom(chatroom).subscribe({
+addChatroom(chatroom:any,image:any){
+  this.apiService.addChatroom(chatroom,image).subscribe({
     next:(res:any)=>{
       this.chatroomList.push(res)},
     complete:()=>{

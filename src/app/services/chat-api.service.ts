@@ -13,11 +13,19 @@ export class ChatApiService {
     return this.http.get<any>('http://localhost:8090/chatroom/getAllChatroom')
     }
 
-  addChatroom(chatroom:any){
+  addChatroom(chatroom:any,imageFile :any){
       const url='http://localhost:8090/chatroom/addChatroom'
-      const params = new HttpParams().set('ownerId', chatroom.ownerId);
-      return this.http.post(url, chatroom,{params});
+      const formData = new FormData();
+      const headers = new HttpHeaders();
+      headers.append('Content-Type', 'multipart/form-data');
+      const json = JSON.stringify(chatroom);
+      const blob = new Blob([json], { type:'application/json' });
+      formData.append('chatroom', blob);
+      formData.append('file', imageFile);
+      return this.http.post(url, formData,{headers});
     }
+
+
 
   deleteChatroom(chatroomId:number){
       return this.http.delete('http://localhost:8090/chatroom/deleteChatroom/'+chatroomId)

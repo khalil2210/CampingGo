@@ -9,8 +9,16 @@ export class AddChatroomComponent implements OnInit {
 
   constructor() { }
 chatroomName?:string;
+imageFile?:any;
   ngOnInit(): void {
   }
+
   closeDialog(){this}
+
+
+
+  onFileSelected(event:any) {
+    this.imageFile = event.target.files[0];
+  }
 }
 
