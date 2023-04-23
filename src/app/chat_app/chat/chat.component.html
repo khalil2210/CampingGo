@@ -23,8 +23,7 @@
                       <!-- chatroom's Card -->
                       <li class="p-1 border-bottom">
                         <div *ngFor="let chatroom of chatroomList ; let i = index" >
-
-                         <a [routerLink]="['/chatroom',chatroom.id]" class="d-flex justify-content-between my-2">
+                         <a [routerLink]="['/chatroom',chatroom.id]"  [queryParams]="chatroom" class="d-flex justify-content-between my-2">
                           <div class="d-flex flex-row">
                             <div>
                               <img [src]="'http://localhost:8090/image/getImage/'+chatroom.image.id"

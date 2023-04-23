@@ -5,9 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { NouisliderModule } from 'ng2-nouislider';
 import { JwBootstrapSwitchNg2Module } from 'jw-bootstrap-switch-ng2';
 import { RouterModule } from '@angular/router';
-
-
 import { ComponentsComponent } from './components.component';
+import { NavbarComponent } from 'src/app/shared/navbar/navbar.component';
 
 @NgModule({
     imports: [
@@ -19,8 +18,10 @@ import { ComponentsComponent } from './components.component';
         JwBootstrapSwitchNg2Module
     ],
     declarations: [
-        ComponentsComponent
-      
+        ComponentsComponent,
+        
+
+
     ],
     entryComponents: [],
     exports:[ ComponentsComponent ]

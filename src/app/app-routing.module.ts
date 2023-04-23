@@ -12,7 +12,7 @@ const routes: Routes = [
 { path: 'home', component: ComponentsComponent },
 
 { path:'chatroom',component:ChatComponent,children:[
-
+  
 {path:':chatroomId',component:MessageComponent}
 
 ]

@@ -21,6 +21,7 @@ export class MessageComponent {
   inputSendMessage:String='';
   selectedFile?: any;
   private stompClient:any ;
+  chatroomName:any;
 
 
   constructor(
@@ -39,6 +40,13 @@ export class MessageComponent {
      this.messageList.push(JSON.parse(greeting.body))
     });
       });
+
+  this.route.queryParams.subscribe(params=>{
+
+this.chatroomName=params["name"];
+
+    });
+
   let chatroomId =params["chatroomId"];
   this.getMessagesBychatroom(chatroomId);
   this.getAllUsersByChatroom(chatroomId);
