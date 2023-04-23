@@ -101,7 +101,7 @@ sendImageWebSocket(image:File,chatroomId:number){
     let message = {
       imageData: bytes,
    };
-      console.log(message);
+  console.log(message);
   this.stompClient.send(
   "/app/sendImageToChatroom",{}, JSON.stringify(message));
 }
