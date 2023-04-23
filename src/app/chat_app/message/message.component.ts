@@ -6,6 +6,8 @@ import { ChatApiService } from 'src/app/services/chat-api.service';
 import { Stomp } from '@stomp/stompjs';
 import * as SockJS from 'sockjs-client';
 import { read } from '@popperjs/core';
+import { MatDialog } from '@angular/material/dialog';
+import { EditChatroomComponent } from '../Pop_up/edit-chatroom/edit-chatroom.component';
 
 
 
@@ -26,10 +28,17 @@ export class MessageComponent {
 
   constructor(
     private apiService:ChatApiService,
-    private route: ActivatedRoute){}
+    private route: ActivatedRoute,
+    private dialog:MatDialog){}
 
 
-
+openDialog(){
+const dialogRef= this.dialog.open(EditChatroomComponent,{
+  height:'90vh',
+  width:'90vw'
+});
+dialogRef.afterClosed().subscribe((result)=>{});
+}
   ngOnInit(): void {
   this.route.params.subscribe(params=>{
     var socket = new SockJS('http://localhost:8090/ws-websocket');

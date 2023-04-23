@@ -22,7 +22,6 @@ openDialog(){
   const dialogRef= this.dialog.open(AddChatroomComponent);
 dialogRef.afterClosed().subscribe((result)=>{
  if(result!=null){
-  console.log(result.file);
   this.addChatroom(
     {
     'name':result.name,

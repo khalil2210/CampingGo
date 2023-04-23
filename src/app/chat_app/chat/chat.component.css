@@ -21,3 +21,6 @@
   text-decoration: none;
 }
 
+p.fw-bold.mb-0 {
+  text-decoration: none !important;
+}
