@@ -13,83 +13,23 @@
                   <div class="d-flex align-items-center flex-column m-3">
                     <img src="http://localhost:8090/image/getImage/15" alt="User avatar" style="border-radius: 50%; width: 70px; height: 70px;">
                     <h4 class="ml-3 mb-0">John Doe</h4>
-                    <h5 class="btn btn-danger" style="font-size: 0.5rem; padding: 0.25rem 0.25rem;">Remove</h5>
+                    <h5 class="btn btn-danger" (click)="removeUserFromChatroom('khalil2210',97)" style="font-size: 0.5rem; padding: 0.25rem 0.25rem;">Remove</h5>
                   </div>
-                  <div class="d-flex align-items-center flex-column m-3">
-                    <img src="http://localhost:8090/image/getImage/14" alt="User avatar" style="border-radius: 50%; width: 70px; height: 70px;">
-                    <h4 class="ml-3 mb-0">John Doe</h4>
-                    <h5 class="btn btn-danger" style="font-size: 0.5rem; padding: 0.25rem 0.25rem;">Remove</h5>
-                  </div>
-
-                  <div class="d-flex align-items-center flex-column m-3">
-                    <img src="http://localhost:8090/image/getImage/13" alt="User avatar" style="border-radius: 50%; width: 70px; height: 70px;">
-                    <h4 class="ml-3 mb-0">John Doe</h4>
-                    <h5 class="btn btn-danger" style="font-size: 0.5rem; padding: 0.25rem 0.25rem;">Remove</h5>
-                  </div>
-
-                  <div class="d-flex align-items-center flex-column m-3">
-                    <img src="http://localhost:8090/image/getImage/11" alt="User avatar" style="border-radius: 50%; width: 70px; height: 70px;">
-                    <h4 class="ml-3 mb-0">John Doe</h4>
-                    <h5 class="btn btn-danger" style="font-size: 0.5rem; padding: 0.25rem 0.25rem;">Remove</h5>
-                  </div>
-
-                  <div class="d-flex align-items-center flex-column m-3">
-                    <img src="http://localhost:8090/image/getImage/10" alt="User avatar" style="border-radius: 50%; width: 70px; height: 70px;">
-                    <h4 class="ml-3 mb-0">John Doe</h4>
-                    <h5 class="btn btn-danger" style="font-size: 0.5rem; padding: 0.25rem 0.25rem;">Remove</h5>
-                  </div>
-
-
-                                    <div class="d-flex align-items-center flex-column m-3">
-                    <img src="http://localhost:8090/image/getImage/9" alt="User avatar" style="border-radius: 50%; width: 70px; height: 70px;">
-                    <h4 class="ml-3 mb-0">John Doe</h4>
-                    <h5 class="btn btn-danger" style="font-size: 0.5rem; padding: 0.25rem 0.25rem;">Remove</h5>
-                  </div>
-
-                  <div class="d-flex align-items-center flex-column m-3">
-                    <img src="http://localhost:8090/image/getImage/8" alt="User avatar" style="border-radius: 50%; width: 70px; height: 70px;">
-                    <h4 class="ml-3 mb-0">John Doe</h4>
-                    <h5 class="btn btn-danger" style="font-size: 0.5rem; padding: 0.25rem 0.25rem;">Remove</h5>
-                  </div>
-
-                  <div class="d-flex align-items-center flex-column m-3">
-                    <img src="http://localhost:8090/image/getImage/7" alt="User avatar" style="border-radius: 50%; width: 70px; height: 70px;">
-                    <h4 class="ml-3 mb-0">John Doe</h4>
-                    <h5 class="btn btn-danger" style="font-size: 0.5rem; padding: 0.25rem 0.25rem;">Remove</h5>
-                  </div>
-
-                  <div class="d-flex align-items-center flex-column m-3">
-                    <img src="http://localhost:8090/image/getImage/15" alt="User avatar" style="border-radius: 50%; width: 70px; height: 70px;">
-                    <h4 class="ml-3 mb-0">John Doe</h4>
-                    <h5 class="btn btn-danger" style="font-size: 0.5rem; padding: 0.25rem 0.25rem;">Remove</h5>
-                  </div>
-
-                  <div class="d-flex align-items-center flex-column m-3">
-                    <img src="http://localhost:8090/image/getImage/15" alt="User avatar" style="border-radius: 50%; width: 70px; height: 70px;">
-                    <h4 class="ml-3 mb-0">John Doe</h4>
-                    <h5 class="btn btn-danger" style="font-size: 0.5rem; padding: 0.25rem 0.25rem;">Remove</h5>
-                  </div>
-                  <div class="d-flex align-items-center flex-column m-3">
-                    <img src="http://localhost:8090/image/getImage/9" alt="User avatar" style="border-radius: 50%; width: 70px; height: 70px;">
-                    <h4 class="ml-3 mb-0">John Doe</h4>
-                    <h5 class="btn btn-danger" style="font-size: 0.5rem; padding: 0.25rem 0.25rem;">Remove</h5>
-                  </div>
-
-
     </div>
     <!-- add User -->
     <h3 class="px-3">Add User To chatroom</h3>
     <div class="container-fluid"><div class="row">
       <div class="col-md-8">
-        <input type="input" class="form-control w-100" placeholder="Enter Username">
+        <input type="input" [(ngModel)]="usernametToAdd" class="form-control w-100" placeholder="Enter Username">
       </div>
       <div class="col-md-4">
-        <button class="btn btn-primary">
+        <button class="btn btn-primary" (click)="addUserToChatroom(usernametToAdd!,97)">
           <i class="bi bi-person-plus"></i>
           <span class="m-1">Add User</span>
         </button>
       </div>
-    </div></div>
+    </div>
+  </div>
 
 
 

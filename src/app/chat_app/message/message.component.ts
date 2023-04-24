@@ -88,14 +88,6 @@ getAllUsersByChatroom(chatroomId:number){
 }
 
 
-//to be moved to chatroom
-addUserToChatroom(senderId:number,chatroomId:number){
-  this.apiService.addUserToChatroom(senderId,chatroomId).subscribe({
-    next:(res:any)=>{
-    },
-    complete:()=>{}
-  })
-}
 
 
 sendMessageWebSocket(message:any,chatroomId:number){

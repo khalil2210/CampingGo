@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ChatApiService } from 'src/app/services/chat-api.service';
 
 @Component({
   selector: 'app-edit-chatroom',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditChatroomComponent implements OnInit {
 
-  constructor() { }
+  constructor(private apiService:ChatApiService) { }
   chatroomName?:string;
   imageFile?:any;
+  usernametToAdd?:string;
+  usersList:any[]=[];
+
   ngOnInit(): void {
   }
   closeDialog(){this}
@@ -19,5 +23,29 @@ export class EditChatroomComponent implements OnInit {
   onFileSelected(event:any) {
     this.imageFile = event.target.files[0];
   }
+
+
+
+
+
+//to be moved to chatroom
+addUserToChatroom(username:string,chatroomId:number){
+
+  this.apiService.addUserToChatroom(username,chatroomId).subscribe({
+    next:(res:any)=>{
+    },
+    complete:()=>{}
+  })
+}
+
+//to be moved to chatroom
+removeUserFromChatroom(username:string,chatroomId:number){
+  this.apiService.removeUserFromChatroom(username,chatroomId).subscribe({
+    next:(res:any)=>{
+    },
+    complete:()=>{}
+  })
+}
+
 }
 
