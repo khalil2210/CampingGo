@@ -25,8 +25,7 @@
                       <li class="p-1 border-bottom" >
 
                         <div *ngFor="let chatroom of chatroomList ; let i = index" >
-
-                          <a  [routerLink]="['/chatroom',chatroom.id]"  [queryParams]="chatroom" class="d-flex justify-content-between my-2" style="text-decoration: none;">
+                          <a  [routerLink]="['/chatroom',chatroom.id]"  [queryParams]="{'name':chatroom.name , 'chatroomId':chatroom.id}" class="d-flex justify-content-between my-2" style="text-decoration: none;">
 
                             <div class="d-flex flex-row">
                             <div>

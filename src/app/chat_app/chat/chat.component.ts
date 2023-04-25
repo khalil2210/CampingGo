@@ -42,6 +42,8 @@ getChatrooms(){
 this.apiService.getChatrooms().subscribe({
   next:(chatrooms:any)=>{
     this.chatroomList=chatrooms
+   
+
   },
 })
 }

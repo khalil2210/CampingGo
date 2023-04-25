@@ -50,19 +50,14 @@ dialogRef.afterClosed().subscribe((result)=>{});
     });
       });
 
-  this.route.queryParams.subscribe(params=>{
-
+this.route.queryParams.subscribe(params=>{
 this.chatroomName=params["name"];
-
     });
-
   let chatroomId =params["chatroomId"];
   this.getMessagesBychatroom(chatroomId);
-  this.getAllUsersByChatroom(chatroomId);
+
   })
 }
-
-
 
 onFileSelected(event:any) {
   this.selectedFile = event.target.files[0];
@@ -78,14 +73,7 @@ getMessagesBychatroom(idChatroom: number){
 }
 
 
-//to be moved to chatroom works
-getAllUsersByChatroom(chatroomId:number){
-  this.apiService.getAllusersByChatroom(chatroomId).subscribe({
-    next:(res:any)=>{
-    },
-    complete:()=>{}
-  })
-}
+
 
 
 
@@ -110,7 +98,7 @@ sendImageWebSocket(image:File,chatroomId:number){
     let message = {
       imageData: bytes,
    };
-  console.log(message);
+
   this.stompClient.send(
   "/app/sendImageToChatroom",{}, JSON.stringify(message));
 }
