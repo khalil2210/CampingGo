@@ -1,3 +1,16 @@
+<div class="d-flex mb-3 justify-content-between px-4" style="height: 40px;">
+<div>
+<h2>{{chatroomName}}</h2>
+</div>
+<div>
+  <a (click)="openDialog()" class="icon-btn">
+    <div>
+      <i class="bi bi-pencil-square"></i>
+      <span class="m-1">Edit</span>
+    </div>
+  </a>
+  </div>
+</div>
 <div class="pt-3 pe-3" class="overflow-auto"
 style="position: relative; height: 400px">
  <!-- messages component -->
@@ -36,20 +49,18 @@ style="position: relative; height: 400px">
   alt="avatar 3" style="width: 40px; height: 100%;">
  <input [(ngModel)]="inputSendMessage" type="text" class="form-control w-20%  "
   placeholder="Type message">
-<input type="file" (change)="onFileSelected($event)" class="mx-1 form-control">
-<!-- <button type="button" class="btn mx-1">
-<i class="bi bi-paperclip"></i></button> -->
+<label for="file-input" class="custom-file-upload " (change)="onFileSelected($event)">
+  <i class=" icon-btn bi bi-paperclip mx-2"></i>
+</label>
+<input type="file" id="file-input" name="file">
+
 <button type="button" class="btn btn-primary" (click)="sendMessageWebSocket(
   {
   'content':inputSendMessage,
-  'sender':{'id':1}
+  'sender':{'id':2}
 },
   idChatroom!)">
-<i class="bi bi-send"></i></button>
-<!--
-<button type="button" class="btn btn-primary" (click)="sendImageWebSocket(selectedFile!,idChatroom!)">
-</button> -->
-
+  <i class="bi bi-send"></i></button>
 
 </div>
 

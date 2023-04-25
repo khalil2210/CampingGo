@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AddChatroomComponent } from './chat_app/Pop_up/add-chatroom/add-chatroom.component';
+import { EditChatroomComponent } from './chat_app/Pop_up/edit-chatroom/edit-chatroom.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,8 @@ import { AddChatroomComponent } from './chat_app/Pop_up/add-chatroom/add-chatroo
     FooterComponent,
     ChatComponent,
     MessageComponent,
-    AddChatroomComponent
+    AddChatroomComponent,
+    EditChatroomComponent
   ],
 
   imports: [

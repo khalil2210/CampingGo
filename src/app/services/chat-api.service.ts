@@ -25,13 +25,9 @@ export class ChatApiService {
       return this.http.post(url, formData,{headers});
     }
 
-
-
-
   deleteChatroom(chatroomId:number){
       return this.http.delete('http://localhost:8090/chatroom/deleteChatroom/'+chatroomId)
     }
-
 
   sendMessage(chatroomId:number,message:any){
     const url='http://localhost:8090/message/addMessage'
@@ -43,13 +39,6 @@ export class ChatApiService {
     .set('chatroomId', chatroomId)
     return this.http.post(url, message,{params:params,headers:headers});
   }
-
-
-
-
-
-
-
 
   getMesaagesByChatroom(idChatroom: number){
       return this.http.get<any>('http://localhost:8090/message/getAllByChatroom/'+idChatroom)
@@ -63,28 +52,26 @@ export class ChatApiService {
   }
 
   //to be implemented
-  addUserToChatroom(userId:number,chatroomId:number){
+  addUserToChatroom(username:string,chatroomId:number){
     const url='http://localhost:8090/chatroom/addUserToChatroom'
     const params = new HttpParams()
-    .set('userId',userId)
+    .set('username',username)
     .set('chatroomId',chatroomId);
-    return this.http.post(url,{params});
+
+    return this.http.post(url,params);
   }
 
 
   //to be implemented
-  removeUserFromChatroom(userId:number,chatroomId:number){
+  removeUserFromChatroom(username:string,chatroomId:number){
     const url='http://localhost:8090/chatroom/removeUserFromChatroom'
     const params = new HttpParams()
-    .set('userId', userId)
+    .set('username', username)
     .set('chatroomId',chatroomId);
     return this.http.delete(url,{params});
   }
 
 
-  //to be implemented
-  getUserById(userId:number){
 
-  }
 
 }
