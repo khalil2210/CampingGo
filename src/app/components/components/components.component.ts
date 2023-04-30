@@ -1,5 +1,7 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { Equipment } from 'src/app/Equipment/Model/Equipment';
+import { EquipmentService } from 'src/app/Equipment/service/equipment.service';
 
 @Component({
     selector: 'app-components',
@@ -19,7 +21,7 @@ export class ComponentsComponent implements OnInit {
     focus2!:boolean;
     date!: {year: number, month: number};
     model!: NgbDateStruct;
-    constructor( private renderer : Renderer2) {}
+    constructor( private renderer : Renderer2,private s:EquipmentService) {}
     isWeekend(date: NgbDateStruct) {
         const d = new Date(date.year, date.month - 1, date.day);
         return d.getDay() === 0 || d.getDay() === 6;
@@ -28,7 +30,8 @@ export class ComponentsComponent implements OnInit {
     isDisabled(date: NgbDateStruct, current: {month: number}) {
         return date.month !== current.month;
     }
-
+    liste:Equipment[]=[]
+    host = "http://localhost:8090"
     ngOnInit() {
         let input_group_focus = document.getElementsByClassName('form-control');
         let input_group = document.getElementsByClassName('input-group');
@@ -40,6 +43,9 @@ export class ComponentsComponent implements OnInit {
                 input_group[i].classList.remove('input-group-focus');
             });
         }
+        this.s.getall().subscribe(data=>{
+          this.liste=data;
+        })
     }
 
 }
