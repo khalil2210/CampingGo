@@ -84,28 +84,28 @@ JSON.stringify(message));
 this.inputSendMessage=''
 }
 
-sendImageWebSocket(image:File,chatroomId:number){
-  // const formData = new FormData();
-  // formData.append('file',this.selectedFile!);
-  // this.stompClient.send(
-  //   "/app/sendImageToChatroom",{
+sendImageWebSocket(
+  ){
+    const reader = new FileReader();
+    reader.addEventListener('loadend', () => {
+      const buffer = reader.result;
+      const blob = new Blob([buffer!], { type: this.selectedFile.type });
+      // Send the blob over the WebSocket
+        const headers = {
+          'content-type': this.selectedFile.type,
+          'content-length': blob.size
+        };
+        console.log(this.selectedFile);
 
-  //   },formData);
-  const reader = new FileReader();
-  reader.onload = () => {
-    const buffer = reader.result as ArrayBuffer;
-    const bytes = new Uint8Array(buffer);
-    let message = {
-      imageData: bytes,
-   };
-
-  this.stompClient.send(
-  "/app/sendImageToChatroom",{}, JSON.stringify(message));
-}
-reader.readAsArrayBuffer(this.selectedFile)
-
+      this.stompClient.send(
+        "/app/sendImageToChatroom",headers,blob);
+    });
+  reader.readAsArrayBuffer(this.selectedFile)
 }
 
 
-
 }
+
+
+
+
