@@ -5,8 +5,6 @@ import { Observable, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class ChatApiService {
-
-
   constructor(private http:HttpClient) {}
 
   getChatrooms(){
