@@ -15,9 +15,11 @@ const routes: Routes = [
 ,{path:'payment',component:PaymentComponent},
 
 { path:'chatroom',component:ChatComponent,children:[
-  { path:':chatroomId',component:MessageComponent}]
-}
-];
+
+{path:':chatroomId',component:MessageComponent}
+
+]
+},];
 
 @NgModule({
   imports: [CommonModule,BrowserModule,RouterModule.forRoot(routes)],
