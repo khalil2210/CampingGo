@@ -641,3 +641,6 @@ select.form-control:not([size]):not([multiple]) {
 .text-danger, .text-red {
     color: #ff5b57!important;
 }
+.mat-dialog-container{
+    height: 200px;
+}

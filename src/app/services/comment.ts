@@ -9,6 +9,7 @@ export class Comment{
     post!:{
         id:number;
     }
-    author!:{id:number};
+    author!:{id:number,
+    username:string};
 
 }

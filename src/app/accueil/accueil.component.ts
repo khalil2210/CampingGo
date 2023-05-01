@@ -18,7 +18,7 @@ export class AccueilComponent implements OnInit {
   constructor(private commentService:CommentService , private router:Router,private imageService:ImageserviceService,private dialogRef:MatDialog) {}
 
      openDialog(){
-      this.dialogRef.open(PopUpComponent)}
+    this.dialogRef.open(PopUpComponent,{ height:'100vh' ,width:'70vw'})}
 
 
       
@@ -37,7 +37,6 @@ onFileSelected(event:any){
     this.formData.append('file',this.imageFile);
     this.imageService.addImage(this.formData).subscribe(data=>{
       this.commentService.addComment(comment,data.id).subscribe(data=>{
-        //console.log(this.comment);
         this.goToComments();
       },
       error => console.log(error));
