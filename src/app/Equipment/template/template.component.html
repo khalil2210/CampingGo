@@ -1,0 +1,64 @@
+<!-- Header-->
+<header class="bg-dark py-5" style="background-image: url('assets/img/antoine-barres.jpg')">
+  <div class="container px-5 px-lg-5 my-5">
+    <div class="text-center text-white">
+      <h1 class="display-4 fw-bolder">Shop in style</h1>
+      <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
+    </div>
+  </div>
+
+</header>
+
+<main class="py-5" style="background-color: #eee;">
+  <div class="navbar fixed-bottom navbar-expand-lg navbar-transparent bg-light"
+    style="padding-bottom: 70px;margin-left: 1380px;">
+    <div class="container-fluid">
+
+      <div class="navbar-collapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <form class="d-flex">
+            <button class="btn btn-success ms-3 vibration-button" style="border-radius: 20px 20px;" (click)="tobuy()"
+              type="submit">
+              <i class="bi-cart-fill me-1"></i>
+              <span class="badge bg-success text-dark ms-2 rounded-pill">{{num}}</span>
+            </button>
+          </form>
+
+
+        </ul>
+      </div>
+
+    </div>
+  </div>
+  <div class="container px-4 px-lg-5 mt-5">
+    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 flex-wrap-nowrap">
+      <div class="col mb-5" *ngFor="let x of liste">
+        <div class="card h-100">
+          <!-- Product image-->
+          <img class="card-img-top" src="{{this.host+'/image/getImage/'+x.image.id}}" alt="..." />
+          <!-- Product details-->
+          <div class="card-body p-4">
+            <div class="text-center">
+              <!-- Product name-->
+              <h5 class="fw-bolder">{{x.name}}</h5>
+              <!-- Product price-->
+              Price: {{x.price}}
+              <h5>Description: {{x.description}}</h5>
+            </div>
+          </div>
+          <!-- Product actions-->
+          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+            <div class="text-center"><button class="btn btn-dark mt-auto" (click)="Cart(x)" type="submit">Add to
+                cart</button>
+              <button type="submit" (click)="like(x)" class="btn btn-danger">
+                <i class="bi bi-heart"></i>
+                {{x.likeii}}
+              </button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

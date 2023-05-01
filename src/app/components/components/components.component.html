@@ -1,32 +1,32 @@
 <div class="wrapper">
   <div class="page-header section-dark" style="background-image: url('assets/img/antoine-barres.jpg')">
-      <div class="filter"></div>
-      <div class="content-center">
-          <div class="container">
-              <div class="title-brand">
+    <div class="filter"></div>
+    <div class="content-center">
+      <div class="container">
+        <div class="title-brand">
 
-                  <h1 class="presentation-title">Camping Go</h1>
-                  <div class="fog-low">
-                      <img src="assets/img/fog-low.png" alt="">
-                  </div>
-                  <div class="fog-low right">
-                      <img src="assets/img/fog-low.png" alt="">
-                  </div>
-              </div>
-
-              <h2 class="presentation-subtitle text-center">Camping GO</h2>
+          <h1 class="presentation-title">Camping Go</h1>
+          <div class="fog-low">
+            <img src="assets/img/fog-low.png" alt="">
           </div>
-      </div>
-      <div class="moving-clouds" style="background-image: url('assets/img/clouds.png'); "></div>
-      <h6 class=" category-absolute ml-auto mr-auto">Designed and coded by 4arctic2
+          <div class="fog-low right">
+            <img src="assets/img/fog-low.png" alt="">
+          </div>
+        </div>
 
-      </h6>
+        <h2 class="presentation-subtitle text-center">Camping GO</h2>
+      </div>
+    </div>
+    <div class="moving-clouds" style="background-image: url('assets/img/clouds.png'); "></div>
+    <h6 class=" category-absolute ml-auto mr-auto">Designed and coded by 4arctic2
+
+    </h6>
   </div>
   <div class="section section-image section-login" style="background-image: url('assets/img/login-image.jpg');">
     <div class="container">
-      <div class="row  " style="margin-left: 450px;">
+      <div class="row  ">
         <div class="col-lg-4 col-md-6 col-sm-12 ml-auto mr-auto">
-          <div class="card card-register" style="width: 500px;">
+          <div class="card card-register">
             <h3 class="title">Welcome</h3>
             <div class="social-line text-center">
               <a href="#pablo" class="btn btn-neutral btn-facebook btn-just-icon">
@@ -56,7 +56,8 @@
                     <i class="nc-icon nc-key-25"></i>
                   </span>
                 </div>
-                <input type="text" class="form-control" placeholder="Password" (focus)="focus1=true" (blur)="focus1=false">
+                <input type="text" class="form-control" placeholder="Password" (focus)="focus1=true"
+                  (blur)="focus1=false">
               </div>
               <button class="btn btn-danger btn-block btn-round">Register</button>
             </form>
@@ -64,11 +65,79 @@
               <a href="#" class="btn btn-link btn-danger">Forgot password?</a>
             </div>
           </div>
-          <div class="col text-center" routerLinkActive="active" >
-            <a [routerLink]="['/signup']"style="width: 350px;" class="btn btn-outline-neutral btn-round btn-lg">View Register Page</a>
-          </div>
+
+
         </div>
       </div>
     </div>
   </div>
+  <div class="main">
+    <div class="text-center">
+      <h1>shop online</h1>
+    </div>
+    <div class="container px-4 px-lg-5 mt-5">
+      <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 flex-wrap-nowrap">
+        <div class="col mb-5">
+          <div class="card h-100">
+            <!-- Product image-->
+            <img src="../../../assets/img/shoes/nike-chaussures-downshifter-12_002.webp" alt="Rounded Image"
+              class="img-rounded img-responsive">
+            <!-- Product details-->
+            <div class="card-body p-4">
+              <div class="text-center">
+                <a [routerLink]="['/shop']" class="btn btn-primary ">SHOP NOW</a>
 
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="col mb-5">
+          <div class="card h-100">
+            <!-- Product image-->
+            <img src="../../../assets/img/shoes/nike-chaussures-downshifter-12_008.webp" alt="Rounded Image"
+              class="img-rounded img-responsive">
+            <!-- Product details-->
+            <div class="card-body p-4">
+              <div class="text-center">
+                <a [routerLink]="['/shop']" class="btn btn-primary ">SHOP NOW</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="col mb-5">
+          <div class="card h-100">
+            <!-- Product image-->
+            <img src="../../../assets/img/shoes/nike-chaussures-downshifter-12_002.webp" alt="Rounded Image"
+              class="img-rounded img-responsive">
+            <!-- Product details-->
+            <div class="card-body p-4">
+              <div class="text-center">
+                <a [routerLink]="['/shop']" class="btn btn-primary">SHOP NOW</a>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="col mb-5">
+          <div class="card h-100">
+            <!-- Product image-->
+            <img src="../../../assets/img/shoes/nike-chaussures-downshifter-12_008.webp" alt="Rounded Image"
+              class="img-rounded img-responsive">
+            <!-- Product details-->
+            <div class="card-body p-4">
+              <div class="text-center">
+                <a [routerLink]="['/shop']" class="btn btn-primary">SHOP NOW</a>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
