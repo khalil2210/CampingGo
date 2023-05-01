@@ -15,17 +15,23 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AddChatroomComponent } from './chat_app/Pop_up/add-chatroom/add-chatroom.component';
 import { EditChatroomComponent } from './chat_app/Pop_up/edit-chatroom/edit-chatroom.component';
+import { CommentComponent } from './comment/comment.component';
+import { AccueilComponent } from './accueil/accueil.component';
+import { PopUpComponent } from './pop-up/pop-up.component';
 import { HttpClientModule } from '@angular/common/http';
 @NgModule({
-  declarations: [
+  declarations: [			
     AppComponent,
     NavbarComponent,
     FooterComponent,
     ChatComponent,
     MessageComponent,
     AddChatroomComponent,
-    EditChatroomComponent
-  ],
+    EditChatroomComponent,
+      CommentComponent,
+      AccueilComponent,
+      PopUpComponent
+   ],
 
   imports: [
     BrowserModule,

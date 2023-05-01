@@ -1,0 +1,136 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+   <div class="row">
+      <div class="col-md-12">
+         <div id="content" class="content content-full-width">
+            <!-- begin profile -->
+            <div class="profile">
+               <div class="profile-header">
+                  <!-- BEGIN profile-header-cover -->
+                  <div class="profile-header-cover"></div>
+                  <!-- END profile-header-cover -->
+                  <!-- BEGIN profile-header-content -->
+                  <div class="profile-header-content">
+                     <!-- BEGIN profile-header-img -->
+                     <div class="profile-header-img">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="">
+                     </div>
+                     <!-- END profile-header-img -->
+                     <!-- BEGIN profile-header-info -->
+                     <div class="profile-header-info">
+                        <h4 class="m-t-10 m-b-5">Sean Ngu</h4>
+                        <p class="m-b-10">UXUI + Frontend Developer</p>
+                        <a href="#" class="btn btn-sm btn-info mb-2">Edit Profile</a>
+                     </div>
+                     <!-- END profile-header-info -->
+                  </div>
+                  <!-- END profile-header-content -->
+                  <!-- BEGIN profile-header-tab -->
+                  <ul class="profile-header-tab nav nav-tabs">
+                     <li class="nav-item"><a href="" target="_blank" class="nav-link">Friends</a></li>
+                     <li class="nav-item"><a href="" target="_blank" class="nav-link">ABOUT</a></li>
+                     <li class="nav-item"><a href="" target="_blank" class="nav-link">PHOTOS</a></li>
+                     <li class="nav-item"><a href="" target="_blank" class="nav-link">VIDEOS</a></li>
+                     <li class="nav-item"><a href="" target="_blank" class="nav-link active show">Posts</a></li>
+                  </ul>
+                  <!-- END profile-header-tab -->
+               </div>
+            </div>
+            <!-- end profile -->
+            <!-- begin profile-content -->
+            <div class="profile-content">
+               <!-- begin tab-content -->
+               <div class="tab-content p-0">
+                  <!-- begin #profile-post tab -->
+                  <div class="tab-pane fade active show" id="profile-post">
+                     <!-- begin timeline -->
+                     <ul class="timeline">
+                        <li>
+                           <!-- begin timeline-time -->
+                           <div class="timeline-time">
+                              <span class="date">today</span>
+                              <span class="time">04:20</span>
+                           </div>
+                           <!-- end timeline-time -->
+                           <!-- begin timeline-icon -->
+                           <div class="timeline-icon">
+                              <a href="javascript:;">&nbsp;</a>
+                           </div>
+                           <!-- end timeline-icon -->
+                           <!-- begin timeline-body -->
+                           <div class="timeline-body">
+                              <div class="timeline-header">
+                                 <span class="userimage"><img src="https://bootdey.com/img/Content/avatar/avatar3.png"
+                                       alt=""></span>
+                                 <span class="username"><a href="javascript:;">Sean Ngu</a> <small></small></span>
+                                 <span class="pull-right text-muted">18 Views</span>
+                              </div>
+                              <div class="timeline-content">
+                                 <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc faucibus turpis quis
+                                    tincidunt luctus.
+                                    Nam sagittis dui in nunc consequat, in imperdiet nunc sagittis.
+                                 </p>
+                              </div>
+                              <div class="timeline-likes">
+                                 <div class="stats-right">
+                                    <span class="stats-text">259 Shares</span>
+                                    <button (click)="openDialog()" class="stats-text" >21 Comments</button>
+                                 </div>
+                                 <div class="stats">
+                                    <span class="fa-stack fa-fw stats-icon">
+                                       <i class="fa fa-circle fa-stack-2x text-danger"></i>
+                                       <i class="fa fa-heart fa-stack-1x fa-inverse t-plus-1"></i>
+                                    </span>
+                                    <span class="fa-stack fa-fw stats-icon">
+                                       <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                                       <i class="fa fa-thumbs-up fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                    <span class="stats-total">4.3k</span>
+                                 </div>
+                              </div>
+                              <div class="timeline-footer">
+                                 <a href="javascript:;" class="m-r-15 text-inverse-lighter"><i
+                                       class="fa fa-thumbs-up fa-fw fa-lg m-r-3"></i> Like</a>
+                                 <a href="javascript:;" class="m-r-15 text-inverse-lighter" routerLink="/comments"><i
+                                       class="fa fa-comments fa-fw fa-lg m-r-3"></i> Comment</a>
+                                 <a href="javascript:;" class="m-r-15 text-inverse-lighter"><i
+                                       class="fa fa-share fa-fw fa-lg m-r-3"></i> Share</a>
+                              </div>
+                              <div class="timeline-comment-box">
+                                 <div class="user"><img src="https://bootdey.com/img/Content/avatar/avatar3.png"></div>
+                                 <div class="input">
+                                    <form >
+                                       <div class="input-group">
+                                          <div class="form-group">
+                                            
+                                             <input type="text" class="form-control" placeholder="Enter comment" [(ngModel)]="comment.content" name="content">
+                                             
+                                             <input type="file" (change)="onFileSelected($event)" class="file" name="file" placeholder="Enter comment">
+
+                                             <button class="btn btn-primary f-s-12 rounded-corner" type="submit" (click)="addComment(comment,comment.id)" >Comment</button>
+                                          </div>
+                                            
+                                          
+                                       </div>
+                                    </form>
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- end timeline-body -->
+                        </li>
+                      
+                     </ul>
+                     <!-- end timeline -->
+                  </div>
+                  <!-- end #profile-post tab -->
+               </div>
+               <!-- end tab-content -->
+            </div>
+            <!-- end profile-content -->
+         </div>
+      </div>
+   </div>
+</div>
+
+
