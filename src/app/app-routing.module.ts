@@ -7,8 +7,10 @@ import { TemplateComponent } from './Equipment/template/template.component';
 import { PaymentComponent } from './Equipment/payment/payment.component';
 import { ChatComponent } from './chat_app/chat/chat.component';
 import { MessageComponent } from './chat_app/message/message.component';
+import { PostComponent } from './Post/post/post/post.component';
 
 const routes: Routes = [
+  {path:'post',component:PostComponent},
 {path:'',redirectTo:'home',pathMatch:'full'},
 { path: 'home',component: ComponentsComponent },
 {path:'shop',  component:TemplateComponent}
@@ -16,7 +18,9 @@ const routes: Routes = [
 
 { path:'chatroom',component:ChatComponent,children:[
 
-{path:':chatroomId',component:MessageComponent}
+{path:':chatroomId',component:MessageComponent},
+
+
 
 ]
 },];

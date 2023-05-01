@@ -16,6 +16,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { AddChatroomComponent } from './chat_app/Pop_up/add-chatroom/add-chatroom.component';
 import { EditChatroomComponent } from './chat_app/Pop_up/edit-chatroom/edit-chatroom.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PostComponent } from './Post/post/post/post.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
     ChatComponent,
     MessageComponent,
     AddChatroomComponent,
-    EditChatroomComponent
+    EditChatroomComponent,
+    PostComponent
   ],
 
   imports: [
