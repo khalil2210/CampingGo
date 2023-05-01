@@ -30,9 +30,8 @@ onFileSelected(event:any){
 
   addComment(comment:any,userId:number){
     this.formData.set('file',this.imageFile);
-    
     this.imageService.addImage(this.formData).subscribe(data=>{
-      this.commentService.addComment(comment,data.id).subscribe(data=>{
+      this.commentService.addComment(comment,userId,data.id).subscribe(data=>{
     this.commentList.push(data)  
     this.commentInput.content='';
       },
@@ -54,9 +53,10 @@ public getComments(): void{
 }
 
 public deleteComment(id: number){
-  this.commentService.deleteComment(id).subscribe( data => {
-    this.getComments();
-  })
-}
+    this.commentService.deleteComment(id).subscribe( data => {
+      console.log(data);
+      this.getComments();
+    })
+  }
 
 }

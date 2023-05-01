@@ -22,8 +22,8 @@ export class CommentService {
   // public addComment(comment:Comment,id:number):Observable<any>{
   //   return this.http.post<any> ("http://localhost:8090/comment/add-comment2/"+id,comment);
   // }
-  public addComment(comment:Comment,id?:number){
-    return this.http.post<any>("http://localhost:8090/comment/add-comment2/"+id,comment);
+  public addComment(comment:Comment,authorid:number,id?:number){
+    return this.http.post<any>("http://localhost:8090/comment/add-comment2/"+id+"/"+authorid,comment);
   }
 
   public updateComment (id:number , comment:Comment){
