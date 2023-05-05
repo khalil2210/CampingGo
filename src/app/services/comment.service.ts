@@ -23,10 +23,14 @@ export class CommentService {
   //   return this.http.post<any> ("http://localhost:8090/comment/add-comment2/"+id,comment);
   // }
   public addComment(comment:Comment,authorid:number,id?:number){
+    if(id == null){
+      return this.http.post<any>("http://localhost:8090/comment/add-comment2/"+-1+"/"+authorid,comment);
+    }else{
     return this.http.post<any>("http://localhost:8090/comment/add-comment2/"+id+"/"+authorid,comment);
+    }
   }
 
   public updateComment (id:number , comment:Comment){
-    return this.http.put("http://localhost:8090/comment/update-comment/${id}",comment);
+    return this.http.put("http://localhost:8090/comment/update-comment2/"+id,comment);
   } 
 }

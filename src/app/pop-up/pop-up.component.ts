@@ -14,9 +14,10 @@ export class PopUpComponent implements OnInit{
 
   constructor(private commentService:CommentService , private router:Router,private imageService:ImageserviceService) {}
   show=false;
+  
   public commentList!:Comment[] ;
  public commentInput=new Comment();
- imageFile!:File;
+ imageFile?:File;
   formData = new FormData();
   
 
@@ -29,6 +30,8 @@ onFileSelected(event:any){
 }
 
   addComment(comment:any,userId:number){
+    if(this.imageFile)
+  {
     this.formData.set('file',this.imageFile);
     this.imageService.addImage(this.formData).subscribe(data=>{
       this.commentService.addComment(comment,userId,data.id).subscribe(data=>{
@@ -38,6 +41,16 @@ onFileSelected(event:any){
       error => console.log(error));
 
     })
+  }
+  else{
+    this.commentService.addComment(comment,userId).subscribe(
+      (data) => {
+        console.log("comment without image added");
+        this.commentList.push(data)  
+        this.commentInput.content='';
+      }
+    )
+  }
    
   }
 
@@ -59,4 +72,15 @@ public deleteComment(id: number){
     })
   }
 
+  public updateComment(id : number,comment:any){
+    this.commentService.updateComment(id,comment).subscribe(
+      data => {
+        console.log(`Comment updated: ${data}`);
+      },
+      error => {
+        console.log(`Error updating comment: ${error}`);
+      }
+    );
+  }
+  
 }
