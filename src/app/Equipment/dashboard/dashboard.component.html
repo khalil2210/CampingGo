@@ -1,72 +1,71 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-T4/ZzvydeGZJxTVZ+RgILfTtTByPJHYwoyD9aOCJnrmzYfHmgQd2kMC+1nFJhZoV7sIohc9X+bPtOmzCT2j3sQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<div class="header" style="width: 1250px;margin-left: 251px;">
+  <header class="navbar navbar-dark fix-top bg-dark flex-md-nowrap p-0 shadow" >
 
-<div class="page-header" data-parallax="true" style="background-image: url('./assets/img/daniel-olahh.jpg');height: 250px;">
-  <div class="filter"></div>
-  <div class="container">
-      <div class="motto text-center">
-          <h1>SHOP ONLINE</h1>
-          <h3>Start SHOPPING.</h3>
-          <br />
-          <a href="" class="btn btn-outline-neutral btn-round"><i class="fa fa-play"></i>Watch video</a>
-      </div>
-  </div>
-</div>
-<div class="main">
-  <div class="section section-white text-center">
-  <div class="container">
-      <div class="row">
-          <div class="text-centre ">
-  <form [formGroup]="addUserForm"  (submit)="upload(equipe)" enctype="multipart/form-data" >
-    <label class="form-label">title</label>
-    <input type="text" class="form-control"formControlName="name" [(ngModel)]="equipe.name"  required>
-
-    <input type="hidden"    class="form-control" [value]="0" [(ngModel)]="equipe.id" formControlName="id">
-    <label >price</label>
-    <input type="number" class="form-control" [(ngModel)]="equipe.price" formControlName="price"  required>
-    <label >quantity</label>
-    <input type="number" class="form-control" formControlName="quantity" [(ngModel)]="equipe.quantity" required>
-    <label >Description</label>
-    <input type="text" class="form-control" formControlName="description" [(ngModel)]="equipe.description" required>
-    <div class="form-group">
-      <label for="equipmentType">Example select</label>
-      <select class="form-control" formControlName="equipmentType" [(ngModel)]="equipe.equipmentType"  id="equipmentType">
-      <option value="Sleeping" selected>Sleeping</option>
-      <option value="bag">bag</option>
-      <option value="Tent">Tent</option>
-      <option value="Mat">Mat</option>
-      <option value="Rope">Rope</option>
-      <option value="Water">Water</option>
-      <option value="Bottles">Bottles</option>
-      <option value="FirstAids">FirstAids</option>
-      <option value="Flashlights">Flashlights</option>
-    </select>
-
-</div>
-
-
-
-  <br>
-    <div class="form-group" >
-      <label for="image">Image</label><div></div>
-      <input type="file" class="form-control"  name="file" formControlName="imageData" (change)="onFileSelected($event)">
+    <input class="form-control form-control-dark w-100" type="text"  placeholder="Search" aria-label="Search">
+    <div class="navbar-nav">
+    <div class="nav-item text-nowrap">
+      <button class="nav-link px-3" (click)="logout()">Sign out</button>
     </div>
-  <div class="text-center text-lg-start mt-4 pt-2">
-    <button type="submit" style="margin-left: 250px;width: 350px;" class="btn btn-primary ">ajouter</button>
-
-  </div>
-
-  </form>
-
-
-
-
-
-
-          </div>
-      </div>
-      <br/><br/>
-  </div>
+    </div>
+    </header>
 </div>
+<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="../../../assets/js/dashboard.js"></script>
+<!-- Header-->
+<div class="container-fluid">
+  <div class="row">
+
+    <nav id="sidebarMenu" class="col-md-4 col-lg-2 d-md-block bg-dark sidebar collapse">
+      <div class="form-group">
+        <label class="form-control-static" for="search"><i class="bi bi-shield-fill-check"></i> Admin
+         </label>
+      </div>
+      <div class="position-sticky pt-3">
 
 
+        <ul class="nav flex-column">
+
+          <li class="nav-item">
+            <a class="nav-link active"routerLink="orders">
+              <span data-feather="file"></span>
+              Orders
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" routerLink="ajouter">
+              <span data-feather="shopping-cart"></span>
+              ajouter Produits
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" routerLink="liste">
+              <span data-feather="users"></span>
+              Liste produits
+            </a>
+          </li>
+
+
+
+          <li class="nav-item">
+            <a id="report-link" class="nav-link active" href="http://localhost:8090/getpdf?contents={{contents}}" target="_blank">
+              <span data-feather="bar-chart-2"></span>
+              Reports
+            </a>
+          </li>
+
+
+        </ul>
+
+
+      </div>
+    </nav>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
+<router-outlet></router-outlet>
+      <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380" style="color: rgb(171, 221, 35);background-color: blue;"></canvas> -->
+
+
+    </main>
+  </div>
 </div>

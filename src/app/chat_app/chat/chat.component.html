@@ -22,7 +22,7 @@
                     <div></div>
                     <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
                       aria-describedby="search-addon">
-                      <button type="button" class="btn btn-primary mx-2" (click)="openDialog()">
+                      <button type="button" class="btn btn-primary mx-2" data-bs-toggle="modal" data-bs-target="#ajouter" >
                         <i class="bi bi-plus-lg"></i>
                       </button>
                   </div>
@@ -60,7 +60,6 @@
               </div>
               <!-- messages + input container -->
               <div class="col-md-6 col-lg-8 col-xl-8">
-                  <!-- messages component -->
                 <router-outlet></router-outlet>
               </div>
             </div>
@@ -70,3 +69,42 @@
     </div>
   </div>
 </div>
+<div class="modal" tabindex="-1"  id="ajouter">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><h3 mat-dialog-title>Add a chatroom</h3>
+        </h5>
+      </div>
+
+      <div class="modal-body">
+        <div class="d-flex flex-column align-items-center justify-content-between">
+
+          <div class="m-2 w-100 ">
+            <input type="text" class="form-control"placeholder="Chatroom name" [(ngModel)]="chatroomName">
+          </div>
+          <div class="m-2 w-100">
+            <input type="file" (change)="onFileSelected($event)" class="form-control">
+          </div>
+
+          </div>
+
+
+      </div>
+      <div class="modal-footer">
+
+        <mat-dialog-actions>
+          <button class="btn  mx-1" [mat-dialog-close]=null data-bs-dismiss="modal">Cancel</button>
+          <button [mat-dialog-close]="{
+        'name':chatroomName,
+        'file':imageFile
+        }"
+          class="btn btn-primary  mx-1"  (click)="addChatroom({'name':chatroomName,'owner':{
+            'id':4
+          }},imageFile)">Save</button>
+        </mat-dialog-actions>
+
+      </div>
+      </div>
+    </div>
+  </div>

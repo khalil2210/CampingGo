@@ -8,19 +8,31 @@ import { MessageComponent } from './chat_app/message/message.component';
 import { DashboardComponent } from './Equipment/dashboard/dashboard.component';
 import { TemplateComponent } from './Equipment/template/template.component';
 import { PaymentComponent } from './Equipment/payment/payment.component';
+import { AuthGuard } from './Equipment/guards/auth.guard';
+import { NotfoundComponent } from './Equipment/notfound/notfound.component';
+import { LoginComponent } from './Equipment/login/login.component';
+import { AjouterComponent } from './Equipment/dashboard/ajouter/ajouter.component';
+import { ListeComponent } from './Equipment/dashboard/liste/liste.component';
+import { UserGuard } from './Equipment/guards/user.guard';
+import { OrdersComponent } from './Equipment/dashboard/orders/orders.component';
 const routes: Routes = [
-{ path: '', redirectTo: 'home', pathMatch: 'full' },
+{ path: '', redirectTo: 'login', pathMatch: 'full' },
 
 { path: 'home', component: ComponentsComponent },
 
-{ path:'chatroom',component:ChatComponent,children:[
-
+{ path:'chatroom',component:ChatComponent,canActivate:[UserGuard],children:[
 {path:':chatroomId',component:MessageComponent}
-
 ]
 },
 {path:'shop',                    component:TemplateComponent}
-,{path:'payment',component:PaymentComponent}
+,{path:'payment',component:PaymentComponent},
+{path:'add',component:DashboardComponent,canActivate:[AuthGuard],children:[
+  {path:'ajouter',component:AjouterComponent},
+  {path:'liste',component:ListeComponent},
+  {path:'orders',component:OrdersComponent}
+]},
+{path:'login',component:LoginComponent},
+{path:'**',component:NotfoundComponent}
 ];
 
 

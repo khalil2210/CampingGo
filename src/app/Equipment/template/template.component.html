@@ -9,7 +9,7 @@
 
 </header>
 
-<main class="py-5" style="background-color: #eaeaea;">
+<main class="py-5" style="background-color: #eaeaea;padding: 150px;">
   <div class="navbar fixed-bottom navbar-expand-lg navbar-transparent bg-light"
     style="padding-bottom: 70px;margin-left: 1380px;">
     <div class="container-fluid">
@@ -17,7 +17,8 @@
       <div class="navbar-collapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           <form class="d-flex">
-            <button class="btn btn-success ms-3 vibration-button" style="border-radius: 20px 20px;" (click)="tobuy()"
+
+            <button class="btn btn-success ms-3" style="border-radius: 20px 20px;color:grey" (click)="tobuy()"
               type="submit">
               <i class="bi-cart-fill me-1"></i>
               <span class="badge bg-success text-dark ms-2 rounded-pill">{{num}}</span>
@@ -30,8 +31,25 @@
 
     </div>
   </div>
+  <div class="navbar fixed-bottom  navbar-transparent bg-light"
+  style="padding-bottom: 70px;margin-right: 1380px;">
+  <div class="container-fluid">
+
+    <!-- <div class="navbar-collapse">
+      <div class="col-md-5">
+        <h4><i class="fa fa-filter" aria-hidden="true"></i></h4>
+        <div class="list-group">
+          <button href="#" class="btn btn-danger">Mate</button>
+          <a href="#" class="item-link">Category 2</a>
+          <a href="#" class="item-link">Category 3</a>
+        </div>
+      </div>
+    </div> -->
+
+  </div>
+</div>
   <div class="container px-4 px-lg-5 mt-5">
-    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 flex-wrap-nowrap">
+    <div class="row product-list gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 flex-wrap-nowrap">
       <div class="col mb-5" *ngFor="let x of liste">
         <div class="card h-100">
           <!-- Product image-->
@@ -40,20 +58,33 @@
           <div class="card-body p-4">
             <div class="text-center">
               <!-- Product name-->
-              <h2 class="fw-bolder">{{x.name}}</h2>
+              <h5 class="fw-bold mb-0">{{x.name}}</h5>
               <!-- Product price-->
               Price: {{x.price}}
-              <h2>Description: {{x.description}}</h2>
-            </div>
+              <h5>Description: {{x.description}}</h5>
+          </div>
           </div>
           <!-- Product actions-->
           <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-            <div class="text-center"><button class="btn btn-dark mt-auto" (click)="Cart(x)" type="submit">Add to
+
+
+            <div class="text-center">
+
+              <ngb-rating [(rate)]="x.rate">
+                <ng-template let-fill="fill" let-index="index">
+                  <i class="bi-star{{fill === 100 ? '-fill' : ''}}" [class.filled]="fill === 100" [class.low]="index < 3"></i>
+                </ng-template>
+              </ngb-rating>
+              <hr />
+              <pre>Rate: <b>{{x.rate}}</b></pre>
+               <button class="btn btn-dark mt-auto" (click)="Cart(x)" type="submit">Add to
                 cart</button>
               <button type="submit" (click)="like(x)" class="btn btn-danger">
                 <i class="bi bi-heart"></i>
                 {{x.likeii}}
               </button>
+
+
 
             </div>
           </div>
@@ -61,4 +92,10 @@
       </div>
     </div>
   </div>
+
+
+
 </main>
+
+
+

@@ -8,11 +8,11 @@ import { MatDialog ,MatDialogRef} from '@angular/material/dialog';
 export class AddChatroomComponent implements OnInit {
 
   constructor() { }
-chatroomName?:string;
-imageFile?:any;
+
   ngOnInit(): void {
   }
-
+  chatroomName?:string;
+  imageFile?:any;
   closeDialog(){this}
 
 

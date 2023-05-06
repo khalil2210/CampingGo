@@ -17,22 +17,32 @@ export class ChatComponent implements OnInit {
   constructor(
     private apiService:ChatApiService,
     private dialog:MatDialog){}
+    chatroomName?:string;
+    imageFile?:any;
+    closeDialog(){this}
 
-openDialog(){
-  const dialogRef= this.dialog.open(AddChatroomComponent);
-dialogRef.afterClosed().subscribe((result)=>{
- if(result!=null){
-  this.addChatroom(
-    {
-    'name':result.name,
-    'owner':{
-      'id':1
+
+
+    onFileSelected(event:any) {
+      this.imageFile = event.target.files[0];
     }
-  },
-  result.file
-  )
- }
-})
+openDialog(){
+  console.log("click ");
+
+//   const dialogRef= this.dialog.open(AddChatroomComponent);
+// dialogRef.afterClosed().subscribe((result)=>{
+//  if(result!=null){
+//   this.addChatroom(
+//     {
+//     'name':result.name,
+//     'owner':{
+//       'id':1
+//     }
+//   },
+//   result.file
+//   )
+//  }
+// })
 }
 
 
@@ -42,7 +52,7 @@ getChatrooms(){
 this.apiService.getChatrooms().subscribe({
   next:(chatrooms:any)=>{
     this.chatroomList=chatrooms
-   
+
 
   },
 })
@@ -51,6 +61,7 @@ this.apiService.getChatrooms().subscribe({
 addChatroom(chatroom:any,image:any){
   this.apiService.addChatroom(chatroom,image).subscribe({
     next:(res:any)=>{
+     
       this.chatroomList.push(res)},
     complete:()=>{
       this.inputValue=''

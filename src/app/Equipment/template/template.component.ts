@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Equipment } from '../Model/Equipment';
 import { EquipmentService } from '../service/equipment.service';
 import { Router } from '@angular/router';
-
+import { SentimentService } from '../service/sentiment.service';
+import { HttpClient } from '@angular/common/http';
+import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-template',
   templateUrl: './template.component.html',
@@ -10,8 +12,11 @@ import { Router } from '@angular/router';
 })
 export class TemplateComponent implements OnInit {
 
-  constructor(private s:EquipmentService,private router:Router) { }
+
+  currentRate = 0
+  constructor(private s:EquipmentService,private http:HttpClient,private router:Router,private sentimentService:SentimentService) { }
   liste:Equipment[]=[]
+  equipe=new Equipment()
   host = "http://localhost:8090"
   ngOnInit(): void {
     this.s.getall().subscribe(data=>{
@@ -19,19 +24,70 @@ export class TemplateComponent implements OnInit {
     })
 
   }
-  vibrate() {
-    // Check if the browser supports the Vibration API
-    if ("vibrate" in navigator) {
-      // Vibrate the device for 1000 milliseconds (1 second)
-      navigator.vibrate(1000);
-    } else {
-      // Display a message if the Vibration API is not supported
-      console.log("Vibration not supported");
-    }
-  }
 
 num=0
 tt=0
+filterType={
+  backpack:'',
+  sleepingBag:'',
+  tent:''
+
+}
+public text: string = '';
+  public result: string = '';
+  public analyze(): void {
+    this.sentimentService.getSentiment(this.text)
+      .subscribe(result =>{
+        this.result = result
+        console.log(this.result)
+      }
+        );
+  }
+  sentimentScore!:number;
+  message: string = '';
+  sentiment!:{}
+  rate(x:Equipment){
+x.rate++
+      this.s.updatelike(x).subscribe(data=>data.id=this.equipe.id)
+
+  }
+  calculateReview(text: string,x:Equipment) {
+    let positiveWords = ['good', 'great', 'excellent'];
+    let negativeWords = ['bad', 'terrible', 'poor'];
+    let neutralWords = ['okay', 'average', 'satisfactory'];
+
+    let sentimentScore: number = 0;
+    let words = text.toLowerCase().split(' ');
+  let sentiment = this.sentimentService.getSentiment(text);
+console.log(sentiment);
+
+    words.forEach((word) => {
+      if (text.includes(word)) {
+        x.rate++;
+        this.s.updatelike(x).subscribe(data=>data.id=this.equipe.id)
+      } else if (text.includes(word)) {
+        x.rate -= 1;
+        this.s.updatelike(x).subscribe(data=>data.id=this.equipe.id)
+      } else if (text.includes(word)) {
+        x.rate += 0.5;
+        this.s.updatelike(x).subscribe(data=>data.id=this.equipe.id)
+      }
+    });
+    this.currentRate=sentimentScore
+    this.equipe.rate=this.currentRate
+    if (sentimentScore > 0) {
+      console.log(`The review for '${text}' is positive`);
+      // Display positive review in the UI
+    } else if (sentimentScore < 0) {
+      console.log(`The review for '${text}' is negative`);
+      // Display negative review in the UI
+    } else {
+      console.log(`The review for '${text}' is neutral`);
+      // Display neutral review in the UI
+    }
+  }
+
+
 Listetobuy:Equipment[]=[]
 Cart(x: Equipment) {
   const existingItem = this.Listetobuy.find(item => item.id === x.id);
@@ -44,14 +100,12 @@ Cart(x: Equipment) {
   }
 }
 jm=0
-like(x:Equipment){
-this.liste.map(a=>{
-  if(a.id==x.id){
-    a.likeii=a.likeii+1;
+like(x:Equipment) {
+  console.log(x);
+x.likeii++
+      this.s.updatelike(x).subscribe(data=>data.id=this.equipe.id)
+    }
 
-  }
-})
-}
 tobuy() {
    this.s.shoppingList=this.Listetobuy
     this.router.navigate(['/payment'])

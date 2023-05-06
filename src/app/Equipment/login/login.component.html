@@ -1,0 +1,49 @@
+<div class="section section-image section-login" style="background-image: url('assets/img/login-image.jpg');">
+  <div class="container">
+    <div class="row  ">
+      <div class="col-lg-4 col-md-6 col-sm-12 ml-auto mr-auto">
+        <div class="card card-register">
+          <h3 class="title">Welcome</h3>
+          <div class="social-line text-center">
+            <a href="#pablo" class="btn btn-neutral btn-facebook btn-just-icon">
+              <i class="fa fa-facebook-square"></i>
+            </a>
+            <a href="#pablo" class="btn btn-neutral btn-google btn-just-icon">
+              <i class="fa fa-google-plus"></i>
+            </a>
+            <a href="#pablo" class="btn btn-neutral btn-twitter btn-just-icon">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </div>
+          <form class="register-form" #ngform="ngForm" (ngSubmit)="onSubmit(ngform)">
+            <label>username</label>
+            <div class="input-group form-group-no-border" >
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="nc-icon nc-username-85"></i>
+                </span>
+              </div>
+              <input type="text" class="form-control" name="username" [(ngModel)]="loginRequest.username" placeholder="username" >
+            </div>
+            <label>Password</label>
+            <div class="input-group form-group-no-border"  >
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="nc-icon nc-key-25"></i>
+                </span>
+              </div>
+              <input type="text" class="form-control" name="password" [(ngModel)]="loginRequest.password" placeholder="Password" 
+                >
+            </div>
+            <button class="btn btn-danger btn-block btn-round">Register</button>
+          </form>
+          <div class="forgot">
+            <a href="#" class="btn btn-link btn-danger">Forgot password?</a>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -26,20 +26,35 @@ export class PaymentComponent implements OnInit {
 
   };
 
-  constructor(private http: HttpClient,private prix:ActivatedRoute,private s:EquipmentService) {
+  constructor(private http: HttpClient,private prix:ActivatedRoute,private s:EquipmentService,private router:Router) {
 
   }
   host = "http://localhost:8090"
 
   charge() {
 
-    console.log(this.num);
+    console.log();
+
 
     this.http.post('http://localhost:8090/charge', this.chargeRequest).subscribe(
 
       (response) => {
         console.log(response);
+        this.shoppingList.map(a=>{
+
+          console.log(a.id)
+          console.log(a.quantity)
+          a.quantite_payment = 0;
+          this.s.update(a,a.id).subscribe(data=>{data.id=a.id
+            data.quantity=a.quantity-a.quantite_payment
+            data.quantite_payment=a.quantite_payment
+            console.log(data.id=a.id)
+          }
+            )})
+        this.s.orders=this.shoppingList
         alert('Payment successful!');
+        this.router.navigate(['/shop'])
+
       },
       (error) => {
         console.log(error);
@@ -57,46 +72,49 @@ export class PaymentComponent implements OnInit {
   valeurmin=0
   min(x:Equipment ,id:number){
 
-    this.shoppingList.map(a=>{
-      if (a.id==id ) {
+      if (x.id==id ) {
        if (this.chargeRequest.amount!=0) {
-      a.quantity++
-        this.chargeRequest.amount=this.chargeRequest.amount-a.price
+        x.quantite_payment
+      x.quantity++
+        this.chargeRequest.amount=this.chargeRequest.amount-x.price
        }
       }
-    })
+    console.log(this.quantite);
     console.log(this.shoppingList.map(x=>x.quantity));
   }
 quantite=0
 num=0
 max(x:Equipment,id:number){
 
-    this.shoppingList.map(a=>{
-      if (a.id==id  ) {
-      if (a.quantity!=0) {
-         a.quantity--
-        this.chargeRequest.amount=this.chargeRequest.amount+a.price
 
+      if (x.id==id  ) {
+      if (x.quantity!=0) {
+        x.quantite_payment++
+         x.quantity--
+        this.chargeRequest.amount=this.chargeRequest.amount+x.price
       }
       }
-     })
+     console.log(this.quantite);
   console.log(this.shoppingList.map(x=>x.quantity));
 }
 delete(id: number) {
   let index = this.shoppingList.findIndex(e=>e.id==id)
   let prix= 0
   this.shoppingList.map(a=>{
-    if (a.id==id) {
-      prix=a.price
+    if (a.id==id  ) {
+      prix=a.price*a.quantite_payment
+      console.log(prix);
     }
   })
   if (index !==-1) {
-       this.shoppingList.splice(index, 1)
-       if (this.chargeRequest.amount!=0) {
-        this.chargeRequest.amount= this.chargeRequest.amount-prix
-       }else{
-        this.chargeRequest.amount=0
-       }
+       let deleted =this.shoppingList.splice(index, 1)
+       if (this.chargeRequest.amount != 0) {
+        this.chargeRequest.amount -= prix;
+        if (this.chargeRequest.amount < 0) {
+          this.chargeRequest.amount = 0;
+        }
+      }
+      deleted[0].quantite_payment = 0;
       }
   console.log(index);
 
