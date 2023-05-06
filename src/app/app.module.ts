@@ -13,8 +13,6 @@ import { MessageComponent } from './chat_app/message/message.component';
 import { ChatComponent } from './chat_app/chat/chat.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
-import { AddChatroomComponent } from './chat_app/Pop_up/add-chatroom/add-chatroom.component';
-import { EditChatroomComponent } from './chat_app/Pop_up/edit-chatroom/edit-chatroom.component';
 import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
@@ -23,8 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
     FooterComponent,
     ChatComponent,
     MessageComponent,
-    AddChatroomComponent,
-    EditChatroomComponent
+
   ],
 
   imports: [

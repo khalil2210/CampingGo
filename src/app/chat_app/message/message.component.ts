@@ -7,7 +7,7 @@ import { Stomp } from '@stomp/stompjs';
 import * as SockJS from 'sockjs-client';
 import { read } from '@popperjs/core';
 import { MatDialog } from '@angular/material/dialog';
-import { EditChatroomComponent } from '../Pop_up/edit-chatroom/edit-chatroom.component';
+import { User } from 'src/app/core/model/user';
 
 
 
@@ -32,13 +32,7 @@ export class MessageComponent {
     private dialog:MatDialog){}
 
 
-openDialog(){
-const dialogRef= this.dialog.open(EditChatroomComponent,{
-  height:'90vh',
-  width:'90vw'
-});
-dialogRef.afterClosed().subscribe((result)=>{});
-}
+
   ngOnInit(): void {
   this.route.params.subscribe(params=>{
     var socket = new SockJS('http://localhost:8090/ws-websocket');
@@ -57,6 +51,7 @@ this.chatroomName=params["name"];
   this.getMessagesBychatroom(chatroomId);
 
   })
+
 }
 
 onFileSelected(event:any) {
@@ -104,8 +99,5 @@ sendImageWebSocket(
 }
 
 
+
 }
-
-
-
-
