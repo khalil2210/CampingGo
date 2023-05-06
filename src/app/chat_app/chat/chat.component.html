@@ -1,63 +1,160 @@
-<section style="background-color: #CDC4F9">
-  <div class="container py-5">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card" id="chat3" style="border-radius: 15px;">
-          <div class="card-body" >
-            <div class="row">
-              <!-- chatrooms Container +search bar -->
-              <div class="col-md-6 col-lg-4 col-xl-4 mb-4 mb-md-0">
-                <div class="p-3">
-                  <!-- search bar -->
-                  <div class="input-group mb-3">
-                    <div></div>
-                    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
-                      aria-describedby="search-addon">
-                      <button type="button" class="btn btn-primary mx-2" (click)="openDialog()">
-                        <i class="bi bi-plus-lg"></i>
-                      </button>
-                  </div>
-                  <!-- chatroom Container -->
-                  <div class="overflow-auto" style="position: relative; height: 400px">
-                    <ul class="list-unstyled mb-0">
+<header class="bg-dark py-5" style="background-image: url('assets/img/antoine-barres.jpg')">
+  <div class="container px-5 px-lg-5 my-5">
+      <div class="text-center text-white">
+          <h1 class="display-4 fw-bolder">Chatrrom </h1>
+          <p class="lead fw-normal text-white-50 mb-0">Tous les droits sont réservés</p>
+      </div>
+  </div>
 
-                      <!-- chatroom's Card -->
-                      <li class="p-1 border-bottom" >
-
-                        <div *ngFor="let chatroom of chatroomList ; let i = index" >
-                          <a  [routerLink]="['/chatroom',chatroom.id]"  [queryParams]="{'name':chatroom.name , 'chatroomId':chatroom.id}" class="d-flex justify-content-between my-2" style="text-decoration: none;">
-
-                            <div class="d-flex flex-row">
-                            <div>
-                              <img [src]="'http://localhost:8090/image/getImage/'+chatroom.image.id"
-                                alt="chatroom-image" class="d-flex align-self-center me-3" width="60" height="50" style="border-radius:10px;">
-                            </div>
-                            <div class="pt-1">
-                              <p class="fw-bold mb-0" style="text-decoration: none !important;">
-                                {{chatroom.name}}</p>
-                              <p class="small">Hello, Are you there?</p>
-                            </div>
-                          </div>
-                          <div class="pt-1">
-                            <!-- <p class="small text-muted mb-1">Just now</p> -->
-                            <span class="icon-btn" (click)="deleteChatroom(chatroom.id,i)"> <i class="bi bi-x"></i></span>
-                          </div>
-                        </a>
-                         </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
+</header>
+<div class="section"  style="background-color: #CDC4F9">
+<div class="container py-5">
+<div class="row">
+  <div class="col-md-12">
+    <div class="card" id="chat3" style="border-radius: 15px;">
+      <div class="card-body" >
+        <div class="row">
+          <!-- chatrooms Container +search bar -->
+          <div class="col-md-6 col-lg-4 col-xl-4 mb-4 mb-md-0">
+            <div class="p-3">
+              <!-- search bar -->
+              <div class="input-group mb-3">
+                <div></div>
+                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                  aria-describedby="search-addon">
+                  <button type="button" class="btn btn-primary mx-2" data-bs-toggle="modal" data-bs-target="#ajouter" >
+                    <i class="bi bi-plus-lg"></i>
+                  </button>
               </div>
-              <!-- messages + input container -->
-              <div class="col-md-6 col-lg-8 col-xl-8">
-                  <!-- messages component -->
-                <router-outlet></router-outlet>
+
+              <!-- chatroom Container -->
+              <div class="overflow-auto" style="position: relative; height: 400px">
+                <ul class="list-unstyled mb-0">
+
+                  <!-- chatroom's Card -->
+                  <li class="p-1 border-bottom" >
+
+                    <div *ngFor="let chatroom of chatroomList ; let i = index" >
+                      <a  [routerLink]="['/chatroom',chatroom.id]"  [queryParams]="{'name':chatroom.name , 'chatroomId':chatroom.id}" class="d-flex justify-content-between my-2" style="text-decoration: none;">
+
+                        <div class="d-flex flex-row">
+                        <div>
+                          <img [src]="'http://localhost:8090/image/getImage/'+chatroom.image.id"
+                            alt="chatroom-image" class="d-flex align-self-center me-3" width="60" height="50" style="border-radius:10px;">
+                        </div>
+                        <div class="pt-1">
+                          <p class="fw-bold mb-0" style="text-decoration: none !important;">
+                            {{chatroom.name}}</p>
+                          <p class="small">Hello, Are you there?</p>
+                        </div>
+                      </div>
+                      <div class="pt-1">
+                        <!-- <p class="small text-muted mb-1">Just now</p> -->
+                        <span class="icon-btn" (click)="deleteChatroom(chatroom.id,i)"> <i class="bi bi-x"></i></span>
+                      </div>
+                    </a>
+                     </div>
+                  </li>
+                </ul>
               </div>
             </div>
+          </div>
+          <!-- messages + input container -->
+          <div class="col-md-6 col-lg-8 col-xl-8">
+            <router-outlet></router-outlet>
           </div>
         </div>
       </div>
     </div>
   </div>
-</section>
+</div>
+</div>
+</div>
+<div class="modal" tabindex="-1"  id="ajouter">
+<div class="modal-dialog">
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title"><h3 mat-dialog-title>Add a chatroom</h3>
+    </h5>
+  </div>
+
+  <div class="modal-body">
+    <div class="d-flex flex-column align-items-center justify-content-between">
+
+      <div class="m-2 w-100 ">
+        <input type="text" class="form-control"placeholder="Chatroom name" [(ngModel)]="chatroomName">
+      </div>
+      <div class="m-2 w-100">
+        <input type="file" (change)="onFileSelected($event)" class="form-control">
+      </div>
+
+      </div>
+
+
+  </div>
+  <div class="modal-footer">
+
+    <mat-dialog-actions>
+      <button class="btn  mx-1" [mat-dialog-close]=null data-bs-dismiss="modal">Cancel</button>
+      <button [mat-dialog-close]="{
+    'name':chatroomName,
+    'file':imageFile
+    }"
+      class="btn btn-primary  mx-1"  (click)="addChatroom({'name':chatroomName,'owner':{
+        'id':1
+      }},imageFile)">Save</button>
+    </mat-dialog-actions>
+
+  </div>
+  </div>
+</div>
+</div>
+<div class="modal" tabindex="-1"  id="edit">
+  <div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title"> <h3 mat-dialog-title class="text-center">Edit chatroom</h3>
+      </h5>
+    </div>
+    <div class="modal-body">
+      <div class="d-flex flex-column justify-content-between">
+
+       <b class="px-3">Chatroom Name</b>
+        <div class="m-2 w-100 ">
+          <input type="text" class="form-control rounded "placeholder="Chatroom name" [(ngModel)]="chatroomName">
+        </div>
+        <div class="m-3">
+          <input type="file" (change)="onFileSelected($event)" class="form-control w-100">
+        </div>
+          <h3 class="text-center">Users</h3>
+      <!-- users List -->
+      <div class="flex-wrap d-flex flex-row">
+      <div *ngFor="let user of usersList">
+          <div class="d-flex align-items-center flex-column m-3">
+            <img [src]="'http://localhost:8090/image/getImage/'+user.profileImage.id" alt="User avatar" style="border-radius: 50%; width: 70px; height: 70px;">
+            <h4 class="ml-3 mb-0">{{user.username}}</h4>
+            <h5 class="btn btn-danger" (click)="removeUserFromChatroom(user.username,chatroomId!)" style="font-size: 0.5rem; padding: 0.1rem 0.1rem;">Remove</h5>
+          </div>
+      </div>
+      </div>
+          <!-- add User -->
+          <h3 class="px-3">Add User To chatroom</h3>
+          <div class="container-fluid"><div class="row">
+            <div class="col-md-8">
+              <input type="input" [(ngModel)]="usernametToAdd" class="form-control w-100" placeholder="Enter Username">
+            </div>
+            <div class="col-md-4">
+              <button class="btn btn-primary" (click)="addUserToChatroom(usernametToAdd!,chatroomId!)">
+                <i class="bi bi-person-plus"></i>
+                <span class="m-1">Add User</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        </div>
+    <div class="modal-footer">
+    </div>
+    </div>
+  </div>
+  </div>
+</div>

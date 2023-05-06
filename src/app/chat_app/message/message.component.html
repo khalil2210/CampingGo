@@ -3,12 +3,12 @@
 <h2>{{chatroomName}}</h2>
 </div>
 <div>
-  <a (click)="openDialog()" class="icon-btn">
+  <button  type="button" class="btn btn-primary mx-2"  data-bs-toggle="modal" data-bs-target="#edit">
     <div>
       <i class="bi bi-pencil-square"></i>
       <span class="m-1">Edit</span>
     </div>
-  </a>
+  </button>
   </div>
 </div>
 <div class="pt-3 pe-3" class="overflow-auto"
@@ -69,6 +69,7 @@ style="position: relative; height: 400px">
   <i class="bi bi-send"></i></button>
 
 </div>
+
 
 
 
