@@ -13,6 +13,10 @@ import { MessageComponent } from './chat_app/message/message.component';
 import { ChatComponent } from './chat_app/chat/chat.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
+
+import { CommentComponent } from './comment/comment.component';
+import { AccueilComponent } from './accueil/accueil.component';
+import { PopUpComponent } from './pop-up/pop-up.component';
 import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
@@ -21,8 +25,10 @@ import { HttpClientModule } from '@angular/common/http';
     FooterComponent,
     ChatComponent,
     MessageComponent,
-
-  ],
+      CommentComponent,
+      AccueilComponent,
+      PopUpComponent
+   ],
 
   imports: [
     BrowserModule,
