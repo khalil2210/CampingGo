@@ -15,6 +15,7 @@ import { AjouterComponent } from './Equipment/dashboard/ajouter/ajouter.componen
 import { ListeComponent } from './Equipment/dashboard/liste/liste.component';
 import { UserGuard } from './Equipment/guards/user.guard';
 import { OrdersComponent } from './Equipment/dashboard/orders/orders.component';
+import { ListepaymentComponent } from './Equipment/dashboard/listepayment/listepayment.component';
 const routes: Routes = [
 { path: '', redirectTo: 'login', pathMatch: 'full' },
 
@@ -29,7 +30,8 @@ const routes: Routes = [
 {path:'add',component:DashboardComponent,canActivate:[AuthGuard],children:[
   {path:'ajouter',component:AjouterComponent},
   {path:'liste',component:ListeComponent},
-  {path:'orders',component:OrdersComponent}
+  {path:'orders',component:OrdersComponent},
+  {path:'listepayment',component:ListepaymentComponent}
 ]},
 {path:'login',component:LoginComponent},
 {path:'**',component:NotfoundComponent}

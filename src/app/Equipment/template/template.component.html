@@ -8,8 +8,14 @@
   </div>
 
 </header>
+<div class="section image" *ngIf="Active" style="background-color: #eaeaea">
+<div class="container px-5 px-lg-5 my-5">
+  <div class="row gx-5 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"></div>
+  <div class="alert alert-danger text-center center-alert" *ngIf="Active">{{msg}}</div>
 
-<main class="py-5" style="background-color: #eaeaea;padding: 150px;">
+</div>
+</div>
+<main class="py-5" style="background-color: #eaeaea;padding: 20px;">
   <div class="navbar fixed-bottom navbar-expand-lg navbar-transparent bg-light"
     style="padding-bottom: 70px;margin-left: 1380px;">
     <div class="container-fluid">
@@ -31,25 +37,37 @@
 
     </div>
   </div>
-  <div class="navbar fixed-bottom  navbar-transparent bg-light"
-  style="padding-bottom: 70px;margin-right: 1380px;">
-  <div class="container-fluid">
 
-    <!-- <div class="navbar-collapse">
+  <div class="navbar fixed-bottom  navbar-transparent bg-light"
+  style="padding-bottom: 100px;margin-right: 1380px;" >
+  <div class="container-fluid" >
+
+    <div class="navbar-collapse" >
       <div class="col-md-5">
-        <h4><i class="fa fa-filter" aria-hidden="true"></i></h4>
+      <h4 style="font-family: 'Courier New', Courier, monospace;color: burlywood;">Filter:</h4>
         <div class="list-group">
-          <button href="#" class="btn btn-danger">Mate</button>
-          <a href="#" class="item-link">Category 2</a>
-          <a href="#" class="item-link">Category 3</a>
+          <button type="submit" class="btn-naturel" name="Mat" id="Mat" (click)="reset()">All</button>
+          <button  type="submit" name="Mat" id="Mat" (click)="type('Mat')" style="font-size:larger;display: block;color: rgb(220, 177, 149);">Mat</button>
+          <button  type="submit" name="Mat" id="Mat" (click)="type('Sleeping')" style="display: block;">Sleeping</button>
+          <button  type="submit" name="Mat" id="Mat" (click)="type('bag')" style="display: block;">bag</button>
+          <button  type="submit" name="Mat" id="Mat" (click)="type('Rope')" style="display: block;">Rope</button>
+          <button  type="submit" name="Mat" id="Mat" (click)="type('Water')" style="display: block;">Water</button>
+          <button  type="submit" name="Mat" id="Mat" (click)="type('Bottles')" style="display: block;">Bottles</button>
+          <button  type="submit" name="Mat" id="Mat" (click)="type('FirstAids')" style="display: block;">FirstAids</button>
+          <button  type="submit" name="Mat" id="Mat" (click)="type('Flashlights')" style="display: block;">Flashlights</button>
+
         </div>
       </div>
-    </div> -->
+    </div>
 
   </div>
 </div>
   <div class="container px-4 px-lg-5 mt-5">
     <div class="row product-list gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 flex-wrap-nowrap">
+
+
+
+
       <div class="col mb-5" *ngFor="let x of liste">
         <div class="card h-100">
           <!-- Product image-->
@@ -72,12 +90,12 @@
 
               <ngb-rating [(rate)]="x.rate">
                 <ng-template let-fill="fill" let-index="index">
-                  <i class="bi-star{{fill === 100 ? '-fill' : ''}}" [class.filled]="fill === 100" [class.low]="index < 3"></i>
+                  <i class="bi-star{{fill === 100 ? '-fill' : ''}}" [class.filled]="fill === 100" (click)="rate(x)" [class.low]="index < 3"></i>
                 </ng-template>
               </ngb-rating>
               <hr />
               <pre>Rate: <b>{{x.rate}}</b></pre>
-               <button class="btn btn-dark mt-auto" (click)="Cart(x)" type="submit">Add to
+               <button class="btn btn-dark mt-auto" [disabled]="x.quantity==0" (click)="Cart(x)" type="submit">Add to
                 cart</button>
               <button type="submit" (click)="like(x)" class="btn btn-danger">
                 <i class="bi bi-heart"></i>

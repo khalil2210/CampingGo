@@ -46,11 +46,11 @@ public text: string = '';
   sentimentScore!:number;
   message: string = '';
   sentiment!:{}
-  rate(x:Equipment){
-x.rate++
-      this.s.updatelike(x).subscribe(data=>data.id=this.equipe.id)
-
-  }
+  rate(x:Equipment) {
+    console.log(x);
+    x.rate++
+        this.s.updatelike(x).subscribe(data=>data.id=this.equipe.id)
+      }
   calculateReview(text: string,x:Equipment) {
     let positiveWords = ['good', 'great', 'excellent'];
     let negativeWords = ['bad', 'terrible', 'poor'];
@@ -100,6 +100,32 @@ Cart(x: Equipment) {
   }
 }
 jm=0
+list!:any[]
+reset(){
+  this.Active=false
+  this.s.getall().subscribe(data=>{
+    this.liste=data;
+  })
+}
+msg:any
+
+Active=false
+type(type: any) {
+  if (type != null) {
+    this.s.getbytype(type).subscribe(data => {
+      this.liste = data;
+      if (this.liste.length === 0) {
+        this.msg = 'Liste vide check another Equipment Type';
+        this.Active=true
+      }
+    });
+  } else {
+    this.msg = 'Liste vide check another Equipment Type';
+  }
+  this.msg=""
+  this.Active=false
+}
+
 like(x:Equipment) {
   console.log(x);
 x.likeii++

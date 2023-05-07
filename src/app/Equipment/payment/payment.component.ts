@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EquipmentService } from '../service/equipment.service';
 import { Equipment } from '../Model/Equipment';
+import { ChargeRequest } from './../Model/chargeRequest';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { Equipment } from '../Model/Equipment';
 })
 export class PaymentComponent implements OnInit {
 
-  chargeRequest = {
+  chargeRequest :ChargeRequest= {
     cardNumber: '',
     exp_month: '',
     exp_year: '',

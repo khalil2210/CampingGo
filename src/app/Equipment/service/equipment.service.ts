@@ -24,6 +24,11 @@ export class EquipmentService {
     return this.http.post<any>(this.url+"addEquipment2/"+id+"/"+id1,e,{headers})
 
   }
+  getbytype(equipmentType:any):Observable<any>{
+    const accessToken=localStorage.getItem("accessToken")
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + accessToken });
+    return this.http.get<any>("http://localhost:8090/Equipment/getbytype?equipmentType="+equipmentType,{headers})
+  }
   update(eq:Equipment,id:number):Observable<any>{
     const accessToken=localStorage.getItem("accessToken")
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + accessToken });

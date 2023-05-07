@@ -22,6 +22,7 @@ import { AjouterComponent } from './Equipment/dashboard/ajouter/ajouter.componen
 import { ListeComponent } from './Equipment/dashboard/liste/liste.component';
 import Chart from 'chart.js/auto';
 import { OrdersComponent } from './Equipment/dashboard/orders/orders.component';
+import { ListepaymentComponent } from './Equipment/dashboard/listepayment/listepayment.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { OrdersComponent } from './Equipment/dashboard/orders/orders.component';
     AjouterComponent,
     ListeComponent,
     OrdersComponent,
+    ListepaymentComponent,
     
 
   ],

@@ -1,15 +1,15 @@
-export class
-chargeRequest
-{
-  cardNumber:any
-  exp_month:any
-  exp_year:any
-  cvv:any
-  name:any
-  amount=0
-  currency:any
-  description= 'test all'
-  email:any
-  phone= '+21627324085'
-  total=0
+export interface ChargeRequest {
+  cardNumber: string;
+  exp_month: string;
+  exp_year: string;
+  cvv: string;
+  name: string;
+  amount: number;
+  currency: string;
+  description: string;
+  email: string;
+  phone: string;
+  
+
+
 }

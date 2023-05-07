@@ -13,6 +13,7 @@ export class Equipment {
   updatetime!: string;
   quantite_payment!:number;
   quantity!: number;
+  total=0;
   equipmentType!: string;
   user!: User;
   rate!:number;
