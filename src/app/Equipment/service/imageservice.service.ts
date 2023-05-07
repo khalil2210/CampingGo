@@ -14,7 +14,9 @@ export class ImageserviceService {
   //   return this.http.post<Image>(this.url+"saveImage2/"+id,img)
   // }
   ajouterimage(img:FormData):Observable<Image>{
+
     return this.http.post<Image>(this.url+"saveImage",img)
+
   }
   getAllImages() {}
 }

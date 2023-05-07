@@ -3,7 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EquipmentService } from '../service/equipment.service';
 import { Equipment } from '../Model/Equipment';
+
 import { ChargeRequest } from './../Model/chargeRequest';
+
 
 
 @Component({
@@ -34,8 +36,6 @@ export class PaymentComponent implements OnInit {
 
   charge() {
 
-    console.log();
-
 
     this.http.post('http://localhost:8090/charge', this.chargeRequest).subscribe(
 
@@ -54,7 +54,8 @@ export class PaymentComponent implements OnInit {
             )})
         this.s.orders=this.shoppingList
         alert('Payment successful!');
-        this.router.navigate(['/shop'])
+       // this.router.navigate(['/shop'])
+
 
       },
       (error) => {
@@ -88,6 +89,7 @@ num=0
 max(x:Equipment,id:number){
 
 
+
       if (x.id==id  ) {
       if (x.quantity!=0) {
         x.quantite_payment++
@@ -96,6 +98,7 @@ max(x:Equipment,id:number){
       }
       }
      console.log(this.quantite);
+
   console.log(this.shoppingList.map(x=>x.quantity));
 }
 delete(id: number) {

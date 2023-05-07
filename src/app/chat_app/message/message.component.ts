@@ -7,7 +7,7 @@ import { Stomp } from '@stomp/stompjs';
 import * as SockJS from 'sockjs-client';
 import { read } from '@popperjs/core';
 import { MatDialog } from '@angular/material/dialog';
-import { EditChatroomComponent } from '../Pop_up/edit-chatroom/edit-chatroom.component';
+import { User } from 'src/app/core/model/user';
 
 
 
@@ -32,13 +32,7 @@ export class MessageComponent {
     private dialog:MatDialog){}
 
 
-openDialog(){
-const dialogRef= this.dialog.open(EditChatroomComponent,{
-  height:'90vh',
-  width:'90vw'
-});
-dialogRef.afterClosed().subscribe((result)=>{});
-}
+
   ngOnInit(): void {
   this.route.params.subscribe(params=>{
     var socket = new SockJS('http://localhost:8090/ws-websocket');
@@ -57,6 +51,7 @@ this.chatroomName=params["name"];
   this.getMessagesBychatroom(chatroomId);
 
   })
+
 }
 
 onFileSelected(event:any) {
@@ -84,26 +79,23 @@ JSON.stringify(message));
 this.inputSendMessage=''
 }
 
-sendImageWebSocket(image:File,chatroomId:number){
-  // const formData = new FormData();
-  // formData.append('file',this.selectedFile!);
-  // this.stompClient.send(
-  //   "/app/sendImageToChatroom",{
+sendImageWebSocket(
+  ){
+    const reader = new FileReader();
+    reader.addEventListener('loadend', () => {
+      const buffer = reader.result;
+      const blob = new Blob([buffer!], { type: this.selectedFile.type });
+      // Send the blob over the WebSocket
+        const headers = {
+          'content-type': this.selectedFile.type,
+          'content-length': blob.size
+        };
+        console.log(this.selectedFile);
 
-  //   },formData);
-  const reader = new FileReader();
-  reader.onload = () => {
-    const buffer = reader.result as ArrayBuffer;
-    const bytes = new Uint8Array(buffer);
-    let message = {
-      imageData: bytes,
-   };
-
-  this.stompClient.send(
-  "/app/sendImageToChatroom",{}, JSON.stringify(message));
-}
-reader.readAsArrayBuffer(this.selectedFile)
-
+      this.stompClient.send(
+        "/app/sendImageToChatroom",headers,blob);
+    });
+  reader.readAsArrayBuffer(this.selectedFile)
 }
 
 

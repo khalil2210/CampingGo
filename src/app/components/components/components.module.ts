@@ -33,7 +33,6 @@ import { TemplateComponent } from 'src/app/Equipment/template/template.component
         PaymentComponent,
         TemplateComponent
 
-
     ],
     entryComponents: [],
     exports:[ ComponentsComponent,DashboardComponent ]

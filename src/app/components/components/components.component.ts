@@ -1,11 +1,13 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { Equipment } from 'src/app/Equipment/Model/Equipment';
+
 import { EquipmentService } from '../../Equipment/service/equipment.service';
 import { AuthService } from 'src/app/Equipment/service/auth.service';
 import { LoginRequest } from 'src/app/Equipment/Model/LoginRequest';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+
 
 @Component({
     selector: 'app-components',
@@ -25,10 +27,14 @@ export class ComponentsComponent implements OnInit {
     focus2!:boolean;
     date!: {year: number, month: number};
     model!: NgbDateStruct;
+
     constructor( private renderer : Renderer2,
       private s:EquipmentService,
       private AuthService:AuthService
       ,private router:Router) {}
+
+
+
     isWeekend(date: NgbDateStruct) {
         const d = new Date(date.year, date.month - 1, date.day);
         return d.getDay() === 0 || d.getDay() === 6;
@@ -53,13 +59,14 @@ export class ComponentsComponent implements OnInit {
         this.s.getall().subscribe(data=>{
           this.liste=data;
         })
+
     }
     userdata!:string
     loginRequest: LoginRequest = new LoginRequest();
     onSubmit(ngform:NgForm) {
       this.AuthService.login(ngform.value).subscribe(
         data => {
-        
+
           console.log('Login successful:', data);
           // TODO: Navigate to the admin dashboard
          if (data.roles) {
@@ -73,6 +80,7 @@ export class ComponentsComponent implements OnInit {
           // TODO: Display an error message to the user
         }
       );
+
     }
 
 }

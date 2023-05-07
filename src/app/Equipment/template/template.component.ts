@@ -2,9 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Equipment } from '../Model/Equipment';
 import { EquipmentService } from '../service/equipment.service';
 import { Router } from '@angular/router';
+
 import { SentimentService } from '../service/sentiment.service';
 import { HttpClient } from '@angular/common/http';
 import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
+
+
 @Component({
   selector: 'app-template',
   templateUrl: './template.component.html',
@@ -13,10 +16,12 @@ import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 export class TemplateComponent implements OnInit {
 
 
+
   currentRate = 0
   constructor(private s:EquipmentService,private http:HttpClient,private router:Router,private sentimentService:SentimentService) { }
   liste:Equipment[]=[]
   equipe=new Equipment()
+
   host = "http://localhost:8090"
   ngOnInit(): void {
     this.s.getall().subscribe(data=>{
@@ -100,6 +105,7 @@ Cart(x: Equipment) {
   }
 }
 jm=0
+
 list!:any[]
 reset(){
   this.Active=false
@@ -131,6 +137,7 @@ like(x:Equipment) {
 x.likeii++
       this.s.updatelike(x).subscribe(data=>data.id=this.equipe.id)
     }
+
 
 tobuy() {
    this.s.shoppingList=this.Listetobuy

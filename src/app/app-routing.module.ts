@@ -3,6 +3,7 @@ import { CommonModule, } from '@angular/common';
 import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 import { ComponentsComponent } from './components/components/components.component';
+
 import { ChatComponent } from './chat_app/chat/chat.component';
 import { MessageComponent } from './chat_app/message/message.component';
 import { DashboardComponent } from './Equipment/dashboard/dashboard.component';
@@ -16,6 +17,9 @@ import { ListeComponent } from './Equipment/dashboard/liste/liste.component';
 import { UserGuard } from './Equipment/guards/user.guard';
 import { OrdersComponent } from './Equipment/dashboard/orders/orders.component';
 import { ListepaymentComponent } from './Equipment/dashboard/listepayment/listepayment.component';
+import { PopUpComponent } from './pop-up/pop-up.component';
+import { AccueilComponent } from './accueil/accueil.component';
+import { CommentComponent } from './comment/comment.component';
 const routes: Routes = [
 { path: '', redirectTo: 'login', pathMatch: 'full' },
 
@@ -33,6 +37,12 @@ const routes: Routes = [
   {path:'orders',component:OrdersComponent},
   {path:'listepayment',component:ListepaymentComponent}
 ]},
+{path: 'comments', component:CommentComponent},
+
+{path: 'accueil', component:AccueilComponent},
+
+{path: 'pop-up', component:PopUpComponent},
+
 {path:'login',component:LoginComponent},
 {path:'**',component:NotfoundComponent}
 ];

@@ -7,8 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { Image } from '../Model/Image';
 import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
-import { Chart, ChartItem } from 'chart.js';
-import { saveAs } from 'file-saver';
+
 import { PdfService } from '../service/pdf.service';
 
 @Component({
@@ -20,22 +19,17 @@ export class DashboardComponent implements OnInit {
 liste:Equipment[]=[]
 equipe=new Equipment()
 img1=new Image()
+
   id=0;
   constructor(private s :EquipmentService,private router:Router,
     private img:ImageserviceService,
     private http:HttpClient,
     private AuthService:AuthService,
-    private pdf:PdfService
 
    ) { }
 data!: any[]
 
-  ngOnInit(): void {
-
-  }
-  all:any
-
-
+  ngOnInit(): void {}
 
 
 addUserForm=new FormGroup({
@@ -59,15 +53,17 @@ fileName!: string;
 group:any
 selectedFile!: File ;
 
-
 onFileSelected(event:any) {
   this.selectedFile = event.target.files[0];
 }
 num:any
+logout(){
+  this.AuthService.logout()
+  this.router.navigate(['/login'])
+}
 // createPdf1() {
 //   this.http.post('http://localhost:8090/getpdf', {contents: ['Hello, world!']}, { responseType: 'arraybuffer' })
 //     .subscribe((response: ArrayBuffer) => {
-//       const blob = new Blob([response], { type: 'application/pdf' });
 //       saveAs(blob, 'example.pdf');
 //     });
 // }
@@ -100,31 +96,28 @@ num:any
   `Total price: ${this.totalPrice}$`
 ];
 id_user:any
-upload(equipment: Equipment) {
-  const formData = new FormData();
-   formData.append('file', this.selectedFile);
+
+
+
 
 // for(const us of this.listeUsers){
-//      this.id_user=us.id
-// console.log(this.id_user);
-// }
-    this.img.ajouterimage(formData).subscribe(
-      (data) => {
-        this.s.ajouterequipment(equipment,data.id).subscribe(data => {
+// //      this.id_user=us.id
+// // console.log(this.id_user);
+// // }
+//     this.img.ajouterimage(formData).subscribe(
+//       (data) => {
+//         this.s.ajouterequipment(equipment,data.id).subscribe(data => {
 
-        console.log(data);
-      },(error:Image)=>{
-        console.log(error);
-      }
-    );
-    alert("ajouter avec success")
-    this.router.navigate(['/home'])
-  });
-}
-logout(){
-  this.AuthService.logout()
-  this.router.navigate(['/login'])
-}
+//         console.log(data);
+//       },(error:Image)=>{
+//         console.log(error);
+//       }
+//     );
+//     alert("ajouter avec success")
+//     this.rouetr.navigate(['/home'])
+//   });
+// }
+
 
 
 getid(eq:number){
