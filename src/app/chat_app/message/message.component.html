@@ -15,7 +15,7 @@ style="position: relative; height: 400px">
 <div *ngFor="let message of messageList ">
 <!-- message card sent by other users -->
 <div *ngIf="sender!=message.sender.id  ; else showSentByUser">
-<div class="d-flex flex-row justify-content-start">
+<div class="d-flex flex-row justify-content-start ">
   <img src="https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png"
     alt="avatar 1" style="width: 45px; height: 100%;">
   <div>
@@ -35,16 +35,16 @@ style="position: relative; height: 400px">
       </p>
       <p class="small me-3 mb-3 rounded-3 text-muted"> {{message.sentAt | date : 'shortTime'}} | {{message.sentAt | date : 'MMM dd'}}</p>
     </div>
-    <img src="https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png"
-      alt="avatar 1" style="width: 45px; height: 100%;">
+    <img [src]="'http://localhost:8090/image/getImage/'+sender"
+      alt="avatar 1" style="width: 45px; height: 100%;" class="rounded-circle">
   </div>
  </ng-template>
 </div>
 </div>
 <!-- inpuuuttt -->
 <div class="text-muted d-flex justify-content-start align-items-center pe-3 pt-2 mt-2">
- <img src="https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png"
-  alt="avatar 3" style="width: 40px; height: 100%;">
+ <img [src]="'http://localhost:8090/image/getImage/'+sender"
+  alt="avatar 3" style="height: 50px; width:50px" class="rounded-circle mx-2">
  <input [(ngModel)]="inputSendMessage" type="text" class="form-control w-20%  "
   placeholder="Type message">
 <label for="file-input" class="custom-file-upload " (change)="onFileSelected($event)">
@@ -56,12 +56,10 @@ style="position: relative; height: 400px">
   Send File
 </button> -->
 
-
-
 <button type="button" class="btn btn-primary" (click)="sendMessageWebSocket(
   {
   'content':inputSendMessage,
-  'sender':{'id':2}
+  'sender':{'id':sender}
 },
   idChatroom!)">send
 </button>
