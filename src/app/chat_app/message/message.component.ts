@@ -1,16 +1,9 @@
-
 import { Component, Input } from '@angular/core';
-
 import { ActivatedRoute } from '@angular/router';
 import { ChatApiService } from 'src/app/services/chat-api.service';
 import { Stomp } from '@stomp/stompjs';
 import * as SockJS from 'sockjs-client';
-import { read } from '@popperjs/core';
 import { MatDialog } from '@angular/material/dialog';
-import { User } from 'src/app/core/model/user';
-
-
-
 @Component({
   selector: 'app-message',
   templateUrl: './message.component.html',
@@ -19,7 +12,7 @@ import { User } from 'src/app/core/model/user';
 export class MessageComponent {
   messageList:any[]= [];
   idChatroom?:number;
-  sender:number=1;
+  sender:number=Number(localStorage.getItem("id"));
   inputSendMessage:String='';
   selectedFile?: any;
   private stompClient:any ;
@@ -66,12 +59,6 @@ getMessagesBychatroom(idChatroom: number){
 
 })
 }
-
-
-
-
-
-
 
 sendMessageWebSocket(message:any,chatroomId:number){
 this.stompClient.send("/app/sendMessageToChatroom/" +chatroomId, {},

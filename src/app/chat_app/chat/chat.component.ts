@@ -14,12 +14,14 @@ import { ActivatedRoute } from '@angular/router';
 export class ChatComponent implements OnInit {
   chatroomList:any[]= [];
   inputValue:String='';
+  userId!:number;
   selectedChatroom?:any;
   constructor(
     private apiService:ChatApiService,
     private route: ActivatedRoute){}
     chatroomName?:string;
     imageFile?:any;
+
 
     onFileSelected(event:any) {
       this.imageFile = event.target.files[0];
@@ -32,13 +34,14 @@ ngOnInit(): void {
     this.chatroomName=params["name"];
     this.chatroomId=params["chatroomId"];
           });
-this.getChatrooms();}
+this.getChatrooms();
+this.userId=Number(localStorage.getItem("id"))
+
+}
 getChatrooms(){
 this.apiService.getChatrooms().subscribe({
   next:(chatrooms:any)=>{
     this.chatroomList=chatrooms
-
-
   },
 })
 }
@@ -46,6 +49,7 @@ this.apiService.getChatrooms().subscribe({
 addChatroom(chatroom:any,image:any){
   this.apiService.addChatroom(chatroom,image).subscribe({
     next:(res:any)=>{
+
       this.chatroomList.push(res)},
     complete:()=>{
       this.inputValue=''
