@@ -1,7 +1,5 @@
 <div class="d-flex mb-3 justify-content-between px-4" style="height: 40px;">
-<div>
-<h2>{{chatroomName}}</h2>
-</div>
+<span style="font-size: 20px; font-weight: 600;">{{chatroomName}}</span>
 <div>
   <button  type="button" class="btn btn-primary mx-2"  data-bs-toggle="modal" data-bs-target="#edit">
     <div>
@@ -49,14 +47,14 @@ style="position: relative; height: 400px">
   alt="avatar 3" style="width: 40px; height: 100%;">
  <input [(ngModel)]="inputSendMessage" type="text" class="form-control w-20%  "
   placeholder="Type message">
-<!-- <label for="file-input" class="custom-file-upload " (change)="onFileSelected($event)">
+<label for="file-input" class="custom-file-upload " (change)="onFileSelected($event)">
   <i class=" icon-btn bi bi-paperclip mx-2"></i>
 </label>
-<input type="file" id="file-input" name="file"> -->
-<input type="file" (change)="onFileSelected($event)">
-<button type="button" (click)="sendImageWebSocket()">
+<input type="file" id="file-input" name="file">
+<!-- <input type="file" (change)="onFileSelected($event)"> -->
+<!-- <button type="button" (click)="sendImageWebSocket()">
   Send File
-</button>
+</button> -->
 
 
 
@@ -65,8 +63,8 @@ style="position: relative; height: 400px">
   'content':inputSendMessage,
   'sender':{'id':2}
 },
-  idChatroom!)">
-  <i class="bi bi-send"></i></button>
+  idChatroom!)">send
+</button>
 
 </div>
 
