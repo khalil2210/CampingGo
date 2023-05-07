@@ -8,6 +8,7 @@
   </div>
 
 </header>
+
 <div class="section image" *ngIf="Active" style="background-color: #eaeaea">
 <div class="container px-5 px-lg-5 my-5">
   <div class="row gx-5 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"></div>
@@ -46,15 +47,15 @@
       <div class="col-md-5">
       <h4 style="font-family: 'Courier New', Courier, monospace;color: burlywood;">Filter:</h4>
         <div class="list-group">
-          <button type="submit" class="btn-naturel" name="Mat" id="Mat" (click)="reset()">All</button>
-          <button  type="submit" name="Mat" id="Mat" (click)="type('Mat')" style="font-size:larger;display: block;color: rgb(220, 177, 149);">Mat</button>
-          <button  type="submit" name="Mat" id="Mat" (click)="type('Sleeping')" style="display: block;">Sleeping</button>
-          <button  type="submit" name="Mat" id="Mat" (click)="type('bag')" style="display: block;">bag</button>
-          <button  type="submit" name="Mat" id="Mat" (click)="type('Rope')" style="display: block;">Rope</button>
-          <button  type="submit" name="Mat" id="Mat" (click)="type('Water')" style="display: block;">Water</button>
-          <button  type="submit" name="Mat" id="Mat" (click)="type('Bottles')" style="display: block;">Bottles</button>
-          <button  type="submit" name="Mat" id="Mat" (click)="type('FirstAids')" style="display: block;">FirstAids</button>
-          <button  type="submit" name="Mat" id="Mat" (click)="type('Flashlights')" style="display: block;">Flashlights</button>
+          <button type="submit" class="btn-naturel" name="Mat" id="Mat" (click)="reset()" style="font-size:larger;display: block;color: rgb(47, 24, 9);">All</button>
+          <button  type="submit" name="Mat" id="Mat" (click)="type('Mat')" style="font-size:larger;display: block;color: rgb(47, 24, 9);">Mat</button>
+          <button  type="submit" name="Mat" id="Mat" (click)="type('Sleeping')" style="font-size:larger;display: block;color: rgb(47, 24, 9);">Sleeping</button>
+          <button  type="submit" name="Mat" id="Mat" (click)="type('bag')" style="font-size:larger;display: block;color: rgb(47, 24, 9);">bag</button>
+          <button  type="submit" name="Mat" id="Mat" (click)="type('Rope')" style="font-size:larger;display: block;color: rgb(47, 24, 9);">Rope</button>
+          <button  type="submit" name="Mat" id="Mat" (click)="type('Water')" style="font-size:larger;display: block;color: rgb(47, 24, 9);">Water</button>
+          <button  type="submit" name="Mat" id="Mat" (click)="type('Bottles')" style="font-size:larger;display: block;color: rgb(47, 24, 9);">Bottles</button>
+          <button  type="submit" name="Mat" id="Mat" (click)="type('FirstAids')" style="font-size:larger;display: block;color: rgb(47, 24, 9);">FirstAids</button>
+          <button  type="submit" name="Mat" id="Mat" (click)="type('Flashlights')" style="font-size:larger;display: block;color: rgb(47, 24, 9);">Flashlights</button>
 
         </div>
       </div>
@@ -95,8 +96,10 @@
               </ngb-rating>
               <hr />
               <pre>Rate: <b>{{x.rate}}</b></pre>
-               <button class="btn btn-dark mt-auto" [disabled]="x.quantity==0" (click)="Cart(x)" type="submit">Add to
-                cart</button>
+               <button class="btn btn mt-auto" [disabled]="x.quantity==0" (click)="Cart(x)" type="submit"> <i class="bi-cart-fill me-1"></i></button>
+
+
+
               <button type="submit" (click)="like(x)" class="btn btn-danger">
                 <i class="bi bi-heart"></i>
                 {{x.likeii}}
@@ -114,6 +117,7 @@
 
 
 </main>
+
 
 
 

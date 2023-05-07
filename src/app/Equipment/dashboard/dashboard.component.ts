@@ -78,7 +78,13 @@ num:any
   items = [
   { name: "Item 1", quantity: 5, price: 10 },
   { name: "Item 2", quantity: 2, price: 20 },
-  { name: "Item 3", quantity: 1, price: 30 }
+  { name: "Item 3", quantity: 1, price: 30 },
+  { name: "Item 4", quantity: 3, price: 40 },
+  { name: "Item 5", quantity: 1, price: 50 },
+  { name: "Item 6", quantity: 1, price: 60 },
+  { name: "Item 7", quantity: 1, price: 70 },
+  { name: "Item 8", quantity: 1, price: 80 },
+  { name: "Item 9", quantity: 1, price: 90 },
 ];
 
 // Calculate the total price
@@ -87,7 +93,10 @@ num:any
 // Create contents array with shopping information
  contents = [
   "Shopping report",
-  ...this.items.map(item => `${item.name}: ${item.quantity} x ${item.price}$ = ${item.quantity * item.price}$`),
+  "Date: " + new Date().toDateString(),
+
+
+  ...this.items.map(item => `${item.name}: ${item.quantity} x ${item.price}$ = ${item.quantity * item.price}TN`),
   `Total price: ${this.totalPrice}$`
 ];
 id_user:any
