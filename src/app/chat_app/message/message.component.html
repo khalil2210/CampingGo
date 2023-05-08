@@ -1,4 +1,4 @@
-<div class="d-flex mb-3 justify-content-between px-4" style="height: 40px;">
+<div class="d-flex mb-4 justify-content-between px-4" style="height: 40px;">
 <span style="font-size: 20px; font-weight: 600;">{{chatroomName}}</span>
 <div>
   <button  type="button" class="btn btn-primary mx-2"  data-bs-toggle="modal" data-bs-target="#edit">
@@ -14,10 +14,10 @@ style="position: relative; height: 400px">
  <!-- messages component -->
 <div *ngFor="let message of messageList ">
 <!-- message card sent by other users -->
-<div *ngIf="sender!=message.sender.id  ; else showSentByUser">
+<div *ngIf="senderId!=message.sender.id  ; else showSentByUser">
 <div class="d-flex flex-row justify-content-start ">
   <img src="https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png"
-    alt="avatar 1" style="width: 45px; height: 100%;">
+    alt="avatar 1" style="width: 30px; height: 30px;">
   <div>
     <p class="small p-2 ms-3 mb-1 rounded-3" style="background-color: #f5f6f7;">
     {{message.content}}
@@ -35,31 +35,31 @@ style="position: relative; height: 400px">
       </p>
       <p class="small me-3 mb-3 rounded-3 text-muted"> {{message.sentAt | date : 'shortTime'}} | {{message.sentAt | date : 'MMM dd'}}</p>
     </div>
-    <img [src]="'http://localhost:8090/image/getImage/'+sender"
-      alt="avatar 1" style="width: 45px; height: 100%;" class="rounded-circle">
+    <img [src]="'http://localhost:8090/image/getImage/'+userImageId"
+      alt="avatar 1" style="width: 30px; height: 30px;" class="rounded-circle">
   </div>
  </ng-template>
 </div>
 </div>
 <!-- inpuuuttt -->
 <div class="text-muted d-flex justify-content-start align-items-center pe-3 pt-2 mt-2">
- <img [src]="'http://localhost:8090/image/getImage/'+sender"
-  alt="avatar 3" style="height: 50px; width:50px" class="rounded-circle mx-2">
+ <img [src]="'http://localhost:8090/image/getImage/'+userImageId"
+  alt="avatar 3" style="height: 45px; width:45px" class="rounded-circle mx-2">
  <input [(ngModel)]="inputSendMessage" type="text" class="form-control w-20%  "
   placeholder="Type message">
-<label for="file-input" class="custom-file-upload " (change)="onFileSelected($event)">
+<label for="file-input" class="custom-file-upload ">
   <i class=" icon-btn bi bi-paperclip mx-2"></i>
 </label>
-<input type="file" id="file-input" name="file">
-<!-- <input type="file" (change)="onFileSelected($event)"> -->
-<!-- <button type="button" (click)="sendImageWebSocket()">
+<input type="file" id="file-input" name="file"  (change)="onFileSelected($event)">
+
+<button type="button" (click)="sendImageWebSocket()">
   Send File
-</button> -->
+</button>
 
 <button type="button" class="btn btn-primary" (click)="sendMessageWebSocket(
   {
   'content':inputSendMessage,
-  'sender':{'id':sender}
+  'sender':{'id':senderId}
 },
   idChatroom!)">send
 </button>

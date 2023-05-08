@@ -70,6 +70,9 @@ export class ChatApiService {
   }
 
 
-
+getUserById(id:number){
+  const url='http://localhost:8090/users/get-user-by-id/'+id
+  return  this.http.get(url);
+}
 
 }
