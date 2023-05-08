@@ -67,9 +67,11 @@ getMessagesBychatroom(idChatroom: number){
 }
 
 sendMessageWebSocket(message:any,chatroomId:number){
+  if(this.inputSendMessage!=''){
 this.stompClient.send("/app/sendMessageToChatroom/" +chatroomId, {},
 JSON.stringify(message));
 this.inputSendMessage=''
+}
 }
 
 sendImageWebSocket(

@@ -45,17 +45,12 @@ style="position: relative; height: 400px">
 <div class="text-muted d-flex justify-content-start align-items-center pe-3 pt-2 mt-2">
  <img [src]="'http://localhost:8090/image/getImage/'+userImageId"
   alt="avatar 3" style="height: 45px; width:45px" class="rounded-circle mx-2">
- <input [(ngModel)]="inputSendMessage" type="text" class="form-control w-20%  "
-  placeholder="Type message">
+ <input [(ngModel)]="inputSendMessage" type="text" class="form-control w-20%"
+  placeholder="Type message" required>
 <label for="file-input" class="custom-file-upload ">
   <i class=" icon-btn bi bi-paperclip mx-2"></i>
 </label>
 <input type="file" id="file-input" name="file"  (change)="onFileSelected($event)">
-<!--
-<button type="button" (click)="sendImageWebSocket()">
-  Send File
-</button> -->
-
 <button type="button" class="btn btn-primary" (click)="sendMessageWebSocket(
   {
   'content':inputSendMessage,
@@ -63,7 +58,10 @@ style="position: relative; height: 400px">
 },
   idChatroom!)">send
 </button>
-
+<!--
+<button type="button" (click)="sendImageWebSocket()">
+  Send File
+</button> -->
 </div>
 
 
