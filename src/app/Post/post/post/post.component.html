@@ -8,15 +8,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   
   </head>
-  <!-- 
+  
   <header>
+  
     <div class="header-container">
+        
         <div class="header-wrapper">
+            
             <div class="logoBox">
-                <img src="" alt="logo">
+                <img src="/assets1.png" alt="logo">
             </div>
             <div class="searchBox">
-                <input type="search">
+                <input style="background: #5859585d; "  type="search" class="form-control mr-2" [(ngModel)]="word" placeholder="Rechercher...">
                 <i class="fas fa-search"></i>
             </div>
             <div class="iconBox1">
@@ -26,21 +29,95 @@
                 <i class="fa-solid fa-gamepad"></i>
             </div>
             <div class="iconBox2">
-                <i class="fa-solid fa-circle-plus"></i>
+                <!-- <i class="fa-solid fa-circle-plus"></i>
                 <i class="fa-brands fa-facebook-messenger"></i>
-                <i class="fa-solid fa-bell"></i>
+                <i class="fa-solid fa-bell"></i> -->
+
                 <label><img src="images/user.jpg" alt="user"></label>
                 <i class="fa-solid fa-caret-down"></i>
             </div>
         </div>
     </div>
-  </header> -->
+  </header> 
+  
   <div class="home">
+    
+    
+      <div class="navbar fixed-bottom navbar-expand-lg navbar-transparent bg-light" 
+    style="padding-bottom: 15px;margin-bottom: 150px;border-radius: 20px;  box-shadow: 0 2px 5px 0 var(--shadow); width: 20% ; height: 60%;">
+    <div class="container-fluid">
+
+      <div class="navbar-collapse"     >
+        <ul class="navbar-nav me-auto mb-2 mb-md-0" >
+          <form class="d-flex" >
+            <div class="d-flex flex-column flex-shrink-0 p-3 text-dark bg-white"  >
+               
+                <ul class="nav nav-pills flex-column mb-auto">
+                  <li class="nav-item">
+                    <a href="#" class="nav-link text-dark" aria-current="page">
+                      <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+                      Home
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="nav-link text-dark">
+                      <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+                      Dashboard
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="nav-link text-dark">
+                      <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
+                      Orders
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="nav-link text-dark">
+                      <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
+                      Products
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="nav-link text-dark">
+                      <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
+                      Customers
+                    </a>
+                  </li>
+                </ul>
+                
+                <div class="dropdown">
+                  <a href="#" class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                    <strong>mdo</strong>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                    <li><a class="dropdown-item" href="#">New project...</a></li>
+                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Sign out</a></li>
+                  </ul>
+                </div>
+              </div>
+          </form>
+
+
+        </ul>
+      </div>
+
+    </div>
+  </div>
     <div class="container">
         <div class="home-weapper">
 
+<!-- LEFT -->
+  
+
+<!-- LEft -->
+
+
               <!-- home left start here -->
-            <div class="home-left">
+           <!--  <div class="home-left">
 
                 <div class="profile">
                     <img src="images/user.jpg" alt="user">
@@ -107,42 +184,40 @@
                     <button class="see-more-btn">See more <i class="fa-solid fa-angle-down"></i></button>
                 </div>
                 
-            </div><!-- home left end here -->
-  
+            </div>home left end here
+  -->
   <div class="home-center">
-    <div class="home-center-wrapper">
+    <div class="home-center-wrapper" >
    <div class="createPost">
       
   
                           <h3 class="mini-headign">Create Post</h3>
                           <div class="p-title">
-                          <input type="text" name="title" id="title" [(ngModel)]="post.title" placeholder="Post's Title ,here">
+                          <input type="text" name="title" id="title" [(ngModel)]="post.title" placeholder="Post's Title ,here" style="background-color: rgba(145, 150, 150, 0.37);">
                           
                       </div>
                           
                           <div class="post-text">
                               <img src="assets/images/user.jpg" alt="user">
-                              <input type="text-area" name="content" id="content" [(ngModel)]="post.content" placeholder="What's on your mind, Camper ">
+                              <input type="text-area" name="content" id="content" [(ngModel)]="post.content" placeholder="What's on your mind, Camper " style="background-color: rgba(115, 115, 115, 0.26);">
                           </div>
   
                           <div class="post-icon">
-                              <a style="background: #ffebed;">
-                              <i style="background: #ff4154;" class="fa-solid fa-camera"></i>
-                              <label for="media">media</label>
-                              <input  type="file" (change)="onFileSelected($event)" class="form-"> 
+                              <a style="background-color: rgba(115, 115, 115, 0.26) ;" >
+                               <i style="background: #5859585d;height: 30%;" class="fa-solid fa-camera"> </i> 
+                              <label for="media"  ></label>
+                              <input style="color: #fefefe;"  type="file" (change)="onFileSelected($event)"     > 
                               
                               </a>
                               
   
-                              <a href="#" style="background: #d7ffef;">
-                              <i style="background: #00d181;" class="fa-solid fa-location-dot"></i>
-                              Location</a>
+
   
                               
                               
-                              <a href="#" style="background: #fff4d1;">
+                              <!-- <a href="#" style="background: #fff4d1;">
                               <i style="background: #ffca28;" class="fa-solid fa-face-grin-beam"></i>
-                              Feeling / Acrivity</a>
+                              Feeling / Acrivity</a> -->
   
                           </div>
                           <button  (click)="addPostandImage(post,file,'1')" type="button" class="btn btn-primary " >Add your post</button>
@@ -172,18 +247,20 @@
     
         </ul>
     </div>
-    <div class="fb-post1 m-3" *ngFor="let post of posts">
+    <div class="fb-post1 m-3" *ngFor="let post of posts | filter:word;" >
         <div class="fb-post1-container ">
         
-            <div class="fb-p1-main">
+            <div class="fb-p1-main" >
                 <div class="post-title">
-                    <img src="assets/images/user.jpg" alt="user picture">
-                    <ul>
-                        <li><h3>Arham Kabir</h3></li>
-                        <li><span>02 march at 12:55 PM</span></li>
-                    </ul>
-                   
+
+                        <img src="assets/images/user.jpg" alt="user picture">
+                        <ul>
+                            <li><h3>Arham Kabir</h3></li>
+                            <li><span>{{post.creationDate | date}}</span></li>
+                        </ul>
+            
                 </div>
+                <div style="background: #58595810;" class="dora">
                 <h2 class="p-title">{{ post.title }}</h2>
                 <p class="p-content">{{post.content}}
                 </p>
@@ -191,7 +268,7 @@
                 <div class="post-images">
                     <div class="post-images1">
                         <img [src]="'http://localhost:8090/image/getImage/'+ post.image.id" class="image" alt="image post" alt="post's image">
-                      
+                      </div>
                     </div>
                     <div class="post-images2">
                         
@@ -201,11 +278,18 @@
                 <div class="like-comment">
                     <ul>
                         <li>
-                            <i class="bi bi-hand-thumbs-up"></i>
-                            <span>22k like</span>
+                           <button (click)="addlike(post)">  <i class="bi bi-hand-thumbs-up"></i>
+                           </button>
+                         
+                        </li>
+                        <li>
+                          <span>{{num}}</span>
                         </li>
                         <li><i class="fa-regular fa-comment-dots"></i> <span>555 comments</span></li>
                         <li><i class="fa-solid fa-share-from-square"></i> <span>254 share</span></li>
+                        <li><i class="bi bi-arrow-clockwise"></i><button type="button" class="btn btn-primary" (click)="updatePost(post.id)"> Update</button>
+                        <li><i class="bi bi-arrow-clockwise"></i><button type="button" class="btn btn-primary" (click)="deletePost(post.id)"> Delete</button>
+                        </li>
                     </ul>
                 </div>
             </div>

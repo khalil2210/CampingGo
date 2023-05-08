@@ -17,6 +17,8 @@ import { AddChatroomComponent } from './chat_app/Pop_up/add-chatroom/add-chatroo
 import { EditChatroomComponent } from './chat_app/Pop_up/edit-chatroom/edit-chatroom.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PostComponent } from './Post/post/post/post.component';
+import { UpdatePostComponent } from './Post/update-post/update-post.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +28,9 @@ import { PostComponent } from './Post/post/post/post.component';
     MessageComponent,
     AddChatroomComponent,
     EditChatroomComponent,
-    PostComponent
+    PostComponent,
+    UpdatePostComponent,
+    
   ],
 
   imports: [
@@ -40,6 +44,7 @@ import { PostComponent } from './Post/post/post/post.component';
     HttpClientModule,
     BrowserAnimationsModule,
     MatDialogModule,
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

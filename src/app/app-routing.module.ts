@@ -8,9 +8,11 @@ import { PaymentComponent } from './Equipment/payment/payment.component';
 import { ChatComponent } from './chat_app/chat/chat.component';
 import { MessageComponent } from './chat_app/message/message.component';
 import { PostComponent } from './Post/post/post/post.component';
+import { UpdatePostComponent } from './Post/update-post/update-post.component';
 
 const routes: Routes = [
   {path:'post',component:PostComponent},
+  {path:'updatePost/:id',component:UpdatePostComponent},
 {path:'',redirectTo:'home',pathMatch:'full'},
 { path: 'home',component: ComponentsComponent },
 {path:'shop',  component:TemplateComponent}
@@ -27,6 +29,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [CommonModule,BrowserModule,RouterModule.forRoot(routes)],
-  exports: []})
+  exports: [RouterModule]})
 
 export class AppRoutingModule { }

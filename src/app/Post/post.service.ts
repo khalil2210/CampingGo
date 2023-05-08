@@ -2,13 +2,18 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
+import { Post } from './Post';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
 
+
   private baseUrl = 'http://localhost:8090/post';
+
+  liste:any[]=[]
+  posts: any;
 
   constructor(private http: HttpClient) { }
 
@@ -16,20 +21,20 @@ export class PostService {
     return this.http.get<any>("http://localhost:8090/post/allPosts");
   }
 
-  getPostById(id: number): Observable<any> {
-    return this.http.get('${this.baseUrl}/postById/${id}');
+  getPostById(id: any): Observable<any> {
+    return this.http.get(`${this.baseUrl}/postById/${id}`);
   }
 
   addPost(post: any): Observable<any> {
     return this.http.post("http://localhost:8090/post/addPost", post);
   }
 
-  updatePost(id: number, post: any): Observable<any> {
+  updatePost(post: any): Observable<any> {
     return this.http.put("http://localhost:8090/post/updatePost", post);
   }
 
-  deletePost(id: number): Observable<any> {
-    return this.http.delete("http://localhost:8090/deletePost/${id}");
+  deletePost(id: any): Observable<any> {
+    return this.http.delete(`http://localhost:8090/post/deletePost/${id}`);
   }
 
   
@@ -44,6 +49,10 @@ export class PostService {
     formData.append('file', fileInput);
     formData.append('userId',userId);
     return this.http.post(url, formData,{headers});
+  }
+ 
+  recherchePosts(word: any): Observable<Post[]> {
+    return this.http.get<Post[]>(`http://localhost:8090/post/rechreche?word=${word}`);
   }
 
 }

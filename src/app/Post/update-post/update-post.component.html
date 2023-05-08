@@ -1,0 +1,43 @@
+
+<!-- <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm.value)">
+    <div>
+      <label for="title">title:</label>
+      <input class="form-control" type="text" id="title" name="title" [(ngModel)]="post.title" required ngModel>
+    </div>
+    <div>
+      <label for="Content">Content</label>
+      <input class="form-control" type="text" id="Content" name="content" [(ngModel)]="post.content" required ngModel>
+    </div>
+    <button type="submit">Update</button>
+  </form> -->
+  
+  <div class="home-center">
+    <div class="home-center-wrapper" >
+   <div class="createPost">
+      
+    <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm.value)">
+                          <h1 class="mini-headign" style="font-family:Poppins ;">Update your Post</h1>
+   <div class="update">
+                          <div class="p-title">
+                            
+                            <label for="title" style="margin-top: 4%;">title:</label>
+                          <input type="text" name="title" id="title" [(ngModel)]="post.title" required ngModel placeholder="Post's Title ,here" style="background-color: rgba(145, 150, 150, 0.37);">
+                          
+                      </div>
+                          
+                          <div class="post-text">
+                              <img src="assets/images/user.jpg" alt="user">
+                              <label for="Content">Content</label>
+                              <input type="text-area" name="content" id="content" [(ngModel)]="post.content" required ngModel placeholder="What's on your mind, Camper " style="background-color: rgba(115, 115, 115, 0.26);">
+                              <button type="submit" style="margin-left: 80%;">Update</button>
+                            
+                            </div>
+
+                          </div>
+  
+
+                          
+    </form>
+    <img src="/assets/1.png" alt="logo" style="position:relative; width: 100%;">
+
+   </div>

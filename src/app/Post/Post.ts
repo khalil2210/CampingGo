@@ -5,6 +5,9 @@ export class Post {
     image!: Image;
     authorId!: number;
     creationDate!: Date;
+    LikesNumber!:number;
+    Likes!:any
+ 
 
   
     // constructor(
