@@ -68,7 +68,7 @@ export class ChatApiService {
     return this.http.get(url,{params});
   }
 
-  //to be implemented
+
   addUserToChatroom(username:string,chatroomId:number){
     const url='http://localhost:8090/chatroom/addUserToChatroom'
     const params = new HttpParams()
@@ -78,8 +78,6 @@ export class ChatApiService {
     return this.http.post(url,params);
   }
 
-
-  //to be implemented
   removeUserFromChatroom(username:string,chatroomId:number){
     const url='http://localhost:8090/chatroom/removeUserFromChatroom'
     const params = new HttpParams()
@@ -88,10 +86,19 @@ export class ChatApiService {
     return this.http.delete(url,{params});
   }
 
-
 getUserById(id:number){
   const url='http://localhost:8090/users/get-user-by-id/'+id
   return  this.http.get(url);
 }
 
+
+updateChatroom(chatroomId:number,image:File,chatroomName:string){
+  const url='http://localhost:8090/chatroom/updateChatroom/'+chatroomId
+  const formData = new FormData();
+  const headers = new HttpHeaders();
+  headers.append('Content-Type', 'multipart/form-data');
+  formData.append('chatroomName', chatroomName);
+  formData.append('image', image);
+  return this.http.put(url, formData,{headers});
+}
 }

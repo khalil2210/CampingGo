@@ -104,7 +104,6 @@
 </div>
 </div>
 
-
 <!-- ////modal edit -->
 <div class="modal" tabindex="-1"  id="edit">
   <div class="modal-dialog">
@@ -121,7 +120,7 @@
           <input type="text" class="form-control rounded "placeholder="Chatroom name" [(ngModel)]="chatroomName">
         </div>
         <div class="m-3">
-          <input type="file" (change)="onFileSelected($event)" class="form-control w-100">
+          <input type="file"(change)="onFileSelectedUpdate($event)" class="form-control w-100">
         </div>
           <h3 class="text-center">Users</h3>
       <!-- users List -->
@@ -132,7 +131,7 @@
           <span style="font-size: 15px;">{{user.username}}</span>
           <button class="btn btn-danger" (click)="removeUserFromChatroom(user.username,chatroomId!)" style="font-size: 0.5rem; padding: 0.1rem 0.1rem;">Remove</button>
         </div>
-      
+
       </div>
       </div>
           <!-- add User -->
@@ -142,7 +141,7 @@
               <input type="input" [(ngModel)]="usernametToAdd" class="form-control w-100" placeholder="Enter Username">
             </div>
             <div class="col-md-4">
-              <button class="btn btn-primary" (click)="addUserToChatroom(usernametToAdd!,chatroomId!)">
+              <button class="btn" (click)="addUserToChatroom(usernametToAdd!,chatroomId!)">
                 <i class="bi bi-person-plus"></i>
                 <span class="m-1">Add User</span>
               </button>
@@ -150,7 +149,8 @@
           </div>
         </div>
         </div>
-    <div class="modal-footer">
+    <div class="modal-footer m-3">
+      <button class="btn  btn-primary" (click)="updatechatroom()">Save</button>
     </div>
     </div>
   </div>

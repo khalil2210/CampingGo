@@ -1,5 +1,3 @@
-import { MatDialog ,MatDialogRef } from '@angular/material/dialog';
-
 import { Component, OnInit } from '@angular/core';
 import { ChatApiService } from 'src/app/services/chat-api.service';
 import { User } from 'src/app/core/model/user';
@@ -15,11 +13,12 @@ export class ChatComponent implements OnInit {
   chatroomList:any[]= [];
   inputValue:String='';
   userId!:number;
-  selectedChatroom?:any;
+  //selectedChatroom?:any;
   chatroomId?:number;
   usernametToAdd?:string;
   chatroomName?:string;
   imageFile?:any;
+  updateImageFile?:any;
   usersList:User[]=[];
   constructor(
     private apiService:ChatApiService,
@@ -30,7 +29,9 @@ export class ChatComponent implements OnInit {
       this.imageFile = event.target.files[0];
     }
 
-
+    onFileSelectedUpdate(event:any) {
+      this.updateImageFile = event.target.files[0];
+    }
 
 ngOnInit(): void {
   this.route.queryParams.subscribe(params=>{
@@ -70,8 +71,6 @@ getAllUsersByChatroom(){
   this.usersList=this.apiService.getAllUsersByChatroom(this.chatroomId!)
 }
 
-
-//
 addUserToChatroom(username:string,chatroomId:number){
   this.apiService.addUserToChatroom(username,chatroomId).subscribe({
     next:(res:any)=>{
@@ -92,7 +91,7 @@ this.usersList.push({
   })
 }
 
-//to be moved to chatroom
+
 removeUserFromChatroom(username:string,chatroomId:number){
   this.apiService.removeUserFromChatroom(username,chatroomId).subscribe({
     next:(res:any)=>{
@@ -112,5 +111,15 @@ removeUserFromChatroom(username:string,chatroomId:number){
 
     }
   })
+}
+
+updatechatroom(){
+this.apiService.updateChatroom(this.chatroomId!,this.updateImageFile,this.chatroomName!).subscribe((res)=>{
+  let position = this.chatroomList.findIndex(chatroom => chatroom.id === this.chatroomId);
+  this.chatroomList.splice(position,1,res);
+  this.ngOnInit()
+}
+);
+
 }
 }
