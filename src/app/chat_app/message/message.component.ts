@@ -4,6 +4,7 @@ import { ChatApiService } from 'src/app/services/chat-api.service';
 import { Stomp } from '@stomp/stompjs';
 import * as SockJS from 'sockjs-client';
 import { MatDialog } from '@angular/material/dialog';
+import { User } from 'src/app/core/model/user';
 @Component({
   selector: 'app-message',
   templateUrl: './message.component.html',
@@ -12,19 +13,18 @@ import { MatDialog } from '@angular/material/dialog';
 export class MessageComponent {
   messageList:any[]= [];
   idChatroom?:number;
-  sender:number=Number(localStorage.getItem("id"));
+  senderId:number=Number(localStorage.getItem("id"));
   inputSendMessage:String='';
   selectedFile?: any;
   private stompClient:any ;
   chatroomName:any;
+  userImageId!:number;
 
 
   constructor(
     private apiService:ChatApiService,
     private route: ActivatedRoute,
-    private dialog:MatDialog){}
-
-
+ ){}
 
   ngOnInit(): void {
   this.route.params.subscribe(params=>{
@@ -36,7 +36,10 @@ export class MessageComponent {
      this.messageList.push(JSON.parse(greeting.body))
     });
       });
+this.apiService.getUserById(this.senderId).subscribe((data:any)=>{
+  this.userImageId=data.profileImage.id;
 
+})
 this.route.queryParams.subscribe(params=>{
 this.chatroomName=params["name"];
     });
@@ -49,7 +52,10 @@ this.chatroomName=params["name"];
 
 onFileSelected(event:any) {
   this.selectedFile = event.target.files[0];
+  console.log(this.selectedFile);
+
 }
+
 
 
 getMessagesBychatroom(idChatroom: number){
@@ -61,9 +67,11 @@ getMessagesBychatroom(idChatroom: number){
 }
 
 sendMessageWebSocket(message:any,chatroomId:number){
+  if(this.inputSendMessage!=''){
 this.stompClient.send("/app/sendMessageToChatroom/" +chatroomId, {},
 JSON.stringify(message));
 this.inputSendMessage=''
+}
 }
 
 sendImageWebSocket(
@@ -74,11 +82,9 @@ sendImageWebSocket(
       const blob = new Blob([buffer!], { type: this.selectedFile.type });
       // Send the blob over the WebSocket
         const headers = {
-          'content-type': this.selectedFile.type,
-          'content-length': blob.size
-        };
-        console.log(this.selectedFile);
-
+        //   'content-type': this.selectedFile.type,
+           'content-length': blob.size
+         };
       this.stompClient.send(
         "/app/sendImageToChatroom",headers,blob);
     });
