@@ -26,8 +26,6 @@ export class MessageComponent {
     private route: ActivatedRoute,
  ){}
 
-
-
   ngOnInit(): void {
   this.route.params.subscribe(params=>{
     var socket = new SockJS('http://localhost:8090/ws-websocket');

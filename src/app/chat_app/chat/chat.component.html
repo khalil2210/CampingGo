@@ -66,6 +66,7 @@
 </div>
 </div>
 </div>
+<!-- ////modal add -->
 <div class="modal" tabindex="-1"  id="ajouter">
 <div class="modal-dialog">
 <div class="modal-content">
@@ -102,6 +103,9 @@
   </div>
 </div>
 </div>
+
+
+<!-- ////modal edit -->
 <div class="modal" tabindex="-1"  id="edit">
   <div class="modal-dialog">
   <div class="modal-content">
@@ -124,10 +128,11 @@
       <div class="flex-wrap d-flex flex-row">
       <div *ngFor="let user of usersList">
         <div class="d-flex align-items-center flex-column m-3">
-          <img [src]="'http://localhost:8090/image/getImage/'+user.profileImage.id" alt="User avatar" style="border-radius: 50%; width: 70px; max-height: 70px;">
-          <h4 class="ml-3 mb-0">{{user.username}}</h4>
-          <h5 class="btn btn-danger" (click)="removeUserFromChatroom(user.username,chatroomId!)" style="font-size: 0.5rem; padding: 0.1rem 0.1rem;">Remove</h5>
+          <img [src]="'http://localhost:8090/image/getImage/'+user.profileImage.id" alt="User avatar" style="border-radius: 50%; width: 45px;height: 45px;">
+          <span style="font-size: 15px;">{{user.username}}</span>
+          <button class="btn btn-danger" (click)="removeUserFromChatroom(user.username,chatroomId!)" style="font-size: 0.5rem; padding: 0.1rem 0.1rem;">Remove</button>
         </div>
+      
       </div>
       </div>
           <!-- add User -->
@@ -151,24 +156,3 @@
   </div>
   </div>
 </div>
-<div class="modal" tabindex="-1"  id="ajouter">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title"><h3 mat-dialog-title>Add a chatroom</h3>
-        </h5>
-      </div>
-      <div class="modal-body">
-        <div class="d-flex flex-column align-items-center justify-content-between">
-
-          <div class="m-2 w-100 ">
-            <input type="text" class="form-control"placeholder="Chatroom name" [(ngModel)]="chatroomName">
-          </div>
-          <div class="m-2 w-100">
-            <input type="file" (change)="onFileSelected($event)" class="form-control">
-          </div>
-          </div>
-      </div>
-      </div>
-    </div>
-  </div>

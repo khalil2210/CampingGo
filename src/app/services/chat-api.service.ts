@@ -1,10 +1,29 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
+import { User } from '../core/model/user';
+
 @Injectable({
   providedIn: 'root'
 })
 export class ChatApiService {
+  usersList:User[]=[];
+
+  getAllUsersByChatroom(chatroomId:number){
+    this.usersList=[]
+    this.getAllusersByChatroomService(chatroomId).subscribe({
+    next:(res:any)=>{
+    for (let index = 0; index < res.length; index++) {
+    this.usersList.push({
+    id:res[index].id,
+    firstName:res[index].firstName,
+    lastName:res[index].lastName,
+    username:res[index].username,
+    profileImage:{id:res[index].profileImage.id}
+    })}}
+    })
+  return this.usersList
+    }
   constructor(private http:HttpClient) {}
 
   getChatrooms(){
@@ -43,7 +62,7 @@ export class ChatApiService {
    }
 
 
-  getAllusersByChatroom(chatroomId:number){
+  getAllusersByChatroomService(chatroomId:number){
     const url='http://localhost:8090/chatroom/getAllUsersByChatroom'
     const params = new HttpParams().set('chatroomId', chatroomId);
     return this.http.get(url,{params});

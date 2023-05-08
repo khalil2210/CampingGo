@@ -16,12 +16,15 @@ export class ChatComponent implements OnInit {
   inputValue:String='';
   userId!:number;
   selectedChatroom?:any;
+  chatroomId?:number;
+  usernametToAdd?:string;
+  chatroomName?:string;
+  imageFile?:any;
+  usersList:User[]=[];
   constructor(
     private apiService:ChatApiService,
-    private route: ActivatedRoute){}
-    chatroomName?:string;
-    imageFile?:any;
-
+    private route: ActivatedRoute
+    ){}
 
     onFileSelected(event:any) {
       this.imageFile = event.target.files[0];
@@ -33,6 +36,7 @@ ngOnInit(): void {
   this.route.queryParams.subscribe(params=>{
     this.chatroomName=params["name"];
     this.chatroomId=params["chatroomId"];
+    this.usersList=this.apiService.getAllUsersByChatroom(this.chatroomId!);
           });
 this.getChatrooms();
 this.userId=Number(localStorage.getItem("id"))
@@ -49,7 +53,6 @@ this.apiService.getChatrooms().subscribe({
 addChatroom(chatroom:any,image:any){
   this.apiService.addChatroom(chatroom,image).subscribe({
     next:(res:any)=>{
-
       this.chatroomList.push(res)},
     complete:()=>{
       this.inputValue=''
@@ -62,27 +65,12 @@ deleteChatroom(chatroomId:number,index:number){
   this.apiService.deleteChatroom(chatroomId).subscribe({
     complete:()=>this.chatroomList.splice(index,1)})
 }
-chatroomId?:number;
 
-usernametToAdd?:string;
-usersList:User[]=[];
-
-//to be moved to chatroom works
-getAllUsersByChatroom(chatroomId:number){
-this.apiService.getAllusersByChatroom(chatroomId).subscribe({
-next:(res:any)=>{
-for (let index = 0; index < res.length; index++) {
-this.usersList.push({
-id:res[index].id,
-firstName:res[index].firstName,
-lastName:res[index].lastName,
-username:res[index].username,
-profileImage:{id:res[index].profileImage.id}
-})}},
-complete:()=>{}
-})
-
+getAllUsersByChatroom(){
+  this.usersList=this.apiService.getAllUsersByChatroom(this.chatroomId!)
 }
+
+
 //
 addUserToChatroom(username:string,chatroomId:number){
   this.apiService.addUserToChatroom(username,chatroomId).subscribe({
