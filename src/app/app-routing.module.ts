@@ -23,6 +23,9 @@ import { UserGuard } from './Equipment/guards/user.guard';
 import { OrdersComponent } from './Equipment/dashboard/orders/orders.component';
 import { ListepaymentComponent } from './Equipment/dashboard/listepayment/listepayment.component';
 import { PopUpComponent } from './pop-up/pop-up.component';
+import { ReviewComponent } from './review/review.component';
+import { UpdateReviewComponent } from './update-review/update-review.component';
+
 import { AccueilComponent } from './accueil/accueil.component';
 import { CommentComponent } from './comment/comment.component';
 import { SignupComponent } from './user_module/signup/signup.component';
@@ -61,7 +64,13 @@ const routes: Routes = [
 
 {path: 'accueil', component:AccueilComponent},
 
-{path: 'pop-up', component:PopUpComponent},
+{path: 'review', component:ReviewComponent},
+{path: 'pop-up/:id', component:ReviewComponent},
+
+
+
+
+
 
 {path:'login',component:LoginComponent},
 {path:"groupcamping",component:AllGroupCampingComponent},

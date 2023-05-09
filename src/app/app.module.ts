@@ -22,7 +22,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
 import { PostComponent } from './Post/post/post/post.component';
 import { UpdatePostComponent } from './Post/update-post/update-post.component';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NotfoundComponent } from './Equipment/notfound/notfound.component';
 import { LoginComponent } from './Equipment/login/login.component';
 import { AjouterComponent } from './Equipment/dashboard/ajouter/ajouter.component';
@@ -30,7 +29,13 @@ import { ListeComponent } from './Equipment/dashboard/liste/liste.component';
 import { OrdersComponent } from './Equipment/dashboard/orders/orders.component';
 import { ListepaymentComponent } from './Equipment/dashboard/listepayment/listepayment.component';
 import { PopUpComponent } from './pop-up/pop-up.component';
+import { ReviewComponent } from './review/review.component';
+import { NgxStarRatingModule } from 'ngx-star-rating';
+import { UpdateReviewComponent } from './update-review/update-review.component';
 import { SignupComponent } from './user_module/signup/signup.component';
+import { AccueilComponent } from './accueil/accueil.component';
+import { CommentComponent } from './comment/comment.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 @NgModule({
@@ -40,21 +45,37 @@ import { SignupComponent } from './user_module/signup/signup.component';
     FooterComponent,
     ChatComponent,
     MessageComponent,
-    AllGroupCampingComponent,
-    AddgroupcampingComponent,
-    MapComponent,
-    RechercheGpComponent,
-    NotfoundComponent,
-    LoginComponent,
-    AjouterComponent,
-    ListeComponent,
-    OrdersComponent,
-    ListepaymentComponent,
+    CommentComponent,
+    AccueilComponent,
     PopUpComponent,
-    SignupComponent,
-    PostComponent,
-    UpdatePostComponent,
-  ],
+      ReviewComponent,
+      UpdateReviewComponent,
+      NotfoundComponent,
+      LoginComponent,
+      AjouterComponent,
+      ListeComponent,
+      OrdersComponent,
+      ListepaymentComponent,
+      PopUpComponent,
+      SignupComponent,
+      AllGroupCampingComponent,
+      AddgroupcampingComponent,
+      MapComponent,
+      RechercheGpComponent,
+      NotfoundComponent,
+      LoginComponent,
+      AjouterComponent,
+      ListeComponent,
+      OrdersComponent,
+      ListepaymentComponent,
+      PopUpComponent,
+      SignupComponent,
+      SignupComponent,
+      PostComponent,
+      UpdatePostComponent,
+  
+      
+   ],
 
   imports: [
   BrowserModule,
@@ -67,6 +88,8 @@ import { SignupComponent } from './user_module/signup/signup.component';
     HttpClientModule,
     BrowserAnimationsModule,
     MatDialogModule,
+    NgxStarRatingModule,
+    NgbRatingModule,
     Ng2SearchPipeModule
     
 
@@ -76,5 +99,6 @@ import { SignupComponent } from './user_module/signup/signup.component';
   ],
   providers: [],
   bootstrap: [AppComponent]
+  
 })
 export class AppModule { }
