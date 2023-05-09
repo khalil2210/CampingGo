@@ -5,7 +5,6 @@ export interface User {
   username:     string;
   profileImage: ProfileImage;
 }
-
 export interface ProfileImage {
   id: number;
 }

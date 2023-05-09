@@ -1,4 +1,4 @@
-<head>
+<head >
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,7 +25,8 @@
             <div class="iconBox1">
                 <i class="fa-solid fa-house"></i>
                 <i class="fa-solid fa-user-group"></i>
-<a  href="https://meet.google.com" target="_blank">                <i class="fa-solid fa-video"></i>
+<a  href="https://meet.google.com" target="_blank">      
+            <i class="fa-solid fa-video"></i>
 </a>            </div>
 
         </div>
@@ -233,14 +234,14 @@
         </ul>
     </div>
     <div class="fb-post1 m-3" *ngFor="let post of posts | filter:word;" >
-        <div class="fb-post1-container ">
+        <div class="fb-post1-container " >
         
             <div class="fb-p1-main" >
                 <div class="post-title">
 
                         <img src="assets/images/user.jpg" alt="user picture">
                         <ul>
-                            <li><h3>Arham Kabir</h3></li>
+                            <li><h3>{{post.title}}</h3></li>
                             <li><span>{{post.creationDate | date}}</span></li>
                         </ul>
             

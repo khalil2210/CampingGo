@@ -1,0 +1,56 @@
+<!-- <div class="main">
+  <div class="d-flex align-items-center mb-5" *ngFor="let x of liste ">
+    <div class="flex-shrink-0">
+      <img src="{{this.host+'/image/getImage/'+x.image.id}}"
+        class="img-fluid" style="width: 150px;" alt="Generic placeholder image">
+    </div>
+
+  </div>
+</div> -->
+<div class="container d-flex justify-content-center mt-50 mb-50" >
+
+  <div class="row">
+     <div class="col-md-10"  >
+
+          <div class="card card-body mt-3" *ngFor="let o of orders1 " >
+                      <div class="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">
+                          <div class="mr-2 mb-3 mb-lg-0" *ngFor="let x of liste ">
+
+                            <img src="{{this.host+'/image/getImage/'+x.image.id}}"
+                            class="img-fluid" style="width: 150px;" alt="Generic placeholder image">
+                          </div>
+
+                          <div class="media-body" >
+                            <table class="table">
+                              <thead>
+                                <th>#</th>
+                                <th>email</th>
+                                <th>user</th>
+                                <th>Total</th>
+                                <th>Date</th>
+                              </thead>
+                              <tbody>
+                                <tr >
+                                  <td>{{o.id}}</td>
+                                  <td scope="row">{{o.name}}</td>
+                                  <td>{{o.name}}</td>
+                                  <td>{{o.amount}}</td>
+
+                                  <td>{{o.createdAt}}</td>
+                                </tr>
+
+                              </tbody>
+                            </table>
+                            <ul class="list-inline list-inline-dotted mb-0">
+                             <span style="color: coral;"> email : {{o.email}}</span>
+                          </ul>
+
+                          </div>
+
+
+
+                      </div>
+                  </div>
+  </div>
+  </div>
+</div>

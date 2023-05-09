@@ -2,14 +2,21 @@
 <header class="bg-dark py-5" style="background-image: url('assets/img/antoine-barres.jpg')">
   <div class="container px-5 px-lg-5 my-5">
     <div class="text-center text-white">
-      <h1 class="display-4 fw-bolder">Shop in style</h1>
-      <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
+      <h1 class="display-4 fw-bolder">Shop now</h1>
+      <p class="lead fw-normal text-white-50 mb-0">With CampingGo</p>
     </div>
   </div>
 
 </header>
 
-<main class="py-5" style="background-color: #eee;">
+<div class="section image" *ngIf="Active" style="background-color: #eaeaea">
+<div class="container px-5 px-lg-5 my-5">
+  <div class="row gx-5 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"></div>
+  <div class="alert alert-danger text-center center-alert" *ngIf="Active">{{msg}}</div>
+
+</div>
+</div>
+<main class="py-5" style="background-color: #eaeaea;padding: 20px;">
   <div class="navbar fixed-bottom navbar-expand-lg navbar-transparent bg-light"
     style="padding-bottom: 70px;margin-left: 1380px;">
     <div class="container-fluid">
@@ -17,7 +24,8 @@
       <div class="navbar-collapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           <form class="d-flex">
-            <button class="btn btn-success ms-3 vibration-button" style="border-radius: 20px 20px;" (click)="tobuy()"
+
+            <button class="btn btn-success ms-3" style="border-radius: 20px 20px;color:grey" (click)="tobuy()"
               type="submit">
               <i class="bi-cart-fill me-1"></i>
               <span class="badge bg-success text-dark ms-2 rounded-pill">{{num}}</span>
@@ -30,8 +38,37 @@
 
     </div>
   </div>
+
+  <div class="navbar fixed-bottom  navbar-transparent bg-light"
+  style="padding-bottom: 100px;margin-right: 1380px;" >
+  <div class="container-fluid" >
+
+    <div class="navbar-collapse" >
+      <div class="col-md-5">
+      <h4 style="font-family: 'Courier New', Courier, monospace;color: burlywood;">Filter:</h4>
+        <div class="list-group">
+          <button type="submit" class="btn-naturel" name="Mat" id="Mat" (click)="reset()" style="font-size:larger;display: block;color: rgb(47, 24, 9);">All</button>
+          <button  type="submit" name="Mat" id="Mat" (click)="type('Mat')" style="font-size:larger;display: block;color: rgb(47, 24, 9);">Mat</button>
+          <button  type="submit" name="Mat" id="Mat" (click)="type('Sleeping')" style="font-size:larger;display: block;color: rgb(47, 24, 9);">Sleeping</button>
+          <button  type="submit" name="Mat" id="Mat" (click)="type('bag')" style="font-size:larger;display: block;color: rgb(47, 24, 9);">bag</button>
+          <button  type="submit" name="Mat" id="Mat" (click)="type('Rope')" style="font-size:larger;display: block;color: rgb(47, 24, 9);">Rope</button>
+          <button  type="submit" name="Mat" id="Mat" (click)="type('Water')" style="font-size:larger;display: block;color: rgb(47, 24, 9);">Water</button>
+          <button  type="submit" name="Mat" id="Mat" (click)="type('Bottles')" style="font-size:larger;display: block;color: rgb(47, 24, 9);">Bottles</button>
+          <button  type="submit" name="Mat" id="Mat" (click)="type('FirstAids')" style="font-size:larger;display: block;color: rgb(47, 24, 9);">FirstAids</button>
+          <button  type="submit" name="Mat" id="Mat" (click)="type('Flashlights')" style="font-size:larger;display: block;color: rgb(47, 24, 9);">Flashlights</button>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
   <div class="container px-4 px-lg-5 mt-5">
-    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 flex-wrap-nowrap">
+    <div class="row product-list gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 flex-wrap-nowrap">
+
+
+
+
       <div class="col mb-5" *ngFor="let x of liste">
         <div class="card h-100">
           <!-- Product image-->
@@ -40,20 +77,35 @@
           <div class="card-body p-4">
             <div class="text-center">
               <!-- Product name-->
-              <h5 class="fw-bolder">{{x.name}}</h5>
+              <h5 class="fw-bold mb-0">{{x.name}}</h5>
               <!-- Product price-->
               Price: {{x.price}}
               <h5>Description: {{x.description}}</h5>
-            </div>
+          </div>
           </div>
           <!-- Product actions-->
           <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-            <div class="text-center"><button class="btn btn-dark mt-auto" (click)="Cart(x)" type="submit">Add to
-                cart</button>
+
+
+            <div class="text-center">
+
+              <ngb-rating [(rate)]="x.rate">
+                <ng-template let-fill="fill" let-index="index">
+                  <i class="bi-star{{fill === 100 ? '-fill' : ''}}" [class.filled]="fill === 100" (click)="rate(x)" [class.low]="index < 3"></i>
+                </ng-template>
+              </ngb-rating>
+              <hr />
+              <pre>Rate: <b>{{x.rate}}</b></pre>
+               <button class="btn btn mt-auto" [disabled]="x.quantity==0" (click)="Cart(x)" type="submit"> <i class="bi-cart-fill me-1"></i></button>
+
+
+
               <button type="submit" (click)="like(x)" class="btn btn-danger">
                 <i class="bi bi-heart"></i>
                 {{x.likeii}}
               </button>
+
+
 
             </div>
           </div>
@@ -61,4 +113,11 @@
       </div>
     </div>
   </div>
+
+
+
 </main>
+
+
+
+

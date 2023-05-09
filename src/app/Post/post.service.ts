@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
 import { Post } from './Post';
+import { User } from '../Equipment/Model/User';
 
 @Injectable({
   providedIn: 'root'
@@ -54,5 +55,7 @@ export class PostService {
   recherchePosts(word: any): Observable<Post[]> {
     return this.http.get<Post[]>(`http://localhost:8090/post/rechreche?word=${word}`);
   }
-
+  getUserById(id: number): Observable<User> {
+    return this.http.get<User>(`http://localhost:8090/users/get-user-by-id/${id}`);
+  }
 }

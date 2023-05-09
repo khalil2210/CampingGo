@@ -4,6 +4,7 @@ import { DOCUMENT } from '@angular/common';
 import { LocationStrategy, PlatformLocation, Location } from '@angular/common';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { filter, Subscription } from 'rxjs';
+import { AuthService } from './Equipment/service/auth.service';
 
 @Component({
     selector: 'app-root',
@@ -14,7 +15,8 @@ export class AppComponent implements OnInit {
     private _router: Subscription = new Subscription;
     @ViewChild(NavbarComponent) navbar!: NavbarComponent;
 
-    constructor( private renderer : Renderer2, private router: Router, @Inject(DOCUMENT,) private document: any, private element : ElementRef, public location: Location) {}
+
+    constructor(public AuthService:AuthService, private renderer : Renderer2, private router: Router, @Inject(DOCUMENT,) private document: any, private element : ElementRef, public location: Location) {}
     ngOnInit() {
         var navbar : HTMLElement = this.element.nativeElement.children[0].children[0];
         this._router = this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event) => {

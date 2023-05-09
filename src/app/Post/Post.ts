@@ -1,3 +1,5 @@
+import { User } from "../Equipment/Model/User";
+
 export class Post {
     id!: number;
     title!: string;
@@ -7,6 +9,7 @@ export class Post {
     creationDate!: Date;
     LikesNumber!:number;
     Likes!:any
+  user!: User
  
 
   

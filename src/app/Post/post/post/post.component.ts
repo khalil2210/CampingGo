@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Post } from '../../Post';
 import { PostService } from '../../post.service';
 import { Router } from '@angular/router';
+import { User } from 'src/app/Equipment/Model/User';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-post',
@@ -22,7 +24,8 @@ export class PostComponent {
   word:string = '';
 
 num=0
-  constructor(private postService: PostService, private router:Router) {}
+  liste:any[]=[];
+  constructor(private postService: PostService,private userService:UserService, private router:Router) {}
 
   onFileSelected(event:any) {
     this.file = event.target.files[0];
@@ -43,10 +46,21 @@ num=0
 
  })
  }
-
+ user:any[]=[]
  ngOnInit(): void {
 
   this.upload()
+const user1=this.post.user
+console.log(user1);
+
+//const userId = this.route.snapshot.paramMap.get('id');
+
+  this.userService.getUsers().subscribe(
+    data => {
+      this.user.push(data)
+    }
+  );
+
   }
 
  upload(){
@@ -105,6 +119,8 @@ post.LikesNumber++
     
   })
  }
+
+
 
  
 

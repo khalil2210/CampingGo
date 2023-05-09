@@ -1,16 +1,10 @@
-
 import { Component, Input } from '@angular/core';
-
 import { ActivatedRoute } from '@angular/router';
 import { ChatApiService } from 'src/app/services/chat-api.service';
 import { Stomp } from '@stomp/stompjs';
 import * as SockJS from 'sockjs-client';
-import { read } from '@popperjs/core';
 import { MatDialog } from '@angular/material/dialog';
-import { EditChatroomComponent } from '../Pop_up/edit-chatroom/edit-chatroom.component';
-
-
-
+import { User } from 'src/app/core/model/user';
 @Component({
   selector: 'app-message',
   templateUrl: './message.component.html',
@@ -19,26 +13,19 @@ import { EditChatroomComponent } from '../Pop_up/edit-chatroom/edit-chatroom.com
 export class MessageComponent {
   messageList:any[]= [];
   idChatroom?:number;
-  sender:number=1;
+  senderId:number=Number(localStorage.getItem("id"));
   inputSendMessage:String='';
   selectedFile?: any;
   private stompClient:any ;
   chatroomName:any;
+  userImageId!:number;
 
 
   constructor(
     private apiService:ChatApiService,
     private route: ActivatedRoute,
-    private dialog:MatDialog){}
+ ){}
 
-
-openDialog(){
-const dialogRef= this.dialog.open(EditChatroomComponent,{
-  height:'90vh',
-  width:'90vw'
-});
-dialogRef.afterClosed().subscribe((result)=>{});
-}
   ngOnInit(): void {
   this.route.params.subscribe(params=>{
     var socket = new SockJS('http://localhost:8090/ws-websocket');
@@ -49,7 +36,10 @@ dialogRef.afterClosed().subscribe((result)=>{});
      this.messageList.push(JSON.parse(greeting.body))
     });
       });
+this.apiService.getUserById(this.senderId).subscribe((data:any)=>{
+  this.userImageId=data.profileImage.id;
 
+})
 this.route.queryParams.subscribe(params=>{
 this.chatroomName=params["name"];
     });
@@ -57,11 +47,15 @@ this.chatroomName=params["name"];
   this.getMessagesBychatroom(chatroomId);
 
   })
+
 }
 
 onFileSelected(event:any) {
   this.selectedFile = event.target.files[0];
+  console.log(this.selectedFile);
+
 }
+
 
 
 getMessagesBychatroom(idChatroom: number){
@@ -72,16 +66,12 @@ getMessagesBychatroom(idChatroom: number){
 })
 }
 
-
-
-
-
-
-
 sendMessageWebSocket(message:any,chatroomId:number){
+  if(this.inputSendMessage!=''){
 this.stompClient.send("/app/sendMessageToChatroom/" +chatroomId, {},
 JSON.stringify(message));
 this.inputSendMessage=''
+}
 }
 
 sendImageWebSocket(
@@ -92,11 +82,9 @@ sendImageWebSocket(
       const blob = new Blob([buffer!], { type: this.selectedFile.type });
       // Send the blob over the WebSocket
         const headers = {
-          'content-type': this.selectedFile.type,
-          'content-length': blob.size
-        };
-        console.log(this.selectedFile);
-
+        //   'content-type': this.selectedFile.type,
+           'content-length': blob.size
+         };
       this.stompClient.send(
         "/app/sendImageToChatroom",headers,blob);
     });
@@ -104,8 +92,5 @@ sendImageWebSocket(
 }
 
 
+
 }
-
-
-
-
