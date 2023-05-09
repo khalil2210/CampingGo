@@ -1,3 +1,12 @@
+<div style="background-color: rgba(127, 255, 212, 0.068);">
+  <header class="bg-dark py-5" style="background-image: url('assets/img/antoine-barres.jpg'); color: white;">
+    <div class="container px-5 px-lg-5 my-5">
+      <div class="text-center text-white">
+        <h1 class="display-2 fw-bolder mb-0"></h1>
+        <p class="lead fw-normal text-white-50 mb-0">CampingGo</p>
+      </div>
+    </div>
+  </header>
 <head >
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +18,7 @@
   
   </head>
   
-  <header>
+  <header style="margin-top: 0%;">
   
     <div class="header-container">
         
@@ -19,13 +28,14 @@
                 <img src="/assets/1.png" alt="logo">
             </div>
             <div class="searchBox">
-                <input style="background: #5859585d; "  type="search" class="form-control mr-2" [(ngModel)]="word" placeholder="Rechercher...">
+                <input style="background: #5859585d; "  type="text" class="form-control mr-2" [(ngModel)]="word" placeholder="Rechercher...">
                 <i class="fas fa-search"></i>
             </div>
             <div class="iconBox1">
-                <i class="fa-solid fa-house"></i>
-                <i class="fa-solid fa-user-group"></i>
-<a  href="https://meet.google.com" target="_blank">      
+                <i routerLink="/post" class="fa-solid fa-house"></i>
+
+                <i routerLink="/map" class="fa-solid fa-user-group"></i>
+                <a  href="https://meet.google.com" target="_blank">      
             <i class="fa-solid fa-video"></i>
 </a>            </div>
 
@@ -37,7 +47,7 @@
     
     
       <div class="navbar fixed-bottom navbar-expand-lg navbar-transparent bg-light" 
-    style="padding-bottom: 15px;margin-bottom: 150px;border-radius: 20px;  box-shadow: 0 2px 5px 0 var(--shadow); width: 20% ; height: 60%;">
+    style="padding-bottom: 15px;margin-top: 15px; border-radius: 20px;  box-shadow: 0 2px 5px 0 var(--shadow); width: 20% ; height: 60%;">
     <div class="container-fluid">
 
       <div class="navbar-collapse"     >
@@ -65,15 +75,15 @@
                     </a>
                   </li>
                   <li>
-                    <a routerLink="/camping" class="nav-link text-dark">
+                    <a routerLink="/groupcamping" class="nav-link text-dark">
                       <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
                       Gamping group
                     </a>
                   </li>
                   <li>
-                    <a href="#" class="nav-link text-dark">
+                    <a routerLink="/map"  class="nav-link text-dark">
                       <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
-                      Campers
+                      Map
                     </a>
                   </li>
                 </ul>
@@ -218,6 +228,7 @@
    </div>
 
 
+
       <!-- **********************Post-List****************** -->
 
       <div class="home">
@@ -241,7 +252,7 @@
 
                         <img src="assets/images/user.jpg" alt="user picture">
                         <ul>
-                            <li><h3>{{post.title}}</h3></li>
+                            <li><h3>Klai MadAmine</h3></li>
                             <li><span>{{post.creationDate | date}}</span></li>
                         </ul>
             
@@ -283,13 +294,16 @@
                 </div>
             </div>
         </div>
+        <div *ngIf="postDeleted" class="alert alert-success" role="alert">
+          Post Deleted successfully.
+        </div>
+        <div *ngIf="postUpdated" class="alert alert-success" role="alert">
+          Post Updated successfully.
+        </div>
     </div>
-    <div *ngIf="postDeleted" class="alert alert-success" role="alert">
-      Post Deleted successfully.
-    </div>
-    <div *ngIf="postUpdated" class="alert alert-success" role="alert">
-      Post Updated successfully.
-    </div>
+
+
+
 
 
 

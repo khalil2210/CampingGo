@@ -10,6 +10,11 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { ComponentsModule } from './components/components/components.module';
 
+import { AllGroupCampingComponent } from './GroupCamping/components/all-group-camping/all-group-camping.component';
+import { AddgroupcampingComponent } from './AddGroupCamping/components/addgroupcamping/addgroupcamping.component';
+import { MapComponent } from './map/map.component';
+import { RechercheGpComponent } from './RechercheGp/components/recherche-gp/recherche-gp.component';
+
 import { MessageComponent } from './chat_app/message/message.component';
 import { ChatComponent } from './chat_app/chat/chat.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -35,8 +40,10 @@ import { SignupComponent } from './user_module/signup/signup.component';
     FooterComponent,
     ChatComponent,
     MessageComponent,
-    PostComponent,
-    UpdatePostComponent,
+    AllGroupCampingComponent,
+    AddgroupcampingComponent,
+    MapComponent,
+    RechercheGpComponent,
     NotfoundComponent,
     LoginComponent,
     AjouterComponent,
@@ -44,7 +51,9 @@ import { SignupComponent } from './user_module/signup/signup.component';
     OrdersComponent,
     ListepaymentComponent,
     PopUpComponent,
-    SignupComponent
+    SignupComponent,
+    PostComponent,
+    UpdatePostComponent,
   ],
 
   imports: [

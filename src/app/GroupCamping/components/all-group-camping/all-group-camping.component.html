@@ -1,0 +1,257 @@
+
+
+<!-- Header-->
+<header class="bg-dark py-5" style="background-image: url('assets/img/antoine-barres.jpg'); color: white;">
+
+    <div class="container px-5 px-lg-5 my-5">
+      <div class="text-center text-white">
+        <h1 class="display-2 fw-bolder mb-0">See Our Groups </h1>
+        <p class="lead fw-normal text-white-50 mb-0">All rights reserved</p>
+    </div>
+    </div>
+  
+  </header>
+
+<nav>
+    <div class="container" >
+        <div class="content">
+            <ul>
+                
+                <li routerLink="/map"> Go Maps </li>
+            </ul>
+        </div>
+    </div>       
+</nav>
+
+
+
+
+
+
+
+
+
+<div class="container" >
+    <div class="container-stat">
+        <span class="fa fa-bar-chart"></span>
+
+        <button class="mon-bouton-stat" (click)="this.calculateTotalGroups()">Get Group Statistics</button>
+        <p>Le nombre total de groupes est : {{ totalGroups ? totalGroups : 'chargement en cours...' }}</p>
+
+        <div style="width:600px ; height: 440px;">
+            <canvas id="myChart"></canvas>
+        </div>
+    </div>
+
+
+
+	<div class="row" >
+		<div class="col-md-12" >
+			<div class="search-wrap-1 ftco-animate fadeInUp ftco-animated" >
+				<form action="#" class="search-property-1">
+					<div class="row no-gutters">
+						<div class="form-group p-4 border-0">
+							<label for="#">Destination</label>
+								<div class="form-field">
+									<div class="bootstrap-icon">
+										<i class="fa fa-search">
+                                        </i>
+									</div>
+
+                                    <datalist id="datalistOptions">    
+                                        <option value="Cap Serra-Bizerte">
+                                        <option value="El Hawereya">
+                                        <option value="Tabarka">
+                                        <option value="Ain Kanassira-Nabeul"></option>
+                                        <option value="Crique de Robinson-Nabeul"></option>
+                                        <option value="Rtiba-Nabeul"></option>
+                                        <option value="Oued Zen-Ain Drahem"></option>
+                                        <option value="Djbel Zaghouan-Zaghouan"></option>
+                                        <option value="Djebel El Serraj seliana"></option>
+                                        <option value="Oued el ksab kelibia"></option>
+                                        <option value="Bizert"></option>
+                                    </datalist>        
+
+
+								</div>
+                                <input type="text" class="form-control" list="datalistOptions" name="destination" placeholder="Search place"  [(ngModel)]="camping.destination">
+
+                                <div class="form-group d-flex w-100 border-0">
+                                    <div class="form-field w-100 alighn-items-center d-flex">
+                                        <button type="submit" value="search" class="align-self-stretch form-control btn btn-primary" (click)="retrievByDestinationGpCamping(camping.destination)" [routerLink]="['/search']"  [queryParams]="{'destination':camping.destination}">SEARCH</button>
+                                    </div>
+                                </div>
+						</div>
+					</div>
+             
+                </form> 
+
+	        </div>
+
+        </div>
+
+
+
+
+
+
+
+
+
+  <div class="form-group my-2 w-50">
+        
+    <label for="" class="my-1" >Camping Type :  </label>
+    <select class="form-control custom-select" id="mySelect" [(ngModel)]="camping.campingType" (ngAfterViewInit)="initializeCustomSelect()" >
+        <option value="placeholder"  disabled selected >Choisissez une option</option>
+        <option value="Beach" >Beach</option>
+        <option value="Forest">Forest</option>
+        <option value="Mountain_camping">Mountain_camping</option>
+    </select>
+
+    
+
+    <input type="text" class="form-control"  [(ngModel)]="camping.description" placeholder="Description" aria-label="Description" aria-describedby="basic-addon1">
+    <input type="text" class="form-control"  [(ngModel)]="camping.destination" placeholder="Destination" aria-label="destination" aria-describedby="basic-addon1">
+    <input type="text" class="form-control"  [(ngModel)]="camping.carModel" placeholder="Car Model" aria-label="Car Model" aria-describedby="basic-addon1">
+    
+    <div class="icon">
+            <span class="fa fa-calendar">
+            </span>
+    </div>
+    
+    
+    
+
+    <input type="text" class="icon" class="form-control"  [(ngModel)]="camping.createdAt" placeholder="Create Date" aria-label="Create Date" aria-describedby="basic-addon1">
+    <input type="text" class="form-control"  [(ngModel)]="camping.availablePlaces" placeholder="Available Places" aria-label="Available Places" aria-describedby="basic-addon1">
+    <input type="text" class="form-control"  [(ngModel)]="camping.requirements" placeholder="Requirements" aria-label="Requirements" aria-describedby="basic-addon1">
+
+    <div class="file-input">
+        <label for="file-upload" class="custom-file-upload">
+          <i class="fas fa-cloud-upload-alt"></i> Choisissez un fichier
+        </label>
+        <input id="file-upload" type="file" (change)="onFileSelected($event)">
+      </div>
+      
+
+    <button type="button" class="btn btn-success" (click)="addGroupCamping(camping,file)"  > Add Group Camping </button>
+
+   </div>
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row">
+            <div *ngFor="let item of GroupCamping; let i = index"  class="col-md-4 ftco-animate">
+                
+                <div class="project-wrap"  >
+                    <a href="#" class="img" [style.background-image]="'url(http://localhost:8090/image/getImage/'+item.image.id+')'">
+                        <p> <span class="personne" > {{item.availablePlaces || 'No'}} Available Places </span></p>
+
+                    </a>   
+                    <div class="text p-4" >
+                        <span class="days">10 Days Tour</span>
+                        <h3><a href="#">Tunisia</a></h3>
+                        <p class="location"><span class="fa fa-map-marker"></span>{{item.destination}}</p>
+                        <p >{{item.description}}</p>
+                        <ul>
+                            
+                            <li><span class="flaticon-king-size"></span>{{item.carModel}}</li>
+                            <li><span class="flaticon-sun-umbrella"></span>{{item.campingType}}</li>
+                        </ul>
+
+                        <button type="button" class="btn btn-danger" (click)="deleteGroupCamping(item.id,i)">Supprimer</button>
+                        <button type="button" class="btn btn-danger" (click)="get(item); onClickShowContent()" data-toggle="modal" data-target="#myModal">Modifier</button>
+
+                        <button type="button" class="btn btn-danger" (click)="addUserToGroup(userId,item.id)" > Add User</button>
+                        <button type="button" class="btn btn-danger" (click)="removeUserToGroup(userId,item.id)" > Delete User</button>
+
+                        <p>La note actuelle est : {{ item.rating }}</p>
+                        <div class="rating">
+                            <span  *ngFor="let star of stars"  class="star" [ngClass]="getStarClass(star, item.rating)" (click)="rate(item)">&#9733;</span>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+ 
+<div *ngIf="showContent"  class="form-group my-2 w-50">
+
+    <label for="" class="my-1" >Camping Type :  </label>
+    <select class="form-control custom-select" id="mySelect" [(ngModel)]="listeget.campingType" (ngAfterViewInit)="initializeCustomSelect()" >
+        <option value="placeholder"  disabled selected >Choisissez une option</option>
+        <option value="Beach" >Beach</option>
+        <option value="Forest">Forest</option>
+        <option value="Mountain_camping">Mountain_camping</option>
+    </select>
+
+    
+
+    <input type="text" class="form-control"   [(ngModel)]="listeget.description" placeholder="Description" aria-label="Description" aria-describedby="basic-addon1">
+    <input type="text" class="form-control"  [(ngModel)]="listeget.destination" placeholder="Destination" aria-label="destination" aria-describedby="basic-addon1">
+    <input type="text" class="form-control"  [(ngModel)]="listeget.carModel" placeholder="Car Model" aria-label="Car Model" aria-describedby="basic-addon1">
+    
+    <div class="icon">
+            <span class="fa fa-calendar">
+            </span>
+    </div>
+    
+    
+    
+
+    <input type="text" class="icon" class="form-control"  [(ngModel)]="listeget.createdAt" placeholder="Create Date" aria-label="Create Date" aria-describedby="basic-addon1">
+    <input type="text" class="form-control"  [(ngModel)]="listeget.availablePlaces" placeholder="Available Places" aria-label="Available Places" aria-describedby="basic-addon1">
+    <input type="text" class="form-control"  [(ngModel)]="listeget.requirements" placeholder="Requirements" aria-label="Requirements" aria-describedby="basic-addon1">
+
+    <div class="file-input">
+        <label for="file-upload" class="custom-file-upload">
+          <i class="fas fa-cloud-upload-alt"></i> Choisissez un fichier
+        </label>
+        <input id="file-upload" type="file" (change)="onFileSelected($event)">
+      </div>
+      
+
+
+    
+   
+    
+    <button type="button" class="btn btn-success" (click)="updateGroupCamping1(file,listeget)"  > updateCamping </button>
+
+   </div>
+
+
+
+
+
+   
+    
+
+
+
+
+        
+  

@@ -6,6 +6,11 @@ import { ComponentsComponent } from './components/components/components.componen
 import { MessageComponent } from './chat_app/message/message.component';
 import { PostComponent } from './Post/post/post/post.component';
 import { UpdatePostComponent } from './Post/update-post/update-post.component';
+import { AllGroupCampingComponent } from './GroupCamping/components/all-group-camping/all-group-camping.component';
+import { AddgroupcampingComponent } from './AddGroupCamping/components/addgroupcamping/addgroupcamping.component';
+import { MapComponent } from './map/map.component';
+import { RechercheGpComponent } from './RechercheGp/components/recherche-gp/recherche-gp.component';
+
 import { DashboardComponent } from './Equipment/dashboard/dashboard.component';
 import { TemplateComponent } from './Equipment/template/template.component';
 import { PaymentComponent } from './Equipment/payment/payment.component';
@@ -59,7 +64,12 @@ const routes: Routes = [
 {path: 'pop-up', component:PopUpComponent},
 
 {path:'login',component:LoginComponent},
-{path:'**',component:NotfoundComponent}
+{path:"groupcamping",component:AllGroupCampingComponent},
+{path:"AddGroupCamping",component:AddgroupcampingComponent},
+{path:"map",component:MapComponent},
+{path:"search",component:RechercheGpComponent},
+{path:'**',component:NotfoundComponent},
+
 ];
 
 
