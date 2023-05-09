@@ -11,5 +11,7 @@ export class Comment{
     }
     author!:{id:number,
     username:string};
+    dislikes?:number;
+    likes?:number;
 
 }

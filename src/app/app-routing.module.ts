@@ -10,6 +10,8 @@ import { MessageComponent } from './chat_app/message/message.component';
 import { CommentComponent } from './comment/comment.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { PopUpComponent } from './pop-up/pop-up.component';
+import { ReviewComponent } from './review/review.component';
+import { UpdateReviewComponent } from './update-review/update-review.component';
 
 const routes: Routes = [
 {path:'',redirectTo:'home',pathMatch:'full'},
@@ -25,7 +27,11 @@ const routes: Routes = [
 
 {path: 'accueil', component:AccueilComponent},
 
-{path: 'pop-up', component:PopUpComponent}
+{path: 'review', component:ReviewComponent},
+{path: 'pop-up/:id', component:ReviewComponent},
+
+
+
 
 
 

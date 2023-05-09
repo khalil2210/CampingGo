@@ -19,6 +19,9 @@ import { CommentComponent } from './comment/comment.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { PopUpComponent } from './pop-up/pop-up.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ReviewComponent } from './review/review.component';
+import { NgxStarRatingModule } from 'ngx-star-rating';
+import { UpdateReviewComponent } from './update-review/update-review.component';
 @NgModule({
   declarations: [			
     AppComponent,
@@ -30,7 +33,10 @@ import { HttpClientModule } from '@angular/common/http';
     EditChatroomComponent,
       CommentComponent,
       AccueilComponent,
-      PopUpComponent
+      PopUpComponent,
+      ReviewComponent,
+      UpdateReviewComponent,
+      
    ],
 
   imports: [
@@ -44,8 +50,10 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     BrowserAnimationsModule,
     MatDialogModule,
+    NgxStarRatingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
+  
 })
 export class AppModule { }

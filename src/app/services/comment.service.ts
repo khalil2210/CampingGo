@@ -33,4 +33,25 @@ export class CommentService {
   public updateComment (id:number , comment:Comment){
     return this.http.put("http://localhost:8090/comment/update-comment2/"+id,comment);
   } 
+  // public likeProduct(id:number){
+  //   return this.http.post("http://localhost:8090/comment/{{userId}}/like/{{idcomment}}" + '/' + id + '/like/' + productId , {});
+  // }
+
+public disLikeComment(id:number){
+    return this.http.post("http://localhost:8090/comment/4/dislike/"+id,{});
+  }
+
+  public getNumberOfDislikes(id:number){
+    return this.http.get<number>("http://localhost:8090/comment/getnbrdislikes/"+id);
+  }
+
+  public LikeComment(id:number){
+    return this.http.post("http://localhost:8090/comment/5/like/"+id,{});
+  }
+
+  public getNumberOflikes(id:number){
+    return this.http.get<number>("http://localhost:8090/comment/getnbrlikes/"+id);
+  }
+
+
 }

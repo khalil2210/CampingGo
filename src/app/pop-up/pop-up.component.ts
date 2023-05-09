@@ -14,15 +14,20 @@ export class PopUpComponent implements OnInit{
 
   constructor(private commentService:CommentService , private router:Router,private imageService:ImageserviceService) {}
   show=false;
-  
+  public dislikes=0;
+  public likes=0;
+
+  public increment=1;
+  public disliked=false;
   public commentList!:Comment[] ;
- public commentInput=new Comment();
+  public commentInput=new Comment();
  imageFile?:File;
   formData = new FormData();
   
 
   ngOnInit(): void {
 this.getComments();
+// this.getNumberOfDislikes();
   }
 onFileSelected(event:any){
   this.imageFile=event.target.files[0];
@@ -57,7 +62,15 @@ onFileSelected(event:any){
 public getComments(): void{
   this.commentService.getComments().subscribe(
     (response: any) => {
-   this.commentList = response;   
+   this.commentList = response; 
+   console.log(this.commentList);
+    
+   this.commentList.forEach((comment) =>this.commentService.getNumberOfDislikes(comment.id).subscribe((resp)=>
+   {comment.dislikes=resp;console.log(comment.id+"has dislikes"+comment.dislikes);
+   })) 
+   this.commentList.forEach((comment) =>this.commentService.getNumberOflikes(comment.id).subscribe((resp)=>
+   {comment.likes=resp;console.log(comment.id+"has likes"+comment.likes);
+   })) 
     },
     (error: HttpErrorResponse) => {
       alert(error.message);
@@ -82,5 +95,33 @@ public deleteComment(id: number){
       }
     );
   }
+  public dislikeComment(id:number) {
+
+    this.commentService.disLikeComment(id).subscribe(() => {
+      console.log('dislike comment successfully');
+       this.ngOnInit();
+   });
+
+    
+  }
+public getNumberOfDislikes(id:number){
+  this.commentService.getNumberOfDislikes(id).subscribe((resp)=>{
+    this.dislikes=resp;
+  })
+}
+
+public incrementDislikes(id:number) {
+  return id+1;
+}
+public likeComment(id:number ) {
+  this.commentService.LikeComment(id).subscribe(() => {
+    console.log('like comment successfully');
+  this.ngOnInit(); });
   
+}
+public getNumberOflikes(id:number){
+this.commentService.getNumberOflikes(id).subscribe((resp)=>{
+  this.likes=resp;
+})
+}
 }
