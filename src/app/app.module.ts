@@ -8,11 +8,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
-import { MatDialogModule } from '@angular/material/dialog';
 import { ComponentsModule } from './components/components/components.module';
 
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AllGroupCampingComponent } from './GroupCamping/components/all-group-camping/all-group-camping.component';
 import { AddgroupcampingComponent } from './AddGroupCamping/components/addgroupcamping/addgroupcamping.component';
 import { MapComponent } from './map/map.component';
@@ -20,6 +17,11 @@ import { RechercheGpComponent } from './RechercheGp/components/recherche-gp/rech
 
 import { MessageComponent } from './chat_app/message/message.component';
 import { ChatComponent } from './chat_app/chat/chat.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+import { HttpClientModule } from '@angular/common/http';
+import { PostComponent } from './Post/post/post/post.component';
+import { UpdatePostComponent } from './Post/update-post/update-post.component';
 import { NotfoundComponent } from './Equipment/notfound/notfound.component';
 import { LoginComponent } from './Equipment/login/login.component';
 import { AjouterComponent } from './Equipment/dashboard/ajouter/ajouter.component';
@@ -33,6 +35,7 @@ import { UpdateReviewComponent } from './update-review/update-review.component';
 import { SignupComponent } from './user_module/signup/signup.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { CommentComponent } from './comment/comment.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 @NgModule({
@@ -66,7 +69,10 @@ import { CommentComponent } from './comment/comment.component';
       OrdersComponent,
       ListepaymentComponent,
       PopUpComponent,
-      SignupComponent
+      SignupComponent,
+      SignupComponent,
+      PostComponent,
+      UpdatePostComponent,
   
       
    ],
@@ -83,7 +89,9 @@ import { CommentComponent } from './comment/comment.component';
     BrowserAnimationsModule,
     MatDialogModule,
     NgxStarRatingModule,
-    NgbRatingModule
+    NgbRatingModule,
+    Ng2SearchPipeModule
+    
 
 
 

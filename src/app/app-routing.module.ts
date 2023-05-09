@@ -3,9 +3,9 @@ import { CommonModule, } from '@angular/common';
 import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 import { ComponentsComponent } from './components/components/components.component';
-
-import { ChatComponent } from './chat_app/chat/chat.component';
 import { MessageComponent } from './chat_app/message/message.component';
+import { PostComponent } from './Post/post/post/post.component';
+import { UpdatePostComponent } from './Post/update-post/update-post.component';
 import { AllGroupCampingComponent } from './GroupCamping/components/all-group-camping/all-group-camping.component';
 import { AddgroupcampingComponent } from './AddGroupCamping/components/addgroupcamping/addgroupcamping.component';
 import { MapComponent } from './map/map.component';
@@ -29,17 +29,29 @@ import { UpdateReviewComponent } from './update-review/update-review.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { CommentComponent } from './comment/comment.component';
 import { SignupComponent } from './user_module/signup/signup.component';
+import { ChatComponent } from './chat_app/chat/chat.component';
+import { UserDetailsComponent } from './user_module/user-details/user-details.component';
+
+
+
 const routes: Routes = [
 { path: '', redirectTo: 'login', pathMatch: 'full' },
+{ path: 'users/get-user-by-id/:id', component: UserDetailsComponent },
+{path:'post',component:PostComponent},
+{path:'updatePost/:id',component:UpdatePostComponent},
+{path:'',redirectTo:'home',pathMatch:'full'},
+{path: 'home',component: ComponentsComponent },
+{path:'shop',  component:TemplateComponent}
+,{path:'payment',component:PaymentComponent},
+
 {path: 'signup', component: SignupComponent },
 
 { path: 'home', component: ComponentsComponent },
 
 { path:'chatroom',component:ChatComponent,canActivate:[UserGuard],children:[
-{path:':chatroomId',component:MessageComponent}
-]
-},
-{path:'shop',                    component:TemplateComponent}
+{path:':chatroomId',component:MessageComponent}]},
+
+{path:'shop',component:TemplateComponent}
 ,{path:'payment',component:PaymentComponent},
 {path:'add',component:DashboardComponent,canActivate:[AuthGuard],children:[
   {path:'ajouter',component:AjouterComponent},
@@ -47,6 +59,7 @@ const routes: Routes = [
   {path:'orders',component:OrdersComponent},
   {path:'listepayment',component:ListepaymentComponent}
 ]},
+
 {path: 'comments', component:CommentComponent},
 
 {path: 'accueil', component:AccueilComponent},
@@ -72,6 +85,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [CommonModule,BrowserModule,RouterModule.forRoot(routes)],
-  exports: []
-})
+  exports: [RouterModule]})
+
 export class AppRoutingModule { }
