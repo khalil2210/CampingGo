@@ -27,9 +27,10 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/assets/sass/paper-kit.scss",
               "src/assets/css/demo.css",
-              "src/assets/css/nucleo-icons.css"
+              "src/assets/css/nucleo-icons.css",
+              "./node_modules/leaflet/dist/leaflet.css"
             ],
-            "scripts": []
+            "scripts": ["node_modules/jquery/dist/jquery.min.js" , "node_modules/chart.js/dist/chart.umd.js" , "node_modules/jquery/dist/jquery.min.js"]
           },
           "configurations": {
             "production": {
@@ -96,7 +97,7 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [ "node_modules/jquery/dist/jquery.min.js" , "node_modules/chart.js/dist/chart.min.js" , "node_modules/jquery/dist/jquery.min.js"]
           }
         }
       }
