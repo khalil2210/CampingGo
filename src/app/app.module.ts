@@ -23,6 +23,7 @@ import { ListeComponent } from './Equipment/dashboard/liste/liste.component';
 import { OrdersComponent } from './Equipment/dashboard/orders/orders.component';
 import { ListepaymentComponent } from './Equipment/dashboard/listepayment/listepayment.component';
 import { PopUpComponent } from './pop-up/pop-up.component';
+import { SignupComponent } from './user_module/signup/signup.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { PopUpComponent } from './pop-up/pop-up.component';
     ListeComponent,
     OrdersComponent,
     ListepaymentComponent,
-    PopUpComponent
+    PopUpComponent,
+    SignupComponent
 
 
   ],

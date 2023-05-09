@@ -83,4 +83,9 @@ export class ComponentsComponent implements OnInit {
 
     }
 
+    // onRegisterClick() {
+    //   this.router.navigate(['/register']);
+    // }
+    
+
 }
