@@ -20,8 +20,10 @@ import { ListepaymentComponent } from './Equipment/dashboard/listepayment/listep
 import { PopUpComponent } from './pop-up/pop-up.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { CommentComponent } from './comment/comment.component';
+import { SignupComponent } from './user_module/signup/signup.component';
 const routes: Routes = [
 { path: '', redirectTo: 'login', pathMatch: 'full' },
+{path: 'signup', component: SignupComponent },
 
 { path: 'home', component: ComponentsComponent },
 
