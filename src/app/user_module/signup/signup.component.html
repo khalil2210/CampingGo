@@ -1,0 +1,107 @@
+<div class="section section-image section-login" style="background-image: url('assets/img/login-image.jpg'); display: flex ; flex-direction: column; align-items: center;">
+  <div class="container">
+    <div class="row" style="margin-left: 450px;">
+      <div class="col-lg-12 col-md-12 col-sm-12 ml-auto mr-auto">
+        <div class="card card-register" style="width: 500px;">
+          <h3 class="title">Welcome</h3>
+          <div class="social-line text-center">
+            <a href="#pablo" class="btn btn-neutral btn-facebook btn-just-icon">
+              <i class="fa fa-facebook-square"></i>
+            </a>
+            <a href="#pablo" class="btn btn-neutral btn-google btn-just-icon">
+              <i class="fa fa-google-plus"></i>
+            </a>
+            <a href="#pablo" class="btn btn-neutral btn-twitter btn-just-icon">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </div>
+          <form class="register-form" #userForm="ngForm" >
+              <label>Username</label>
+            <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="nc-icon nc-email-85"></i>
+                </span>
+              </div>
+              <input type="text" class="form-control" placeholder="Username" name="username" (focus)="focus=true" (blur)="focus=false" [(ngModel)]="user.username" required>
+            </div>
+              
+              <label>First Name</label>
+            <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <!-- <i class="nc-icon nc-email-85"></i> -->
+                </span>
+              </div>
+              <input type="text" class="form-control" placeholder="First Name" name="firstName" (focus)="focus=true" (blur)="focus=false" [(ngModel)]="user.firstName" required>
+            </div>
+            <label>Last Name</label>
+            <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <!-- <i class="nc-icon nc-email-85"></i> -->
+                </span>
+              </div>
+              <input type="text" class="form-control" placeholder="lastName" name="lastName" (focus)="focus=true" (blur)="focus=false" [(ngModel)]="user.lastName" required>
+            </div>
+            <label>Email</label>
+            <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="nc-icon nc-email-85"></i>
+                </span>
+              </div>
+              <input type="text" class="form-control" placeholder="email" name="email" (focus)="focus=true" (blur)="focus=false" [(ngModel)]="user.email" required>
+            </div>
+            <label>Password</label>
+            <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus1===true}">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="nc-icon nc-key-25"></i>
+                </span>
+              </div>
+              <input type="text" class="form-control" placeholder="password"  name="password" (focus)="focus1=true" (blur)="focus1=false" [(ngModel)]="user.password" required>
+            </div>
+            <label>Phone Number</label>
+            <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="nc-icon nc-phone-85"></i>
+                </span>
+              </div>
+              <input type="text" class="form-control" placeholder="" name="phoneNumber" (focus)="focus=true" (blur)="focus=false" [(ngModel)]="user.phoneNumber" required>
+            </div>
+            <input class="form-control" type="text" name="gender" id="male1" value="Male" [(ngModel)]="user.gender" required>
+
+            <!-- 
+            <label>Gender</label>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="gender" id="male1" value="Male" [(ngModel)]="user.gender" required>
+              <label class="form-check-label" for="male1">Male</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="gender" id="female2" checked value="Female" [(ngModel)]="user.firstName" required>
+              <label class="form-check-label" for="female2">Female</label>
+            </div> -->
+            <!-- <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="nc-icon nc-phone-85"></i>
+                </span>
+              </div>
+              <input type="text" class="form-control" placeholder="Gender" (focus)="focus=true" (blur)="focus=false">
+            </div> -->
+            <button class="btn btn-danger btn-block btn-round" type="submit" (click)="onSubmit(user)">Register</button>
+          </form>
+          <div class="forgot">
+            <a href="#" class="btn btn-link btn-danger">Forgot password?</a>
+          </div>
+        </div>
+     
+      </div>
+    </div>
+    <div class="col text-center" routerLinkActive="active" >
+      <a [routerLink]="['/signup']"style="width: 350px;" class="btn btn-outline-neutral btn-round btn-lg">View Register Page</a>
+    </div>
+  </div>
+</div>

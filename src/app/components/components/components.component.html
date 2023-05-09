@@ -18,8 +18,7 @@
       </div>
     </div>
     <div class="moving-clouds" style="background-image: url('assets/img/clouds.png'); "></div>
-    <h6 class=" category-absolute ml-auto mr-auto">Designed and coded by 4arctic2
-
+    <h6 class=" category-absolute ">Designed and coded by 4arctic2
     </h6>
   </div>
   <div class="section section-image section-login" style="background-image: url('assets/img/login-image.jpg');">
@@ -39,27 +38,27 @@
                 <i class="fa fa-twitter"></i>
               </a>
             </div>
-            <form class="register-form">
-              <label>Email</label>
+            <form class="register-form" #ngform="ngForm" (ngSubmit)="onSubmit(ngform)">
+              <label>username</label>
               <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
                 <div class="input-group-prepend">
                   <span class="input-group-text">
-                    <i class="nc-icon nc-email-85"></i>
+                    <i class="nc-icon nc-username-85"></i>
                   </span>
                 </div>
-                <input type="text" class="form-control" placeholder="Email" (focus)="focus=true" (blur)="focus=false">
+                <input type="text" class="form-control" name="username" [(ngModel)]="loginRequest.username" placeholder="username" (focus)="focus=true" (blur)="focus=false">
               </div>
               <label>Password</label>
-              <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus1===true}">
+              <div class="input-group form-group-no-border"  [ngClass]="{'input-group-focus':focus1===true}">
                 <div class="input-group-prepend">
                   <span class="input-group-text">
                     <i class="nc-icon nc-key-25"></i>
                   </span>
                 </div>
-                <input type="text" class="form-control" placeholder="Password" (focus)="focus1=true"
+                <input type="text" class="form-control" name="password" [(ngModel)]="loginRequest.password" placeholder="Password" (focus)="focus1=true"
                   (blur)="focus1=false">
               </div>
-              <button class="btn btn-danger btn-block btn-round">Register</button>
+              <button class="btn btn-danger btn-block btn-round"  >Register</button>
             </form>
             <div class="forgot">
               <a href="#" class="btn btn-link btn-danger">Forgot password?</a>
@@ -67,77 +66,79 @@
           </div>
 
 
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="main">
-    <div class="text-center">
-      <h1>shop online</h1>
-    </div>
-    <div class="container px-4 px-lg-5 mt-5">
-      <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 flex-wrap-nowrap">
-        <div class="col mb-5">
-          <div class="card h-100">
-            <!-- Product image-->
-            <img src="../../../assets/img/shoes/nike-chaussures-downshifter-12_002.webp" alt="Rounded Image"
-              class="img-rounded img-responsive">
-            <!-- Product details-->
-            <div class="card-body p-4">
-              <div class="text-center">
-                <a [routerLink]="['/shop']" class="btn btn-primary ">SHOP NOW</a>
-
-              </div>
-            </div>
-
-          </div>
-        </div>
-        <div class="col mb-5">
-          <div class="card h-100">
-            <!-- Product image-->
-            <img src="../../../assets/img/shoes/nike-chaussures-downshifter-12_008.webp" alt="Rounded Image"
-              class="img-rounded img-responsive">
-            <!-- Product details-->
-            <div class="card-body p-4">
-              <div class="text-center">
-                <a [routerLink]="['/shop']" class="btn btn-primary ">SHOP NOW</a>
-              </div>
-            </div>
-
-          </div>
-        </div>
-        <div class="col mb-5">
-          <div class="card h-100">
-            <!-- Product image-->
-            <img src="../../../assets/img/shoes/nike-chaussures-downshifter-12_002.webp" alt="Rounded Image"
-              class="img-rounded img-responsive">
-            <!-- Product details-->
-            <div class="card-body p-4">
-              <div class="text-center">
-                <a [routerLink]="['/shop']" class="btn btn-primary">SHOP NOW</a>
-
-              </div>
-            </div>
-
-          </div>
-        </div>
-        <div class="col mb-5">
-          <div class="card h-100">
-            <!-- Product image-->
-            <img src="../../../assets/img/shoes/nike-chaussures-downshifter-12_008.webp" alt="Rounded Image"
-              class="img-rounded img-responsive">
-            <!-- Product details-->
-            <div class="card-body p-4">
-              <div class="text-center">
-                <a [routerLink]="['/shop']" class="btn btn-primary">SHOP NOW</a>
-
-              </div>
-            </div>
-
-          </div>
-        </div>
       </div>
 
     </div>
 
+    </div>
+
   </div>
+  <div class="text-center">
+    <h1>shop online</h1>
+  </div>
+  <div class="container px-4 px-lg-5 mt-5">
+    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 flex-wrap-nowrap">
+      <div class="col mb-5">
+        <div class="card h-100">
+          <!-- Product image-->
+          <img src="../../../assets/img/shoes/nike-chaussures-downshifter-12_002.webp" alt="Rounded Image"
+            class="img-rounded img-responsive">
+          <!-- Product details-->
+          <div class="card-body p-4">
+            <div class="text-center">
+              <a [routerLink]="['/shop']" class="btn btn-primary ">SHOP NOW</a>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="col mb-5">
+        <div class="card h-100">
+          <!-- Product image-->
+          <img src="../../../assets/img/shoes/nike-chaussures-downshifter-12_008.webp" alt="Rounded Image"
+            class="img-rounded img-responsive">
+          <!-- Product details-->
+          <div class="card-body p-4">
+            <div class="text-center">
+              <a [routerLink]="['/shop']" class="btn btn-primary ">SHOP NOW</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="col mb-5">
+        <div class="card h-100">
+          <!-- Product image-->
+          <img src="../../../assets/img/shoes/nike-chaussures-downshifter-12_002.webp" alt="Rounded Image"
+            class="img-rounded img-responsive">
+          <!-- Product details-->
+          <div class="card-body p-4">
+            <div class="text-center">
+              <a [routerLink]="['/shop']" class="btn btn-primary">SHOP NOW</a>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="col mb-5">
+        <div class="card h-100">
+          <!-- Product image-->
+          <img src="../../../assets/img/shoes/nike-chaussures-downshifter-12_008.webp" alt="Rounded Image"
+            class="img-rounded img-responsive">
+          <!-- Product details-->
+          <div class="card-body p-4">
+            <div class="text-center">
+              <a [routerLink]="['/shop']" class="btn btn-primary">SHOP NOW</a>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

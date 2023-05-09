@@ -1,7 +1,9 @@
-<nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="400">
-  <div class="container">
+
+<nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="400" >
+  <div class="container" *ngIf="!AuthService.getIsLoggedIn();  " >
       <div class="navbar-translate">
-          <a class="navbar-brand" href="">Camping Go</a>
+          <a class="navbar-brand" routerLink="/home">Camping Go</a>
+
           <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
               <span class="navbar-toggler-bar"></span>
               <span class="navbar-toggler-bar"></span>
@@ -11,42 +13,53 @@
       <div class="navbar-collapse" id="navbarToggler">
         <ul class="navbar-nav ">
           <li class="nav-item">
-            <a class="nav-link" routerLink="/shop">SHOP</a>
+            <a class="nav-link"  routerLink="/shop">SHOP</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" *ngIf="this.AuthService.isUser()" routerLink="/chatroom"  >chatroom</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" *ngIf="!this.AuthService.isUser()"  routerLink="/login"  >Login</a>
+          </li>
+          <li class="nav-item" style="margin-left: 920px;">
+            <a class="nav-link active"  *ngIf="this.AuthService.isUser()" (click)="logout()"  >logout </a>
+          </li>
+
         </ul>
+        <div class="navbar"></div>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item" >
+              <a class="nav-link" rel="tooltip" *ngIf="!this.AuthService.isUser()"  title="Follow us on Twitter" data-placement="bottom" href="#" target="_blank">
+                  <i class="fa fa-twitter"></i>
+                  <p class="d-lg-none">Twitter</p>
+              </a>
+          </li>
+          <li class="nav-item" >
+              <a class="nav-link" rel="tooltip" *ngIf="!this.AuthService.isUser()"  title="Like us on Facebook" data-placement="bottom" href="#" target="_blank">
+                  <i class="fa fa-facebook-square"></i>
+                  <p class="d-lg-none">Facebook</p>
+              </a>
+          </li>
+          <li class="nav-item" >
+              <a class="nav-link" rel="tooltip" *ngIf="!this.AuthService.isUser()"  title="Follow us on Instagram" data-placement="bottom" href="#" target="_blank">
+                  <i class="fa fa-instagram"></i>
+                  <p class="d-lg-none">Instagram</p>
+              </a>
+          </li>
+          <li class="nav-item" >
+              <a class="nav-link" rel="tooltip" *ngIf="!this.AuthService.isUser()"  title="Star on GitHub" data-placement="bottom" href="" target="_blank">
+                  <i class="fa fa-github"></i>
+                  <p class="d-lg-none">GitHub</p>
+              </a>
+          </li>
 
+
+
+
+
+      </ul>
       </div>
-      <div class="navbar"></div>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item" >
-            <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="#" target="_blank">
-                <i class="fa fa-twitter"></i>
-                <p class="d-lg-none">Twitter</p>
-            </a>
-        </li>
-        <li class="nav-item" >
-            <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="#" target="_blank">
-                <i class="fa fa-facebook-square"></i>
-                <p class="d-lg-none">Facebook</p>
-            </a>
-        </li>
-        <li class="nav-item" >
-            <a class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom" href="#" target="_blank">
-                <i class="fa fa-instagram"></i>
-                <p class="d-lg-none">Instagram</p>
-            </a>
-        </li>
-        <li class="nav-item" >
-            <a class="nav-link" rel="tooltip" title="Star on GitHub" data-placement="bottom" href="" target="_blank">
-                <i class="fa fa-github"></i>
-                <p class="d-lg-none">GitHub</p>
-            </a>
-        </li>
 
-
-
-
-
-    </ul>
   </div>
 </nav>
+

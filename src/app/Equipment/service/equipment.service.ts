@@ -7,29 +7,49 @@ import { Equipment } from './../Model/Equipment';
   providedIn: 'root'
 })
 export class EquipmentService {
-  shoppingList: any[] = [];
+  shoppingList: Equipment[] = [];
+  orders: Equipment[] = [];
   total=0;
   url="http://localhost:8090/Equipment/"
   constructor(private http:HttpClient) { }
   ajouterequipment(e:Equipment,id:number):Observable<any>{
-
-    return this.http.post<any>(this.url+"addEquipment1/"+id,e)
+    const accessToken=localStorage.getItem("accessToken")
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + accessToken });
+    return this.http.post<any>(this.url+"addEquipment1/"+id,e,{headers})
 
   }
   ajouterequipment1(e:Equipment,id:number,id1:number):Observable<any>{
+    const accessToken=localStorage.getItem("accessToken")
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + accessToken });
+    return this.http.post<any>(this.url+"addEquipment2/"+id+"/"+id1,e,{headers})
 
-    return this.http.post<any>(this.url+"addEquipment2/"+id+"/"+id1,e)
-
+  }
+  getbytype(equipmentType:any):Observable<any>{
+    const accessToken=localStorage.getItem("accessToken")
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + accessToken });
+    return this.http.get<any>("http://localhost:8090/Equipment/getbytype?equipmentType="+equipmentType,{headers})
   }
   update(eq:Equipment,id:number):Observable<any>{
-   return this.http.put<any>(this.url+"updateEquipment1/"+id,eq)
+    const accessToken=localStorage.getItem("accessToken")
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + accessToken });
+
+   return this.http.put<any>(this.url+"updateEquipment1/"+id,eq,{headers})
   }
+  updatelike(eq:Equipment):Observable<any>{
+    const accessToken=localStorage.getItem("accessToken")
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + accessToken });
+    return this.http.put<any>(this.url+"updateEquipment",eq,{headers})
+   }
   delete(id:any){
-    return this.http.delete(this.url+"delete/"+id)
+    const accessToken=localStorage.getItem("accessToken")
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + accessToken });
+    return this.http.delete(this.url+"delete/"+id,{headers})
   }
 
   getall():Observable<any>{
-    return this.http.get<any>(this.url+"getall")
+    const accessToken=localStorage.getItem("accessToken")
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + accessToken });
+    return this.http.get<any>(this.url+"getall",{headers})
   }
 
 }
