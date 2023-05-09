@@ -9,6 +9,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent {
+  postAdded: boolean = false;
+  postDeleted: boolean = false;
+  postUpdated: boolean = false;
+
+
 
   posts: Post [] = [];
   post =  new Post();
@@ -25,10 +30,17 @@ num=0
 
  addPostandImage(post:any,file:any,userId:any){
   console.log(post,file,userId);
-  userId=1
+  
+
   this.postService.addPostAndImage(post,file,userId).subscribe(()=>{
   //this.router.navigateByUrl("http://localhost:8090/post/addPostAndImage")
+  
+  this.postAdded = true;
+  setTimeout(() => {
+    this.postAdded = false;
+  }, 1500);
   this.ngOnInit();
+
  })
  }
 
@@ -45,12 +57,23 @@ num=0
 
  updatePost(id :any){
     this.router.navigate(['/updatePost',id]);
+    this.postUpdated = true;
+    setTimeout(() => {
+      this.postUpdated = false;
+    }, 1500);
+    this.ngOnInit();
  }
  deletePost(id :any){
   console.log(id);
   
     this.postService.deletePost(id).subscribe(()=>{
       this.ngOnInit();
+      this.postDeleted = true;
+      setTimeout(() => {
+        this.postDeleted = false;
+      }, 1500);
+      this.ngOnInit();
+
     })
  }
  search() {

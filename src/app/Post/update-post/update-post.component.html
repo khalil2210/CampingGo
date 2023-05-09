@@ -1,43 +1,31 @@
-
-<!-- <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm.value)">
-    <div>
-      <label for="title">title:</label>
-      <input class="form-control" type="text" id="title" name="title" [(ngModel)]="post.title" required ngModel>
+<!-- Header -->
+<div style="background-color: rgba(127, 255, 212, 0.068);">
+<header class="bg-dark py-5" style="background-image: url('assets/img/antoine-barres.jpg'); color: white;">
+  <div class="container px-5 px-lg-5 my-5">
+    <div class="text-center text-white">
+      <h1 class="display-2 fw-bolder mb-0">Update Your Post</h1>
+      <p class="lead fw-normal text-white-50 mb-0">CampingGo</p>
     </div>
-    <div>
-      <label for="Content">Content</label>
-      <input class="form-control" type="text" id="Content" name="content" [(ngModel)]="post.content" required ngModel>
+  </div>
+</header>
+<div class="container my-5" >
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card">
+        <div class="card-body">
+          <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm.value)">
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input type="text" name="title" id="title" [(ngModel)]="post.title" required ngModel class="form-control" placeholder="Enter Post Title">
+            </div>
+            <div class="form-group">
+              <label for="content">Content</label>
+              <textarea name="content" id="content" [(ngModel)]="post.content" required ngModel class="form-control" rows="8" placeholder="What's on your mind, Camper"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Update Post</button>
+          </form>
+        </div>
+      </div>
     </div>
-    <button type="submit">Update</button>
-  </form> -->
-  
-  <div class="home-center">
-    <div class="home-center-wrapper" >
-   <div class="createPost">
-      
-    <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm.value)">
-                          <h1 class="mini-headign" style="font-family:Poppins ;">Update your Post</h1>
-   <div class="update">
-                          <div class="p-title">
-                            
-                            <label for="title" style="margin-top: 4%;">title:</label>
-                          <input type="text" name="title" id="title" [(ngModel)]="post.title" required ngModel placeholder="Post's Title ,here" style="background-color: rgba(145, 150, 150, 0.37);">
-                          
-                      </div>
-                          
-                          <div class="post-text">
-                              <img src="assets/images/user.jpg" alt="user">
-                              <label for="Content">Content</label>
-                              <input type="text-area" name="content" id="content" [(ngModel)]="post.content" required ngModel placeholder="What's on your mind, Camper " style="background-color: rgba(115, 115, 115, 0.26);">
-                              <button type="submit" style="margin-left: 80%;">Update</button>
-                            
-                            </div>
-
-                          </div>
-  
-
-                          
-    </form>
-    <img src="/assets/1.png" alt="logo" style="position:relative; width: 100%;">
-
-   </div>
+  </div>
+</div>

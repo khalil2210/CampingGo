@@ -16,7 +16,7 @@
         <div class="header-wrapper">
             
             <div class="logoBox">
-                <img src="/assets1.png" alt="logo">
+                <img src="/assets/1.png" alt="logo">
             </div>
             <div class="searchBox">
                 <input style="background: #5859585d; "  type="search" class="form-control mr-2" [(ngModel)]="word" placeholder="Rechercher...">
@@ -25,20 +25,12 @@
             <div class="iconBox1">
                 <i class="fa-solid fa-house"></i>
                 <i class="fa-solid fa-user-group"></i>
-                <i class="fa-solid fa-video"></i>
-                <i class="fa-solid fa-gamepad"></i>
-            </div>
-            <div class="iconBox2">
-                <!-- <i class="fa-solid fa-circle-plus"></i>
-                <i class="fa-brands fa-facebook-messenger"></i>
-                <i class="fa-solid fa-bell"></i> -->
+<a  href="https://meet.google.com" target="_blank">                <i class="fa-solid fa-video"></i>
+</a>            </div>
 
-                <label><img src="images/user.jpg" alt="user"></label>
-                <i class="fa-solid fa-caret-down"></i>
-            </div>
         </div>
     </div>
-  </header> 
+  </header>  
   
   <div class="home">
     
@@ -60,45 +52,35 @@
                     </a>
                   </li>
                   <li>
-                    <a href="#" class="nav-link text-dark">
+                    <a routerLink="/shop" class="nav-link text-dark">
                       <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
-                      Dashboard
+                      Equipement
                     </a>
                   </li>
                   <li>
-                    <a href="#" class="nav-link text-dark">
+                    <a routerLink="/Chatroom" class="nav-link text-dark">
                       <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-                      Orders
+                      Chatroom
                     </a>
                   </li>
                   <li>
-                    <a href="#" class="nav-link text-dark">
+                    <a routerLink="/camping" class="nav-link text-dark">
                       <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
-                      Products
+                      Gamping group
                     </a>
                   </li>
                   <li>
                     <a href="#" class="nav-link text-dark">
                       <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
-                      Customers
+                      Campers
                     </a>
                   </li>
                 </ul>
                 
-                <div class="dropdown">
-                  <a href="#" class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-                    <strong>mdo</strong>
-                  </a>
-                  <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                    <li><a class="dropdown-item" href="#">New project...</a></li>
-                    <li><a class="dropdown-item" href="#">Settings</a></li>
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Sign out</a></li>
-                  </ul>
+
+             
                 </div>
-              </div>
+              
           </form>
 
 
@@ -221,6 +203,9 @@
   
                           </div>
                           <button  (click)="addPostandImage(post,file,'1')" type="button" class="btn btn-primary " >Add your post</button>
+                          <div *ngIf="postAdded" class="alert alert-success" role="alert">
+                            Post added successfully.
+                          </div>
                           
   
                       </div>
@@ -289,11 +274,20 @@
                         <li><i class="fa-solid fa-share-from-square"></i> <span>254 share</span></li>
                         <li><i class="bi bi-arrow-clockwise"></i><button type="button" class="btn btn-primary" (click)="updatePost(post.id)"> Update</button>
                         <li><i class="bi bi-arrow-clockwise"></i><button type="button" class="btn btn-primary" (click)="deletePost(post.id)"> Delete</button>
+
                         </li>
+
                     </ul>
+
                 </div>
             </div>
         </div>
+    </div>
+    <div *ngIf="postDeleted" class="alert alert-success" role="alert">
+      Post Deleted successfully.
+    </div>
+    <div *ngIf="postUpdated" class="alert alert-success" role="alert">
+      Post Updated successfully.
     </div>
 
 

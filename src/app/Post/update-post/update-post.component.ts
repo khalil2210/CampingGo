@@ -9,6 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class UpdatePostComponent implements OnInit {
   post :any;
+  postDeleted: boolean = false;
   constructor(private postService : PostService, private router : Router,private activated:ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -30,6 +31,10 @@ export class UpdatePostComponent implements OnInit {
     this.postService.updatePost(this.post).subscribe(()=>{
         this.router.navigate(["/post"]);
     })
+    this.postDeleted = true;
+    setTimeout(() => {
+      this.postDeleted = false;
+    }, 1500);
   }
 
 }
