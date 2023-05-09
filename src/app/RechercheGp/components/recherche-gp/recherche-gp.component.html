@@ -1,0 +1,50 @@
+<p>recherche-gp works!</p>
+<!-- Header-->
+<header class="bg-dark py-5" style="background-image: url('assets/img/antoine-barres.jpg'); color: white;">
+
+    <div class="container px-5 px-lg-5 my-5">
+      <div class="text-center text-white">
+        <h1 class="display-2 fw-bolder mb-0">See Our Groups </h1>
+        <p class="lead fw-normal text-white-50 mb-0">All rights reserved</p>
+    </div>
+    </div>
+  
+  </header>
+
+
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row">
+            <div *ngFor="let item of dest; let i = index"   class="col-md-4 ftco-animate">
+                
+                <div class="project-wrap"  >
+                    <a href="#" class="img" [style.background-image]="'url(http://localhost:8090/image/getImage/'+item.image.id+')'">
+                        <p> <span class="personne" > {{item.AvailablePlaces || 'No '}}Available Places</span></p>
+                    </a>   
+                    <div class="text p-4" >
+                        <span class="days">10 Days Tour</span>
+                        <h3><a href="#">Tunisia</a></h3>
+                        <p class="location"><span class="fa fa-map-marker"></span> {{item.destination}}</p>
+                        <p >{{item.description}}</p>
+                        <ul>
+                            <li><span class="flaticon-shower" type="date"></span>{{item.createdAt}}</li>
+                            <li><span class="flaticon-king-size"></span>{{item.carModel}}</li>
+                            <li><span class="flaticon-sun-umbrella"></span>{{item.campingType}}</li>
+                        </ul>
+
+
+
+                        
+                        <p>La note actuelle est : {{ item.rating }}</p>
+                        <div class="rating">
+                            <span  *ngFor="let star of stars"  class="star" [ngClass]="getStarClass(star, item.rating)" (click)="rate(star, item)">&#9733;</span>
+                        </div>
+
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

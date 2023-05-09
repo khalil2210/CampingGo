@@ -1,0 +1,23 @@
+<p>addgroupcamping works!</p>
+
+<div class="my-2 w-25">
+        
+    <label for="" class="my-1" >Camping Type :  </label>
+    <select class="form control" [(ngModel)]="camping.campingType">
+        <option value="Beach" >Beach</option>
+        <option value="Forest">Forest</option>
+        <option value="Mountain-camping">Mountain-camping</option>
+    </select>
+
+    
+    <input type="text" class="form-control"  [(ngModel)]="camping.description" placeholder="Description" aria-label="Description" aria-describedby="basic-addon1">
+    <input type="text" class="form-control"  [(ngModel)]="camping.destination" placeholder="Destination" aria-label="destination" aria-describedby="basic-addon1">
+    <input type="text" class="form-control"  [(ngModel)]="camping.carModel" placeholder="Car Model" aria-label="Car Model" aria-describedby="basic-addon1">
+    <input type="text" class="form-control"  [(ngModel)]="camping.campingType" placeholder="Camping Type" aria-label="Camping Type" aria-describedby="basic-addon1">
+    <input type="text" class="form-control"  [(ngModel)]="camping.createdAt" placeholder="Create Date" aria-label="Create Date" aria-describedby="basic-addon1">
+    <input type="text" class="form-control"  [(ngModel)]="camping.availablePlaces" placeholder="Available Places" aria-label="Available Places" aria-describedby="basic-addon1">
+    <input type="text" class="form-control"  [(ngModel)]="camping.requirements" placeholder="Requirements" aria-label="Requirements" aria-describedby="basic-addon1">
+
+    <button type="button" class="btn btn-success" (click)="addGroupCamping(camping)" > Add Group Camping </button>
+
+</div>
