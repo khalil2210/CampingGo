@@ -15,6 +15,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AddChatroomComponent } from './chat_app/Pop_up/add-chatroom/add-chatroom.component';
 import { EditChatroomComponent } from './chat_app/Pop_up/edit-chatroom/edit-chatroom.component';
+import { AllGroupCampingComponent } from './GroupCamping/components/all-group-camping/all-group-camping.component';
+import { AddgroupcampingComponent } from './AddGroupCamping/components/addgroupcamping/addgroupcamping.component';
+import { MapComponent } from './map/map.component';
+import { RechercheGpComponent } from './RechercheGp/components/recherche-gp/recherche-gp.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +27,11 @@ import { EditChatroomComponent } from './chat_app/Pop_up/edit-chatroom/edit-chat
     ChatComponent,
     MessageComponent,
     AddChatroomComponent,
-    EditChatroomComponent
+    EditChatroomComponent,
+    AllGroupCampingComponent,
+    AddgroupcampingComponent,
+    MapComponent,
+    RechercheGpComponent
   ],
 
   imports: [
