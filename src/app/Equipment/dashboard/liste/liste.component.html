@@ -1,0 +1,115 @@
+
+  
+  <H1>List of Equipment</H1>
+  <a name="" id="" class="btn btn-primary"  onclick="history.go(0)"  role="button">Refresh</a>
+  <div class="table-responsive">
+  
+    <table class="table table-striped">
+  
+      <tbody>
+  
+        <th scope="col">#</th>
+        <th scope="col">name</th>
+        <th scope="col">description</th>
+        <th scope="col">photo</th>
+        <th scope="col">price</th>
+        <th scope="col">equipmentType</th>
+        <th scope="col">quantity</th>
+        <th scope="col">action</th>
+  
+  
+  
+  
+      <tr *ngFor="let x of liste;index as i ">
+        <td>{{i+1}}</td>
+        <td>{{x.name}}</td>
+        <td>{{x.description}}</td>
+        <td><img class="card-img-top img-responsive"
+          src = "{{this.host+'/image/getImage/'+x.image.id}}"
+          style = "height :200px;width:fil-content"
+         alt=""></td>
+        <td>{{x.price}}</td>
+        <td>{{x.equipmentType}}</td>
+        <td>{{x.quantity}}</td>
+  
+        <td>  <button class="btn btn-danger"  (click)="delete(x.id)">Delete</button></td>
+        <td><button  class="btn btn-primary me-1 mb-1" data-bs-toggle="modal" (click)="getid(x.id)" data-bs-target="#update" >Edit</button></td>
+  
+      </tr>
+  
+  
+    </tbody>
+  </table>
+  </div>
+  
+          
+          <div class="modal" tabindex="-1"  id="update" style = "height :800px;width:fil-content" >
+    <div class="modal-dialog w-200">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"><h3 mat-dialog-title>update Equipment</h3>
+          </h5>
+        </div>
+        <div class="modal-body">
+          <div class="modal-header">
+
+
+            <h5 class="modal-title" [ngStyle]="{ color: 'red' }" >{{equipe.name}}
+              <div class="alert alert-danger" *ngIf="addUserForm.get('name')?.touched && addUserForm.get('title')?.hasError('required')"> this title required</div>
+              <div class="alert alert-danger" *ngIf="addUserForm.get('description')?.touched && addUserForm.get('title')?.hasError('pattern')"> intervalle dans [a-zA-z]</div>
+              <div class="alert alert-danger" *ngIf="addUserForm.get('price')?.touched && addUserForm.get('price')?.hasError('required')"> intervalle dans [0-9]</div>
+              <div class="alert alert-danger" *ngIf="addUserForm.get('quantity')?.touched && addUserForm.get('quantity')?.hasError('required')"> quantity dans [0-9]</div>
+              <div style="color: green;font-size:large;" >{{msg}}</div>
+            </h5>
+          </div>
+          
+          <div class="modal-body">
+          
+            <form  #ngform="ngForm"  enctype="multipart/form-data" >
+              <label >title</label>
+              <input type="text" class="form-control" name="name" [(ngModel)]="equipe.name"  required>
+          
+              <input type="hidden"    class="form-control" [value]="0" name="id" [(ngModel)]="equipe.id" >
+              <label >price</label>
+              <input type="number" class="form-control" [(ngModel)]="equipe.price"  name="price" required>
+              <label >quantity</label>
+              <input type="number" class="form-control"  name="quantity" [(ngModel)]="equipe.quantity" required>
+              <label >Description</label>
+              <input type="text" class="form-control"  name="description" [(ngModel)]="equipe.description" required>
+              <div class="form-group">
+                <label for="equipmentType">Example select</label>
+                <select class="form-control" ngModelGroup="equipmentType" name="equipmentType" [(ngModel)]="equipe.equipmentType"  id="equipmentType">
+                <option value="Sleeping" selected>Sleeping</option>
+                <option value="bag">bag</option>
+                <option value="Tent">Tent</option>
+                <option value="Mat">Mat</option>
+                <option value="Rope">Rope</option>
+                <option value="Water">Water</option>
+                <option value="Bottles">Bottles</option>
+                <option value="FirstAids">FirstAids</option>
+                <option value="Flashlights">Flashlights</option>
+              </select>
+          
+          </div>
+        
+          
+            <br>
+              <div class="form-group" >
+                <label for="image">Image</label><div></div>
+                
+                <input type="file"  name="file"  name="imageData" (change)="onFileSelected($event)">
+              </div>
+          
+          
+          
+            </form>
+          </div> 
+          
+          <div class="modal-footer">
+            <button class="btn  mx-1" [mat-dialog-close]=null data-bs-dismiss="modal">Cancel</button>
+            <button type="submit"  class="btn btn-primary"  (click)="update(equipe)">save</button>
+          </div>
+      
+        </div>
+      </div>
+    </div>

@@ -1,12 +1,29 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
+import { User } from '../core/model/user';
+
 @Injectable({
   providedIn: 'root'
 })
 export class ChatApiService {
+  usersList:User[]=[];
 
-
+  getAllUsersByChatroom(chatroomId:number){
+    this.usersList=[]
+    this.getAllusersByChatroomService(chatroomId).subscribe({
+    next:(res:any)=>{
+    for (let index = 0; index < res.length; index++) {
+    this.usersList.push({
+    id:res[index].id,
+    firstName:res[index].firstName,
+    lastName:res[index].lastName,
+    username:res[index].username,
+    profileImage:{id:res[index].profileImage.id}
+    })}}
+    })
+  return this.usersList
+    }
   constructor(private http:HttpClient) {}
 
   getChatrooms(){
@@ -45,13 +62,13 @@ export class ChatApiService {
    }
 
 
-  getAllusersByChatroom(chatroomId:number){
+  getAllusersByChatroomService(chatroomId:number){
     const url='http://localhost:8090/chatroom/getAllUsersByChatroom'
     const params = new HttpParams().set('chatroomId', chatroomId);
     return this.http.get(url,{params});
   }
 
-  //to be implemented
+
   addUserToChatroom(username:string,chatroomId:number){
     const url='http://localhost:8090/chatroom/addUserToChatroom'
     const params = new HttpParams()
@@ -61,8 +78,6 @@ export class ChatApiService {
     return this.http.post(url,params);
   }
 
-
-  //to be implemented
   removeUserFromChatroom(username:string,chatroomId:number){
     const url='http://localhost:8090/chatroom/removeUserFromChatroom'
     const params = new HttpParams()
@@ -71,7 +86,19 @@ export class ChatApiService {
     return this.http.delete(url,{params});
   }
 
+getUserById(id:number){
+  const url='http://localhost:8090/users/get-user-by-id/'+id
+  return  this.http.get(url);
+}
 
 
-
+updateChatroom(chatroomId:number,image:File,chatroomName:string){
+  const url='http://localhost:8090/chatroom/updateChatroom/'+chatroomId
+  const formData = new FormData();
+  const headers = new HttpHeaders();
+  headers.append('Content-Type', 'multipart/form-data');
+  formData.append('chatroomName', chatroomName);
+  formData.append('image', image);
+  return this.http.put(url, formData,{headers});
+}
 }
